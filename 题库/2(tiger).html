@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // tiger: <封装函数>转换数组
+        // 输入
+        const input = [
+            {
+                label: '标题一',
+                id: '1',
+                parentId: null,
+            },
+            {
+                label: '标题二',
+                id: '2',
+                parentId: null,
+            },
+            {
+                label: '标题3.1',
+                id: '3-1',
+                parentId: '3',
+            },
+            {
+                label: '标题3.1.1',
+                id: '3-1-1',
+                parentId: '3-1',
+            },
+            {
+                label: '标题三',
+                id: '3',
+                parentId: null,
+            },
+            {
+                label: '标题1.1',
+                id: '1-1',
+                parentId: '1',
+            },
+            {
+                label: '标题1.2',
+                id: '1-2',
+                parentId: '1',
+            },
+            {
+                label: '标题2.1',
+                id: '2-1',
+                parentId: '2',
+            },
+        ];
+
+        // 期待输出
+        const output = [
+            {
+                label: '标题一',
+                id: '1',
+                parentId: null,
+                children: [
+                    {
+                        label: '标题1.1',
+                        id: '1-1',
+                        parentId: '1',
+                    },
+                    {
+                        label: '标题1.2',
+                        id: '1-2',
+                        parentId: '1',
+                    },
+                ],
+            },
+            {
+                label: '标题二',
+                id: '2',
+                parentId: null,
+                children: [
+                    {
+                        label: '标题2.1',
+                        id: '2-1',
+                        parentId: '2',
+                    },
+                ],
+            },
+            {
+                label: '标题三',
+                id: '3',
+                parentId: null,
+                children: [
+                    {
+                        label: '标题3.1',
+                        id: '3-1',
+                        parentId: '3',
+                        children: [
+                            {
+                                label: '标题3.1.1',
+                                id: '3-1-1',
+                                parentId: '3-1',
+                            },
+                        ],
+                    },
+                ],
+            },
+        ];
+
+        function transform(arr) {
+            // to do
+            return xxx;
+        }
+    </script>
+</body>
+
+</html>

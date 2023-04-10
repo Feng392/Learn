@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button id="record">记录</button>
+    <button id="revocation">撤回</button>
+
+    <script>
+        const inp = document.querySelector('input');
+        const record = document.querySelector('#record');
+        const revocation = document.querySelector('#revocation');
+        // 平常写法
+        // const recordList = [];
+        // record.addEventListener('click', () => {
+        //     recordList.push(inp.value);
+        //     inp.value = '';
+        // })
+        // revocation.addEventListener('click', () => {
+        //     if (recordList.length === 0) {
+        //         alert('没有记录了');
+        //         return;
+        //     }
+        //     inp.value = recordList.pop();
+        // })
+
+        // 用闭包的形式
+        function fn() {
+            const recordList = [];
+
+            return {
+                record() {
+                    recordList.push(inp.value);
+                    inp.value = '';
+                },
+                revocation() {
+                    if (recordList.length === 0) {
+                        alert('没有记录了');
+                        return;
+                    }
+                    inp.value = recordList.pop();
+                }
+            }
+        }
+
+        const obj = fn();
+        record.addEventListener('click', obj.record);
+        revocation.addEventListener('click', obj.revocation);
+    </script>
+</body>
+
+</html>

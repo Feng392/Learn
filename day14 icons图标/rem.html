@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* html {
+            font-size: 10px;
+        } */
+
+        /* rem 单位以根元素的 font-siez为基底，不是父元素 */
+
+        /* div {
+            font-size: 5rem;
+        } */
+        .box {
+            width: 20rem;
+            height: 10rem;
+            background-color: #f40;
+            border-radius: 5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <div>hello word</div> -->
+    <div class="box"></div>
+    <script>
+        function setRemBase() {
+            document.documentElement.setAttribute('style', `font-size: ${innerWidth * .02}px;`);
+        }
+
+        setRemBase();
+        window.addEventListener('resize', setRemBase);
+
+    </script>
+</body>
+
+</html>

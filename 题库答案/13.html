@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <对象(映射)&字符串练习>提取身份信息
+        const mapping = {
+            北京市: 110000,
+            天津市: 120000,
+            河北省: 130000,
+            山西省: 140000,
+            内蒙古自治区: 150000,
+        };
+
+        const input = '张三:11000019980101001X';
+        const output = {
+            name: '张三',
+            province: '北京市',
+            birthday: '1998.1.1',
+        };
+       
+        function getUserInfo(input, mapping) {
+           // es5
+        //    const tmp = input.split(':');
+        //    tmp: [ '张三', '11000019980101001X]
+        //    const name = tmp[0];
+        //    const idCard = tmp[1];
+            // es6
+            const [name, idCard] = input.split(':');
+            // 提取省份id
+            const provinceId = +idCard.substring(0, 6);
+            const province = Object.keys(mapping).find(k => mapping[k] === provinceId);
+            // 提取生日
+            const year = +idCard.substring(6, 10);
+            const month = +idCard.substring(10, 12);
+            const day = +idCard.substring(12, 14);
+            const birthday = `${ year }.${ month }.${ day }`;
+            // es6 写法 当key已经被赋值时，可以不写value, 只写字段名即可
+            return {
+                name,
+                province,
+                birthday,
+            };
+        }
+        console.log(getUserInfo(input, mapping));
+    </script>
+</body>
+
+</html>

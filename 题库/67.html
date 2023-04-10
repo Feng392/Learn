@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn active">点击</button>
+
+    <script>
+        // 实现jQuery的toggleClass方法
+        function toggleClass(el, className) {
+           
+        }
+
+        // 测试
+        const btn = document.querySelector('.btn');
+        btn.addEventListener('click', function() {
+            toggleClass(btn, 'active'); // 点击一下变红，再点击一下变回原来的颜色，依次循环
+        });
+    </script>
+</body>
+</html>

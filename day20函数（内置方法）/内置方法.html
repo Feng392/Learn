@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Math（数学）
+        // 最大值
+
+        // 里面传的不是数组
+        Math.max(1, 2, 3, 4);
+        // 传的是数组
+        Math.max(...arr); // 将数值项打散了当做一个一个的参数；
+        // 最小值
+        Math.min();
+        // 幂
+        (2 ** 3);
+        Math.pow(2, 3);
+
+        // 取整
+        // 向下取整
+        Math.floor(2.4);
+
+        // 向上取整
+        Math.ceil(2.3);
+
+        // 四舍五入
+        Math.round(2.5);
+
+        // 随机数
+        Math.random(); // 代表[0, 1)的随机数
+
+        // [0, 100)
+        Math.random() * 100;
+
+        // [10, 50)
+        Math.random() * 40 + 10;
+
+        // 公式
+        Math.random() * 跨度 + 起始数字
+
+        // [x, y)
+        Math.random() * (y - x) + x;
+
+        // x 到 Y 的随机整数
+        Math.floor(Math.random() * (y - x + 1) + x);
+        Math.floor(Math.random() * (跨度 + 1) + 起始数字);
+
+        // 封装一个函数，输入x，y 返回x 到 y的随机整数；
+        function int(x, y) {
+            return Math.floor(Math.random() * (y - x + 1) + x)
+        }
+        int(1, 10);
+
+        // 开平方
+        // 根号2
+        Math.sqrt(2);
+
+        // π
+        Math.PI;
+        // π 是常量；命名应该全部大写
+        var PI = 3.14;
+        var MY_NAME = 'zhangsan';
+
+        // 绝对值
+        Math.abs(-1);
+
+        // 三角函数 (要算弧度)
+            // sin30°
+            // π是180°
+            Math.sin(Math.PI / 6);
+
+
+        // Date 日期
+            // 获取毫秒级时间戳
+            Date.now();
+            // 从1970年1月1日到某一时刻的毫秒数；
+
+            // 获取秒级时间戳
+            Date.now() / 1000; // 向下取整
+
+            // 用法
+               // 时间戳转换为字符串日期；
+                // 使用moment.js 或者 dayjs;
+
+                var timestamp = 1669280706382;
+                var str = dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss');
+                console.log(str);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入数字个数，计算以下算式的结果</title>
+</head>
+
+<body>
+    <script>
+        // 提示: 3的倍数的数字时特殊处理
+        // 如
+        // 输入: 10
+        // 计算: 1 + 2 - 3 + 4 + 5 - 6 + 7 + 8 - 9 + 10 的结果
+
+        // 输入: 2
+        // 计算: 1 + 2 的结果
+
+        // 输入: 6
+        // 计算: 1 + 2 - 3 + 4 + 5 - 6 的结果
+        var n = +prompt('输入n')
+        var sum = 0;
+        var str = '';
+
+        for (var i = 1; i <= n; i++) {
+            if (i % 3 === 0) {
+                sum -= i;
+                str += ` - ${i}`;
+            } else {
+                sum += i;
+                // if (i === 1) {
+                //     str += `1`;
+                // } else {
+                //     str += ` + ${i}`
+                // }
+                str += i === 1 ? `1` : ` + ${i}`;   // 三元判断
+            }
+        }
+        console.log(sum);
+        console.log(`${str} = ${sum}`);
+    </script>
+</body>
+
+</html>

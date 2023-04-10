@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个数组，返回所示结果
+        var arr = [
+            '张三',
+            '张三三',
+            '李四',
+            '王五',
+            '王五五',
+        ];
+        function transform(arr, count) {
+            for (var str of arr) {
+                if (str.length === count) {
+                    return str;
+                }
+            }
+            return undefined; // 可以不写，默认返回undefined
+        }
+        console.log(transform(arr, 2)); // '张三'
+        console.log(transform(arr, 3)); // '张三三'
+        console.log(transform(arr, 4)); // undefined
+    </script>
+</body>
+
+</html>

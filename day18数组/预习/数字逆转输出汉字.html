@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function reverse(arr) {
+            var str = '';
+            var num = prompt('输入');
+            for (var i = num.length - 1; i >= 0; i--) {
+                str += zhong(num[i]);
+            }
+            console.log(str);
+        }
+        console.log(reverse());
+        function zhong(a) {
+            switch (a) {
+                case '1':
+                    return '一';
+                case '2':
+                    return '二';
+                case '3':
+                    return '三';
+                case '4':
+                    return '四';
+                case '5':
+                    return '五';
+                case '6':
+                    return '六';
+                case '7':
+                    return '七';
+                case '8':
+                    return '八';
+                case '9':
+                    return '九';
+            }
+        }
+    </script>
+</body>
+
+</html>

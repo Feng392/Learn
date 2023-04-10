@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scalc=1.0">
+    <title>Document</title>
+    <style>
+        /* 思路：先把用一个数据把页面写出来，然后在思考哪些地方应该用JS替换为活的 */
+       body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+       }
+       .box {
+            outline: 1px solid #f40;
+       }
+    </style>
+</head>
+
+<body>
+   
+    <script>
+        function render(row, col) {
+          for (let i = 0; i < row * col; i++) {
+                // 创建元素
+                const div = document.createElement('div');
+                // 添加属性
+                div.setAttribute('class', 'box');
+                div.setAttribute('style', `width: calc(100% / ${col}); height: calc(100% / ${row})`);
+                // 追加到父元素
+                document.body.appendChild(div);
+          }
+        }
+        render(3, 5);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呼吸球</title>
+    <style>
+        body {
+            background-color: #666;
+        }
+
+        /* 居中 */
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 内容 */
+        .content {
+            width: 300px;
+            height: 300px;
+        }
+
+        .content::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            width: 300px;
+            height: 300px;
+            background-image: url("https://imgbdb4.bendibao.com/cqbdb/xiuxian/202211/02/20221102150238_48134.jpg");
+            background-size: cover;
+            opacity: 0.8;
+        }
+
+        @keyframes circle {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(20);
+            }
+
+            100% {
+                transform: scale(0);
+            }
+        }
+
+        .box div {
+            width: 1px;
+            height: 1px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .box div:nth-child(1) {
+            left: 25%;
+            animation: circle 1s linear infinite;
+        }
+
+        .box div:nth-child(2) {
+            left: 50%;
+            animation: circle 1s linear infinite 0.3s;
+        }
+
+        .box div:nth-child(3) {
+            left: 75%;
+            animation: circle 1s linear infinite 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content center">
+        <div class="box">
+            <div class="center"></div>
+            <div class="center"></div>
+            <div class="center"></div>
+        </div>
+    </div>
+</body>
+
+</html>

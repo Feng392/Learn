@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // sleep
+        function sleep(n) {
+            const tmp = Date.now();
+            while (Date.now() - tmp < n) {}
+        }
+
+        console.log(1);
+        setTimeout(() => {
+            console.log(2);
+        }, 1000);
+        sleep(2000);
+        console.log(3);
+    </script>
+</body>
+</html>

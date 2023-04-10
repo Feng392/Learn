@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环</title>
+</head>
+
+<body>
+    <!-- for 循环 -->
+    <script>
+        // for (var i = 0; i <= 100; i += 2) {
+        //     console.log(i);
+        // }
+
+        // 求和
+        // var sum = 0;
+        // for (i = 0; i <= 100; i++) {
+        //     sum += i;
+        // }
+        // console.log(sum);
+
+        // 求100内的奇数和/偶数和 包含100
+        // var a = 0;
+        // var b = 0;
+        // for (var i = 0; i <= 100; i++) {
+        //     if (i % 2 === 0) {
+        //         a += i;
+        //     } else {
+        //         b += i;
+        //     }
+        // }
+        // console.log(a);
+        // console.log(b);
+
+
+        // 1    2    3      4     5
+        // a    ab   aba    abab   ababa
+
+        // var count = +prompt('输入个数');
+        // var str = '';
+        // for (var i = 1; i <= count; i++) {
+        //     if (i % 2 === 0) {
+        //         str += 'b';
+        //     } else {
+        //         str += 'a';
+        //     }
+        // }
+        // console.log(str);
+
+
+
+        // 1    2    3      4     5
+        // a    ab   abc    abca   abcab
+
+        // var count = +prompt('输入个数');
+        // var str = '';
+        // for (var i = 1; i <= count; i++) {
+        //     switch (i % 3) {
+        //         case 1:
+        //             str += 'a';
+        //             break;
+        //         case 2:
+        //             str += 'b';
+        //             break;
+        //         case 0:
+        //             str += 'c';
+        //             break;
+        //     }
+        // }
+        // console.log(str);
+
+        // 1- 170中偶数的平均值
+
+        // var sum = 0;
+        // var count = 0;
+        // for (var i = 1; i <= 170; i++) {
+        //     if (!(i % 2)) {
+        //         sum += i;
+        //         count++;
+        //     }
+        // if (i % 2 === 0) {
+        //     sum += i;
+        //     count++;
+        // }
+        // }
+        // console.log(sum / count);
+        // console.log(sum);
+        // console.log(count);
+
+        // 输入一个小于10大于0的数字 不包括10和0（否则打印数字不符合规范）
+        // var i = +prompt('输入');
+        // var str = '';
+        // if (i >= 10 || i <= 0) {
+        //     console.log('数字不符合规范');
+        // } else {
+        //     for ( ; i > 0; i--) {
+        //         str += i;
+        //     }
+        //     console.log(str);
+        // }
+
+
+
+        // 依次打印'a99' 'a98' ...'a1' 'a0'
+        // var count = '';
+        // var str = 'a';
+        // for (var i = 99; i >= 0; i--) {
+        //     count += str + i + '';
+        // }
+        // console.log(count);
+
+        // 输入一个数字，判断该数字是否为质数(只能被1和自身整除)
+
+        // var i = 1;
+        // for (; i;) {
+        //     console.log('a');
+        //     i++;
+        //     if (i === 11) {
+        //         i = 0;
+        //     }
+        // }
+
+        // 100以内能被3整除或者能被7整除或者能被15整除的数打印出来
+        // for (var i = 0; i < 100; i++) {
+        //     if (i % 3 === 0 || i % 7 === 0 || i % 15 === 0) {
+        //         console.log(i);
+        //     }
+        // }
+
+        // var i = 0;
+        // while (i < 100) {
+        //     if ( i % 7 === 0 || i % 10 === 7) {
+        //         console.log(i);
+        //     }
+        //     i++;
+        // }
+    </script>
+</body>
+
+</html>

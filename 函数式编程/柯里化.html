@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>柯里化</title>
+</head>
+<body>
+</body>
+<script>
+    // 柯里化 --- 把一个多参数的函数，转换成一个嵌套的单参数函数   利用了闭包原理
+    // 1. 一个函数有多个参数
+    // 2. 返回的函数执行的结果，是一个函数，这个函数有一个参数
+
+  function add(a, b, c) {
+    return a + b + c;
+  }
+//  装饰者模式
+  function curry(fn) {
+      const args = [];
+      return function curried(arg) {
+         args.push(arg);
+         // 判断参数的个数是否达到了函数的参数个数
+         if (args.length === fn.length) {
+           return fn(...args);
+         }
+
+         else {
+          return  curried;
+         }
+      }
+  }
+
+  const curry1 = curry(add);
+  const curry2 = curry(1)(2);
+    console.log(curry1);
+    console.log(curry2);
+</script>
+</html>

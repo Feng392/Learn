@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 普通函数
+        // 谁（调用/运行）包含this的函数，  this就指向谁   没有调用的就是window
+        class Person {
+            constructor(name) {
+                this.name = name;
+                console.log(this); 
+                // 指向实例
+            }
+            // this 实例
+            uname = this.name;  // undefined(在函数前先被执行)
+
+            sayHi() {
+                // this 实例
+                console.log(this);
+                console.log(this.uname);  // 打印undefined
+            }
+
+            // 静态方法
+            static getNameLength() {
+                console.log(this);
+            }
+        }
+        const p1 = new Person();
+        p1.sayHi();
+    </script>
+</body>
+
+</html>

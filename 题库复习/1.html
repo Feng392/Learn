@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <封装函数>转换数组
+
+        // 输入
+        const input = {
+            shengjian: '生煎',
+            baozi: '灌汤包',
+            jiaozi: '水饺',
+            burger: '汉堡',
+        };
+
+        // 期待输出
+        // const output = [
+        //     {
+        //         label: '生煎',
+        //         value: 'shengjian',
+        //     },
+        //     {
+        //         label: '灌汤包',
+        //         value: 'baozi',
+        //     },
+        //     {
+        //         label: '水饺',
+        //         value: 'jiaozi',
+        //     },
+        //     {
+        //         label: '汉堡',
+        //         value: 'burger',
+        //     },
+        // ];
+
+        // 1.
+        // function transform(obj) {
+        //     const output = [];
+        //     for (const key in obj) {
+        //         output.push({
+        //             label: obj[key],
+        //             value: key,
+        //         })
+        //     }
+        //     console.log(output);
+        //     return output;
+        // }
+        // transform(input);
+
+        // 2
+        function transform(obj) {
+            return Object.keys(obj).map(key => ({
+                lable: obj[key],
+                value: key,
+            }));
+        }
+        console.log(transform(input)); 
+    </script>
+</body>
+
+</html>

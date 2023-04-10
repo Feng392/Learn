@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas</title>
+</head>
+<body>
+  <canvas>
+
+    <script>
+      const canvas = document.querySelector('canvas');
+      // 上下文
+      const context = canvas.getContext('2d');
+
+      canvas.width = innerWidth; // window.innerWidth
+      canvas.height = innerHeight; // window.innerHeight
+
+      // 绘画阶段，操作上下文
+
+      // 1.先给颜色
+
+      context.fillStyle = '#aaa'; // 填充颜色
+      // 2 再画图形
+
+      context.fillRect(0, 0, canvas.width, canvas.height); // fillRect--填充矩形
+
+      //  再画一个
+      context.fillStyle = '#f40';
+      context.fillRect(0, 0, 100, 100);
+    </script>
+</body>
+</html>

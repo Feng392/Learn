@@ -1,0 +1,44 @@
+{
+  "id": "3767483",
+  "name": "chongqing10",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "24111519",
+      "name": "打卡签到",
+      "font_class": "dakaqiandao",
+      "unicode": "faa8",
+      "unicode_decimal": 64168
+    },
+    {
+      "icon_id": "24111520",
+      "name": "生活缴费",
+      "font_class": "shenghuojiaofei",
+      "unicode": "faa9",
+      "unicode_decimal": 64169
+    },
+    {
+      "icon_id": "24111521",
+      "name": "团队",
+      "font_class": "tuandui",
+      "unicode": "faaa",
+      "unicode_decimal": 64170
+    },
+    {
+      "icon_id": "24111522",
+      "name": "我的买单",
+      "font_class": "wodemaidan",
+      "unicode": "faab",
+      "unicode_decimal": 64171
+    },
+    {
+      "icon_id": "24111523",
+      "name": "订单",
+      "font_class": "dingdan",
+      "unicode": "faac",
+      "unicode_decimal": 64172
+    }
+  ]
+}

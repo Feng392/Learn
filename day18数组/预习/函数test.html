@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 高内聚  弱耦合
+        // 函数 用来封装语句，用的时候才执行
+
+
+        // function test() {
+        //     alert('a');
+        // }
+        // test();
+        // test();
+        // test();
+
+
+        // 函数声明  命名使用小驼峰 命名和变量相同
+        // function test() {
+
+        // }
+        // test();
+
+
+        //表达式
+        // 命名函数表达式 *** 表达式会忽略它的名字（abc）
+        // var test = function abc() {
+        //     console.log('a');
+        // }
+        // test();
+
+        //匿名函数表达式  常用--- 函数表达式
+        // var demo = function () {
+        //     console.log('b');
+        // }
+
+
+        // 参数
+        // 形参  a b
+        function test(a, b) {
+            var c = a + b;
+            console.log(c);
+            console.log(arguments);
+            console.log(arguments.length);
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+        }
+        // 实参 1 2 3 4
+        test(1, 2, 3, 4);
+
+        // arguments (实参列表) --- [实参1，实参2，实参3，实参...,..]
+
+        // function test(a, b, c) {
+        //     if (test.length > arguments.length) {
+        //         console.log('形参多了');
+        //     } else if (arguments.length > test.length) {
+        //         console.log('实参多了');
+        //     } else {
+        //         console.log('一样多');
+        //     }
+        // }
+        // test(1, 2)
+
+
+        // 任意数求和
+        // 分析 形参不能固定了，任意不能确定。
+        // function sum() {
+        //     var n = 0;
+        //     for (i = 0; i < arguments.length; i++) {
+        //         n += arguments[i];
+        //     }
+        //     console.log(n);
+        // }
+        // sum(1, 2, 3, 4, 5);
+
+
+
+        // 形参和 arguments[i] 有映射关系，一个变另外一个跟着变，他们不是一个变量。
+        // 形参和实参相等才会映射
+        // 实参列表出生的时候有几个，arguments[i] 就有几个，如果arguments[i]没有值，不会跟着形参映射，因为它本身是undifined
+        // function test(a, b, c) {
+        //     // a = 2;
+        //     // console.log(arguments[0]);
+        //     // arguments[0] = 3;
+        //     // console.log(a);
+
+        //     // c = 3;
+        //     // console.log(arguments[2]);
+        //     // return;
+        // }
+        // test(1, 2);
+
+
+        // return 返回值，函数终止
+        // function myNumber(target) {
+        //     return +target;
+        //     console.log(2);
+        // }
+        // var n = myNumber('456');
+        // console.log(typeof (n) + ':' + n);
+
+
+        // 全局变量和局部变量
+
+
+        // 形参长度 函数名.length;  
+        // 实参长度 arguments.length
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入行数r,列数c,使用一次console输出以下效果</title>
+</head>
+
+<body>
+    <script>
+        // 行数或者列数小于3，提示输入错误
+        // 否则输出如下效果
+        // 如:
+        // 3行5列
+        // aaaaa
+        // a   a
+        // aaaaa
+
+        // 4行6列
+        // aaaaaa
+        // a    a
+        // a    a
+        // aaaaaa
+
+        var row = +prompt('输入行');
+        var col = +prompt('输入列');
+        var str = '';
+        if (row < 3 || col < 3) {
+            console.log('输入错误');
+        } else {
+            for (i = 0; i < row; i++) {
+                for (j = 0; j < col; j++) {
+                    if (i === 0 || i === row - 1 || j === 0 || j === col - 1) {
+                        str += 'a';
+                    } else {
+                        str += ' ';
+                    }
+                }
+                if (i !== row - 1) {
+                    str += '\n';
+                }
+            }
+        }
+        console.log(str);
+    </script>
+</body>
+
+</html>

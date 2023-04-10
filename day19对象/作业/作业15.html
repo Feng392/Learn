@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知一个固定格式的学生成绩数组, 判断有无成绩大于等于80分的学生, 如果有输出第一个匹配学生的名字, 否则输出undefined
+        // 如:
+        var arr = [
+            { name: '张三', score: 89 },
+            { name: '李四', score: 90 },
+            { name: '王五', score: 78 },
+        ];
+        // 输出: 张三
+        var studentName = undefined;
+        for (var iteam of arr) {
+            if (iteam.score >= 80) {
+                studentName = iteam.name;
+                break;
+            }
+        }
+        console.log(studentName);
+    </script>
+</body>
+
+</html>

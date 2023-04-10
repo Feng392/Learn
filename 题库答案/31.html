@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 将店铺数组按 平均得分 从大到小排序
+        const input = [
+            {
+                name: '川哥大碗面',
+                // order: 订单
+                orders: [
+                    {
+                        // 用餐人数
+                        userCount: 3,
+                        // 订单消费
+                        total: 151,
+                        // 订单分数 不评分默认5分
+                        score: 4,
+                    },
+                    {
+                        userCount: 1,
+                        total: 89,
+                        score: 4.5,
+                    },
+                    {
+                        userCount: 4,
+                        total: 188,
+                        score: undefined,
+                    },
+                ],
+            },
+            {
+                name: '贵哥羊肉粉',
+                orders: [
+                    {
+                        userCount: 2,
+                        total: 34,
+                        score: undefined,
+                    },
+                    {
+                        userCount: 1,
+                        total: 15,
+                        score: undefined,
+                    },
+                    {
+                        userCount: 2,
+                        total: 28,
+                        score: undefined,
+                    },
+                ],
+            },
+            {
+                name: '俊哥黄焖鸡',
+                orders: [
+                    {
+                        userCount: 3,
+                        total: 98,
+                        score: 5,
+                    },
+                    {
+                        userCount: 1,
+                        total: 24,
+                        score: undefined,
+                    },
+                    {
+                        userCount: 1,
+                        total: 33,
+                        score: 4,
+                    },
+                ],
+            },
+        ];
+        // 正常写  取 order.score 为！时，要考虑 order.score 为0 的情况
+        function getAgv(orders) {
+            let scoreSum = 0;
+            for (const order of orders) {
+                order.score !== undefined ? scoreSum += order.score : scoreSum += 5;
+                return scoreSum / orders.length;
+            }
+        }
+        // 用reduce求平均分 
+        // 箭头函数函数体不写 { }  默认返回/ return
+        function getAgv(orders) {
+            return orders.reduce((prev, current) => prev + (current.score !== undefined ? current.score : 5), 0) / orders.length;
+        }
+        function sort(input) {
+            // to do
+            return input.sort((a, b) => getAgv(b.orders) - getAgv(a.orders));
+        }
+        console.log(sort(input));
+    </script>
+</body>
+
+</html>

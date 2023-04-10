@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个数组，返回所示数组(随机年龄(10-80岁))
+        function randomAge(x, y) {
+            return Math.floor(Math.random() * (y - x + 1)) + x;
+        }
+        // function transform(a) {
+        //     var newArr = [];
+        //     for (var item of arr) {
+        //         var obj = {};
+        //         obj.name = item;
+        //         obj.age = randomAge(10, 80);
+        //         newArr.push(obj);
+        //     }
+        //     return newArr;
+        // }
+
+        // 老师方法
+        function transform(arr) {
+            var res = [];
+            for (var name of arr) {
+                res.push({
+                    name,
+                    age: randomAge(10, 80)
+                })
+            } 
+            return res;
+        }
+
+        var arr = ['zs', 'ls', 'ww'];
+        console.log(transform(arr));
+        // [{ name: 'zs', age: 18 }, { name: 'ls', age: 21 }, { name: 'ww', age: 45 }]
+    </script>
+</body>
+
+</html>

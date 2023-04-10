@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟</title>
+    <style>
+        .box {
+            position: relative;
+            width: 610px;
+            height: 610px;
+            border: 4px solid #000;
+            border-radius: 50%;
+        }
+
+        .box::before {
+            width: 610px;
+            height: 610px;
+            border-radius: 50%;
+            content: "";
+            background-image: url(./images/微信图片_20221107212746.jpg);
+            background-size: contain;
+            opacity: 0.7;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        h2,
+        span,
+        em,
+        .minute,
+        .second,
+        .time {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h2 {
+            position: absolute;
+            font-size: 24px;
+            line-height: 24px;
+        }
+
+        span {
+            position: absolute;
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        em {
+            position: absolute;
+            text-decoration: none;
+            font-size: 8px;
+            line-height: 8px;
+        }
+
+        .minute {
+            width: 4px;
+            height: 200px;
+            background-color: #f40;
+            transform: translate(-50%, -50%) rotate(24deg) translateY(-100px);
+        }
+
+        .second {
+            width: 1px;
+            height: 250px;
+            background-color: #f40;
+            transform: translate(-50%, -50%) rotate(60deg) translateY(-125px);
+        }
+
+        .time {
+            width: 6px;
+            height: 180px;
+            background-color: #f40;
+            transform: translate(-50%, -50%) rotate(5deg) translateY(90px);
+        }
+
+        .span12 {
+            transform: translateY(-306px);
+        }
+
+        .em6 {
+            transform: translate(-50%, -50%) rotate(6deg) translateY(-300px);
+        }
+
+        .em12 {
+            transform: translate(-50%, -50%) rotate(12deg) translateY(-300px);
+        }
+
+        .em18 {
+            transform: translate(-50%, -50%) rotate(18deg) translateY(-300px);
+        }
+
+        .em24 {
+            transform: translate(-50%, -50%) rotate(24deg) translateY(-300px);
+        }
+
+        .span1 {
+            transform: translate(-50%, -50%) rotate(30deg) translateY(-300px);
+        }
+
+        .em36 {
+            transform: translate(-50%, -50%) rotate(36deg) translateY(-300px);
+        }
+
+        .em42 {
+            transform: translate(-50%, -50%) rotate(42deg) translateY(-300px);
+        }
+
+        .em48 {
+            transform: translate(-50%, -50%) rotate(48deg) translateY(-300px);
+        }
+
+        .em54 {
+            transform: translate(-50%, -50%) rotate(54deg) translateY(-300px);
+        }
+
+        .span2 {
+            transform: translate(-50%, -50%) rotate(60deg) translateY(-300px);
+        }
+
+        .twelve {
+            transform: translate(-50%, -50%) translateY(-280px);
+        }
+
+        .one {
+            transform: translate(-50%, -50%) rotate(30deg) translateY(-280px) rotate(-30deg);
+        }
+
+        .two {
+            transform: translate(-50%, -50%) rotate(60deg) translateY(-280px) rotate(-60deg);
+        }
+
+        .three {
+            transform: translate(-50%, -50%) rotate(90deg) translateY(-280px) rotate(-90deg);
+        }
+
+        .six {
+            transform: translate(-50%, -50%) rotate(180deg) translateY(-260px) rotate(-180deg);
+        }
+
+        .nine {
+            transform: translate(-50%, -50%) rotate(270deg) translateY(-280px) rotate(-270deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span class="span1">|</span>
+        <em class="em6">|</em>
+        <em class="em12">|</em>
+        <em class="em18">|</em>
+        <em class="em24">|</em>
+        <span class="span12">|</span>
+        <em class="em36">|</em>
+        <em class="em42">|</em>
+        <em class="em48">|</em>
+        <em class="em54">|</em>
+        <span class="span2">|</span>
+        <h2 class="twelve">12</h2>
+        <h2 class="one">1</h2>
+        <h2 class="two">2</h2>
+        <h2 class="three">3</h2>
+        <h2 class="six">6</h2>
+        <h2 class="nine">9</h2>
+        <div class="minute"></div>
+        <div class="second"></div>
+        <div class="time"></div>
+    </div>
+</body>
+
+</html>

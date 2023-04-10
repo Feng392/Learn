@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [1, 1, 2, 3];
+
+        // Array.prototype.unique = function () {
+        //     const res = [];
+        //     // this: Array的实例
+        //     for (const item of this) {
+        //         if (!res.includes(item)) {
+        //             res.push(item);
+        //         }
+        //     }
+        //     return res;
+        // }
+
+        Array.prototype.unique = function () {
+            const res = new Set(arr);
+            return [...res];
+        }
+
+        console.log(arr.unique()); // 生成新数组 [1, 2, 3]
+    </script>
+</body>
+
+</html>

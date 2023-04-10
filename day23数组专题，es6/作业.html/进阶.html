@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 字符          数值
+        // I             1
+        // V             5
+        // X             10
+        // L             50
+        // C             100
+        // D             500
+        // M             1000
+        var mapping = {
+            I: 1,
+            V: 5,
+            X: 10,
+            L: 50,
+            C: 100,
+            D: 500,
+            M: 1000
+        };
+        function transitionInt(str) {
+            var sum = 0;
+            // 反着循环 从最后一项开始取值，如果当前项小于前一项就 减去当前项，否则正常加
+            for (var i = str.length - 1; i >= 0; i++) {
+                // 当前项
+                var current = mapping[str[i]];
+                // 前一项目 第一项i+1 是undefined，取不到，所以 || -Infinity，也不会影响第二项
+                var prev = mapping[str[i + 1]] || -Infinity;
+                if (prev > current) {
+                    sum -= current;
+                } else {
+                    sum += current;
+                }
+            }
+            return sum;
+        }
+        transitionInt(III); // 3
+        transitionInt(IV); // 4
+        transitionInt(IX);  //9
+        transitionInt(LVIII); //58
+        transitionInt(MCMXCIV);//1994
+    </script>
+</body>
+
+</html>

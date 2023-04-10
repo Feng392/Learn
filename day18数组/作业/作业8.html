@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var nums = [123, 5, 9, 1, 45, 10, 66];
+        // 找到规律，通过两个已知数组，生成新数组
+        // 案例1: 已知数组
+        var nums1 = [1, 2, 3, 4, 5];
+        var nums2 = [3, 2, 2, 6, 9, 10, 99];
+
+        // 案例1: 期待得到的数组
+        // var result = [3, 4, 6, 24, 45];
+
+        // 案例2: 已知数组
+        // var nums1 = [4, 2, 8, 5, 7];
+        // var nums2 = [3, 2, 2, 6, 9];
+
+        // 案例2: 期待得到的数组
+        // var result = [12, 4, 16, 30, 63];
+        // var arr = [];
+        // if (nums1.length > nums2.length) {
+        //     for (i = 0; i < nums2.length; i++) {
+        //         arr.push(nums2[i] * nums1[i]);
+        //     }
+        // } else {
+        //     for (i = 0; i < nums1.length; i++) {
+        //         arr.push(nums2[i] * nums1[i]);
+        //     }
+        // }
+        // console.log(arr);
+
+        // 选择较短的数组
+        var len = nums1.length < nums2.length ? nums1.length : nums2.length;
+        var arr = [];
+        for (i = 0; i < nums1.length; i++) {
+            arr.push(nums2[i] * nums1[i]);
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

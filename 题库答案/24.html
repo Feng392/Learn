@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 检查数据中是否每一项的value都为true
+        const input = {
+            value: true,
+            next: {
+                value: true,
+                next: {
+                    value: true,
+                    next: {
+                        value: false,
+                    },
+                },
+            },
+        };
+
+        function check(input) { //  就一项不需要用数组every 或者for循环；
+            // 如果 input.value 为 true，并且有 input.next，就递归
+            if (input.value && input.next) {
+                return check(input.next);
+            } else {
+                // input.value 为假 或者 input.value 为真，但是没有input.next
+                return input.value;
+            }
+        }
+
+        console.log(check(input)); // false 
+    </script>
+</body>
+
+</html>

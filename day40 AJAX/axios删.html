@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 服务地址: 'http://47.98.249.40:1234/todo/:{id}' 请求方法: 'DELETE' 响应: -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // 删（一般为'delete'）
+        axios({
+            // 请求方式
+            method: 'delete',
+            url: 'http://47.98.249.40:1234/todo/1',
+        })
+            // 请求成功
+            .then((res) => {
+                console.log(res);  // 服务器返回的数据
+            })
+            // 请求失败
+            .catch((err) => {
+                console.error(err);  // console.error 打印出来是红色的
+            })
+    </script>
+</body>
+
+</html>

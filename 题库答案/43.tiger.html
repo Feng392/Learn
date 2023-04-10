@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .logo {
+            width: 100px;
+        }
+
+        .logo img {
+            width: 100%;
+        }
+
+        .logo span {
+            font-size: 12px;
+            color: red;
+        }
+
+        .logo:hover {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="logo">
+        <img src="https://fanyi-cdn.cdn.bcebos.com/static/translation/img/header/logo_e835568.png" alt="">
+        <div class="title">
+            百度
+            <span>翻译</span>
+        </div>
+    </div> -->
+
+    <script>
+        // 递归将vDOM渲染为真实DOM
+        // 期待的结果在上面的注释中
+        const vDOM = {
+            tagName: 'div',
+            attrs: {
+                class: 'logo',
+            },
+            children: [
+                {
+                    tagName: 'img',
+                    attrs: {
+                        src: 'https://fanyi-cdn.cdn.bcebos.com/static/translation/img/header/logo_e835568.png',
+                        alt: '',
+                    },
+                },
+                {
+                    tagName: 'div',
+                    attrs: {
+                        class: 'title',
+                    },
+                    children: [
+                        '百度',
+                        {
+                            tagName: 'span',
+                            content: '翻译',
+                        },
+                    ],
+                },
+            ],
+        };
+        // 1
+        function createRealDOM(vDOM, parent) {
+            const el = document.createElement(vDOM.tagName);
+            for (const key in vDOM.attrs) {
+                el.setAttribute(key, vDOM.attrs[key]);
+            }
+            el.innerText = vDOM.content || '';
+            for (const child of vDOM.children || []) {
+                if (typeof child === 'string') {
+                    el.innerText += child;
+                } else {
+                    // child 和vDOM 一样，递归
+                    createRealDOM(child, el);
+                }
+            }
+            parent.appendChild(el);
+        }
+        createRealDOM(vDOM, document.body);
+
+        // 2
+        function createRealDOM(vDOM, parent) {
+            if (typeof vDOM === 'string') {
+                const txt = document.createTextNode(vDOM);
+                parent.appendChild(txt);
+                return;
+            }
+            const el = document.createElement(vDOM.tagName);
+            for (const key in vDOM.attrs) {
+                el.setAttribute(key, vDOM.attrs[key]);
+            }
+            el.innerText = vDOM.content || '';
+            for (const child of vDOM.children || []) {
+                createRealDOM(child, el);
+            }
+            parent.appendChild(el);
+        }
+        createRealDOM(vDOM, document.body);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 使用arr，生成如下数组
+        // 期待输出: ['aaa', 'bb', 'cccc', 'ddddddd']
+
+        var arr = ['a', 'a', 'a', '*', 'b', 'b', '*', 'c', 'c', 'c', 'c', '*', 'd', 'd', 'd', 'd', 'd', 'd', 'd'];
+        // 原型链
+        // var n = arr.join().split('*'); 
+        // console.log(n);
+
+        var res = [];
+        var str = '';
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] !== '*') {
+                str += arr[i];
+            }
+            if (arr[i] === '*' && i === arr.length - 1) {
+                res.push(str);
+                str = '';
+            }
+        }
+        console.log(res);
+    </script>
+</body>
+
+</html>

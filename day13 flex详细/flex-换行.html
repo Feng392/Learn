@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* flex盒子的宽度不够时，子元素会被压缩，所以需要换行 */
+        main {
+            display: flex;
+            width: 300px;
+            outline: 1px solid #333;
+            /* 让容器换行 */
+            /* flex-wrap: wrap;
+            flex-wrap: wrap; */
+            flex-wrap: wrap;
+        }
+
+        main>div:nth-child(-n + 2) {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: #f40;
+        }
+
+        main>div:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </main>
+</body>
+
+</html>

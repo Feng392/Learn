@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 2. 封装一个函数, 输入一个整数, 返回该数字是否为回文数
+        // 回文数: 从左到右和从右到左读都是一样的数字
+        // 如: 12321, 123321, 1, 11, 121
+        function isPalindrome(num) {
+            // 以...开头 以..结尾
+            // msg.statrsWith 
+            // msg.endsWith
+            // 把数字转换为字符串，为了for，取到每一位
+            var str = String(num);
+            // 判断循环圈数规律是  字符串长度/2 向下取整
+            // 偶数/2 向下取整还是一半, 奇数向下取整是(字符串长度-1)/2
+            for (var i = 0; i < Math.floor(str.length / 2); i++) {
+                // 第一位
+                var n1 = str[i];
+                // 倒数对应位
+                var n2 = str[str.length - 1 - i];
+                if (n1 !== n2) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+
+        // 翻转思想解题
+        function isPalindrome(num) {
+            var str = String(num);
+            var reversedNum = '';
+            for (var i = str.length - 1; i >= 0; i--) {
+                reversedNum += str[i];
+            }
+            return reversedNum === str;
+        }
+        console.log(isPalindrome(12321)); // true
+        console.log(isPalindrome(123321)); // true
+        console.log(isPalindrome(1)); // true
+        console.log(isPalindrome(11)); // true
+        console.log(isPalindrome(1234)); // false
+    </script>
+</body>
+
+</html>

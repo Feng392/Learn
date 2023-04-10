@@ -1,0 +1,4 @@
+GET /api/herolist HTTP/1.1
+Host: study.duyiedu.com
+
+# 请求体可以不写

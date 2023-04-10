@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 编写一个函数来查找字符串数组中的最长公共前缀。
+        // 如果不存在公共前缀，返回空字符串 ""。
+
+        function getCommonPrefix(words) {
+            // 把words复制到新 数组里面
+            const tmpWords = words.concat();
+            let str = '';
+            // 只取一次标志位
+            const firstWord = tmpWords.shift(); 
+            // firstWord -- 'flower'
+            for (let i = 0; i < firstWord.length; i++) {
+                // i: 0 ,1, 2, 3
+                // 检查是否每一项都和firstWord[i]相等
+                if (tmpWords.every(word => word[i] === firstWord[i])) {
+                    str += firstWord[i];
+                } else {
+                    return str;
+                }
+            }
+            return str;
+        }
+        console.log( getCommonPrefix(['flower', 'flow']) ); // 'flow'
+        console.log( getCommonPrefix(['dog', 'racecar', 'car']) ); // ''
+        console.log( getCommonPrefix(['ahello', 'aworld', 'a', 'abc', 'ab']) ); // 'a'
+    </script>
+</body>
+</html>

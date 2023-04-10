@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const data = [
+            {
+                weekIndexType: 'all',
+                classNames: [ // 班级名称列表
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: 'N4503', // 教室id
+                indexes: [2, 3], // 第3, 4节课
+                weekdays: [0], // 星期1
+                teacherName: '张三', // 教师
+                courseName: '概率论与数理统计A', // 课程名称
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: '室外',
+                indexes: [4, 5],
+                weekdays: [1],
+                teacherName: '李四',
+                courseName: '大学体育',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: 'N4419',
+                indexes: [2, 3],
+                weekdays: [2, 3],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级经济与金融(中英)1班',
+                    '2021级经济与金融(中英)2班',
+                ],
+                classroomId: 'N4503',
+                indexes: [0, 1],
+                weekdays: [0],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级经济与金融(中英)1班',
+                    '2021级经济与金融(中英)2班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: 'N4320',
+                indexes: [6, 7],
+                weekdays: [3],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级经济与金融(中英)1班',
+                    '2021级经济与金融(中英)2班',
+                    '2021级商务经济学(中英)1班',
+                ],
+                classroomId: 'N4320',
+                indexes: [6, 7],
+                weekdays: [4],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+        ];
+        // 2.2. 筛选所有周四周五都有课的教室
+        // 周四有课的教室 res4 [ {} ]
+        const res4 = data.filter(item => item.weekdays.includes(3));
+        // 周五有课的教室
+        const res5 = data.filter(item => item.weekdays.includes(4));
+        
+        function unique(res) {
+            const classroomId = [];
+            for (const item of res) {
+                // item {}
+                if (!classroomId.includes(item.classroomId)) {
+                    classroomId.push(item.classroomId);
+                } 
+            } 
+            return classroomId;
+        }
+        const classroom4 = unique(res4); // 周四有课的教室去重 ['N4503']
+        const classroom5 = unique(res5); // 周五有课的教室去重
+        // 取交集
+        const intersection = [];
+        for (const classroom of classroom4) {
+            if (classroom5.includes(classroom)) {
+                intersection.push(classroom);
+            }
+        }
+        console.log(intersection);
+    </script>
+</body>
+
+</html>

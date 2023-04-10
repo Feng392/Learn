@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class K {  // 类
+
+            obj = {
+                f1() {
+                    console.log('f1:', this);  // 实例
+                },
+                f2: () => {
+                    console.log('f2:', this);   // 实例
+                },
+            };
+
+            f3 = this.obj.f1;
+            f4 = this.obj.f2;
+
+        }
+
+        const k = new K();
+        k.f3();   // k
+        k.f4();   // k
+
+    </script>
+</body>
+
+</html>

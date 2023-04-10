@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    <div id="a">hello world!</div>
+    <script>
+        // JQuery 写法简单的dom 框架
+        // 验证是否引入
+        console.log($);
+
+        const a1 = document.querySelector('#a');
+        // JQ 选中元素
+        const a = $('#a');
+        // JQ 元素属性的增 / 改
+        a.attr({
+            class: 'b',
+            data: 'c',
+        });
+        // JQ删除元素属性
+        a.removeAttr('data');
+        // JQ查
+        $('选择器');
+
+        // JQ 元素的增删改查
+            // 增
+            const el = $('<div><span class="a"></span></div>');
+            // 添加到父元素
+            el.appendTo(a);
+            // 删
+            // a.remove();
+            // 添加元素内容
+            a.text('123'); 
+            a.html('<span>abc</span>');
+            // JQ查
+            console.log(a.attr('class'));
+    </script>
+</body>
+</html>

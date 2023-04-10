@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大效果图</title>
+    <style>
+        body {
+            background: #aaa;
+        }
+
+        .box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            box-shadow: 0 10px 20px -10px #000;
+            background-color: #fff;
+            transition: all 0.3s linear;
+        }
+
+        .box:hover {
+            transform-origin: center center;
+            transform: translate(-50%, -50%) scale(1.01);
+            box-shadow: 0 20px 10px -15px #000;
+        }
+
+        .img {
+            height: 300px;
+            background: url("https://imgbdb4.bendibao.com/cqbdb/xiuxian/202211/02/20221102150238_48134.jpg");
+            background-size: 100% 100%;
+        }
+
+        .bottom {
+            padding: 20px 20px 0 20px;
+        }
+
+        .bottom h2 {
+            font-size: 18px;
+            color: #242E4C;
+        }
+
+        .bottom p {
+            font-size: 14px;
+            color: #242E4C;
+            opacity: 0.7;
+        }
+
+        .circle {
+            position: absolute;
+            left: 20px;
+            bottom: 85px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #999;
+            border-radius: 50%;
+            background: #fff url("https://www.uidesigndaily.com/public/img/figma-logo.svg") no-repeat 10px 7px;
+        }
+
+        .circle::before {
+            content: "Figma";
+            position: absolute;
+            left: 50%;
+            top: 0%;
+            transform: translate(-50%, -130%);
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #666;
+            opacity: 0;
+            transition: all .5s linear;
+        }
+
+        .circle:hover::before {
+            opacity: 1;
+        }
+
+        .button {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 120px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 14px;
+
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s linear;
+        }
+
+        .box:hover .button {
+            box-shadow: 0 15px 10px -10px #999;
+            background-color: rgba(76, 159, 236, 0.8);
+        }
+
+        /* 按鈕鼠標懸停樣式 */
+        .box:hover .button:hover {
+            background-color: rgba(76, 159, 236, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="img"></div>
+        <div class="bottom">
+            <h2>关公晒马</h2>
+            <p>1 Apr 2022</p>
+        </div>
+        <div class="circle"></div>
+        <div class="button">Download</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个数组，返回所示数组
+        var arr = [
+            '张三',
+            '张三三',
+            '李四',
+            '王五',
+            '王五五',
+        ];
+        // 筛选两个字的数据
+        function transform(arr) {
+            var newArr = [];
+            for (var str of arr) {
+                if (str.length === 2) {
+                    newArr.push(str);
+                }
+            }
+            return newArr;
+        }
+        console.log(transform(arr)); // ['张三', '李四', '王五']
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            // 类的构造函数
+            constructor(name) {
+                this.name = name;
+            }
+
+            move() {
+                console.log('正在移动');
+            }
+
+            // 添加一个工具方法
+            // 打印动物名字的长度
+            // 如果必须依赖 this（实例）就浪费了资源，使用也不方便
+            // static 静态
+            static logNameLength(name) {
+                console.log(name.length);
+            }
+        }
+        console.log(Animal.logNameLength('旺财') ); // 2
+    </script>
+</body>
+</html>

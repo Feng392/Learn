@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>贪吃蛇tst</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  canvas {
+    border: 2px solid red;
+  }
+</style>
+<body>
+  <canvas></canvas>
+</body>
+<script>
+  let score = 0;
+  // 定义栅格大小
+  const  CONST_SIZE = 50;
+  // 定义蛇头的颜色
+  const SNAKE_HEAD_COLOR = 'green';
+  // 定义蛇身的颜色
+  const SNAKE_BODY_COLOR = '#aaa';
+  const WIDTH = innerWidth; // window.innerWidth
+  const HEIGHT = innerHeight; // window.innerHeight
+
+  const canvas = document.querySelector('canvas');
+  // context ---上下文
+  const context = canvas.getContext('2d');
+
+  canvas.width = WIDTH - 20;
+  canvas.height = HEIGHT - 20;
+
+  // 绘制得分
+  context.fillStyle = '#000';
+  context.font = "32px serif";
+  context.fillText("得分：" + score, 0, 30);
+
+  // 渲染蛇的方法
+  function renderSnakeItem([x, y], color) {
+    // 渲染蛇头
+    context.fillStyle = color;
+    context.fillRect(x * CONST_SIZE + 1, y * CONST_SIZE + 1 , CONST_SIZE - 2, CONST_SIZE - 2);
+  }
+//  创建一个蛇的类
+  class Snake {
+    constructor() {
+      this.head = [4, 1];
+      this.body = [
+        [3, 1],
+        [2, 1],
+        [1, 1]
+      ];
+
+      this.direction = 'right';
+    }
+
+    // 渲染蛇的方法
+    render() {
+      // 清空画布
+      context.clearRect(0, 0, WIDTH, HEIGHT);
+     // 渲染蛇头
+      renderSnakeItem(this.head, SNAKE_HEAD_COLOR);
+      //  渲染蛇的身体
+      this.body.forEach(item => {
+            renderSnakeItem(item, SNAKE_BODY_COLOR);
+        });
+    }
+
+    // 移动蛇的方法
+    move() {
+      this.body.pop();
+      this.body.unshift([...this.head]);
+
+      switch (this.direction) {
+        case 'right':
+          this.head[0]++;
+          break;
+        case 'left':
+          this.head[0]--;
+          break;
+        case 'up':
+          this.head[1]--;
+          break;
+        case 'down':
+          this.head[1]++;
+          break;
+      }
+      this.render();
+    }
+
+    //  蛇死亡的方法
+    die() {
+      if (this.head[0] < 0 || this.head[0] > WIDTH / CONST_SIZE - 1 || this.head[1] < 0 || this.head[1] > HEIGHT / CONST_SIZE - 1) {
+        return true;
+      }
+      // 判断蛇头是否和蛇身重合
+      if (this.body.some(item => item[0] === this.head[0] && item[1] === this.head[1])) {
+        return true;
+      }
+    }
+  }
+  // 监听键盘事件
+  document.addEventListener('keydown', function (e) {
+    switch (e.key) {
+      case 'ArrowUp':
+        snake.direction = 'up';
+        break;
+      case 'ArrowDown':
+        snake.direction = 'down';
+        break;
+      case 'ArrowLeft':
+        snake.direction = 'left';
+        break;
+      case 'ArrowRight':
+        snake.direction = 'right';
+        break;
+    }
+  });
+
+  const snake = new Snake();
+  snake.render();
+  snake.move();
+</script>
+</html>

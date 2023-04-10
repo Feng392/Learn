@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知两个等长数组, 将他们合并所示新数组
+        // 如:
+        var arr1 = ['张三', '李四', '王五'];
+        var arr2 = [89, 90, 78];
+        // 输出: [{ name: '张三', score: 89 }, { name: '李四', score: 90 }, { name: '王五', score: 78 }]
+        var arr = [];
+        for (var i = 0; i < arr1.length; i++) {  //循环圈数 3  
+            // 方法一：
+            // arr.push({
+            //     name: arr1[i],
+            //     score: arr2[i]
+            // })
+
+            // 方法二
+            name = arr1[i];
+            score = arr2[i];
+            // es5 写法
+            // arr.push({
+            //     name: name,
+            //     score: score,
+            // })
+
+            // es6 写法
+            arr.push({
+                name,
+                score,
+            })
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

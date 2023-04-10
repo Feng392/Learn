@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 深拷贝
+        // 1. 递归
+        const obj = {
+            a: 1,
+            b: {
+                c: 2,
+            },
+            d: [1, 2, { e: 3 }],
+        }
+        function deepClone(obj) {
+            // 利用obj的构造函数 生成仿制品
+            const res = new obj.constructor(); // [] / {}
+            // 生成仿制品
+            for (const key in obj) {
+                // 对象中 key 是键
+                // 数组中key 是 索引
+                const value = obj[key];
+                // 如果value是引用数据类型就递归
+                if (typeof value === 'object' && value !== null) {
+                    res[key] = deepClone(value);
+                } else {
+                    res[key] = value;
+                }
+            }
+            return res;
+        }
+        const obj1 = deepClone(obj);
+        obj1.b.c++;
+        console.log(obj.b.c); // 2
+
+        
+    </script>
+</body>
+
+</html>

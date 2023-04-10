@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th,
+        td {
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+        table {
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+            border-spacing: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+
+            <!-- 只有一行表头，可以不写tr -->
+
+        </thead>
+        <tbody>
+            <!-- 写入内容 -->
+        </tbody>
+    </table>
+    <script>
+        // 通过已有数据渲染表格
+        // 数据
+        const data = [
+            {
+                date: '2021-01-01',
+                name: 'zs',
+                address: '北京市朝阳区',
+            },
+            {
+                date: '2021-01-02',
+                name: 'ls',
+                address: '北京市海淀区',
+            },
+            {
+                date: '2021-01-03',
+                name: 'ww',
+                address: '北京市昌平区',
+            },
+        ];
+
+        // 表格列信息
+        const columns = [
+            {
+                title: '日期', // 表头
+                dataIndex: 'date', // 数据中的字段名
+            },
+            {
+                title: '姓名',
+                dataIndex: 'name',
+            },
+            {
+                title: '地址',
+                dataIndex: 'address',
+            },
+        ];
+        // 表头
+        const thead = document.querySelector('thead');
+        // 创建td
+        for (const col of columns) {
+            // col: {title: '日期',....}
+            const th = document.createElement('th');
+            th.innerText = col.title;
+            thead.appendChild(th);
+        }
+        // tbody
+        const tbody = document.querySelector('tbody');
+        // 行
+        for (const row of data) {
+            const tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            // 列
+            for (const col of columns) {
+                // 期望得到 2021-01-01'   row.data    col.dataIndex
+                const td = document.createElement('td');
+                td.innerText = row[col.dataIndex];
+                tr.appendChild(td);
+            }
+        }
+    </script>
+</body>
+
+</html>

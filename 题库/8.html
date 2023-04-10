@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <数组方法加强练习>求最大值
+        const input = [
+            { value: 1 },
+            { value: 2 },
+            { value: 3 },
+            [
+                { value: 11 },
+                { value: 22 },
+                { value: 33 },
+                [
+                    { value: 111 },
+                    { value: 222 },
+                ],
+            ],
+        ];
+
+        // const output = 222;
+        function getMax(input) {
+            // const output = input.flat(Infinity).map(item => item.value);
+            // return Math.max(...output);
+            return Math.max(...input.flat(Infinity).map(item => item.value));
+        }
+        console.log(getMax(input));
+
+        // 手写递归实现
+        function getMax(input) {
+           // 1, 2, 3, 11, 22, 33, ...
+           let max = -Infinity;
+           for (const item of input) {
+                // item: { value: 1 },[{ value: 111 }, { value: 222 }]
+                
+                if (!Array.isArray(item)) {
+                    // item: { value: 1 }
+                    if (max < item.value) {
+                        max = item.value
+                    }
+                } else {
+                    // item: [{ value: 111 },{ value: 222}]
+
+                    // 产生了规律，并此刻的循环 == getMax(input)。 此刻的循环在for里面，所以用item代替input。达到递归的效果。
+                    // 如果内部的最大值 > max; max = 内部的最大值;
+                    if (max < getMax(item)) {
+                        max = getMax(item);
+                    }
+                }
+           }
+           return max;
+        }
+        console.log(getMax(input));
+
+    </script>
+</body>
+
+</html>

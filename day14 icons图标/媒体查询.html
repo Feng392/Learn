@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <style>
+        /* 通过CSS媒体查询，可以根据媒体特征使用对应的最佳样式，来实现不同设备的响应式自适配。 */
+
+        /* 设定在宽度为320px～480px，分辨率是150dpi的设备上行高为 1.4 */
+        @media only screen and (min-width: 320px) and (max-width: 480px) and (resolution: 150dpi) {
+            body {
+                line-height: 1.4;
+            }
+        }
+
+        /* screen 屏幕 */
+        /* 如果屏幕的最小宽度大于等于600 */
+        @media screen and (min-width: 600px) {
+            body {
+                background-color: #f40;
+            }
+        }
+
+        @media screen and (min-width: 400px) and (max-width: 600px) {
+            body {
+                background-color: #FFc0cb;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            body {
+                background-color: #fa0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

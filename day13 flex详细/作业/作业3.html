@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业3</title>
+    <style>
+        body {
+            background-color: #999;
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            width: 700px;
+            height: 300px;
+            background-color: #fff;
+            justify-content: center;
+            align-items: center;
+        }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            border: 1px solid #999;
+        }
+
+        aside .head {
+            height: 50px;
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            align-items: center;
+        }
+
+        aside .head .logo {
+            margin: 0 10px;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #aaa;
+        }
+
+        aside .head .title {
+            display: flex;
+            align-items: center;
+        }
+
+        aside .head .title span {
+            display: inline-block;
+            transform: rotate(90deg);
+        }
+
+        aside .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+        }
+
+        .content .content-img {
+            margin-bottom: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+        }
+
+        .content span {
+            font-size: 24px;
+            font-weight: 700px;
+            color: #ccc;
+        }
+
+        .btn {
+            width: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn .top,
+        .btn .bottom {
+            margin-bottom: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 40px;
+            color: #666;
+            border: 1px solid #666;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <aside>
+            <div class="head">
+                <div class="logo"></div>
+                <div class="title">
+                    <span> > </span>0 项
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-img"></div>
+                <span>暂无数据</span>
+            </div>
+        </aside>
+        <div class="btn">
+            <div class="top">></div>
+            <div class="bottom">
+                < 
+            </div>
+        </div>
+        <aside>
+                <div class="head">
+                    <div class="logo"></div>
+                    <div class="title">
+                        <span> > </span>0 项
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="content-img"></div>
+                    <span>暂无数据</span>
+                </div>
+        </aside>
+    </main>
+</body>
+
+</html>

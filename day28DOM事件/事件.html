@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button>点我</button>
+    <script>
+        // 元素.addEventListener('事件名'，等待执行的事件处理函数)；
+        // 点击按钮时，弹出alert窗口
+        // 先选中他
+        const btn = document.querySelector('button');
+
+        // 添加点击事件 (click)
+        // function f1() {
+        //     alert('suosuo');
+        // }
+        
+        // 异步
+            // add 添加
+            // event: 事件
+            // listerner ： 监听器
+        btn.addEventListener('click', () => {
+            alert('suosuo');
+        });
+    </script>
+</body>
+</html>

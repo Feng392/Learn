@@ -1,0 +1,8 @@
+main .air {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+.air .chart {
+    flex: 1;
+}

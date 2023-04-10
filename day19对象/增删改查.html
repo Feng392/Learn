@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var person = {
+            name: 'zhangsan',
+            age: 12,
+            sex: '男'
+        };
+        var res = {};
+        // 期待得到如下新对象
+        // {
+        //     zhangsan: 'name',
+        //     12: 'age',
+        //     男: 'sex',
+        // }
+
+        for (var key in person) {
+            res[person[key]] = key;
+        }
+        console.log(res);
+
+        // 2计算平均分
+        // var students = {
+        //     张三: 89,
+        //     李四: 10,
+        //     王五: 96,
+        // };
+        // var sum = 0;
+        // count = 0;
+        // for (var key in students) {
+        //     sum += students[key];
+        //     count++;
+        // }
+        // console.log(`${sum} / ${count} = ${sum / count}`);
+
+        // 3 计算班级的各科平均分
+        var students = {
+            张三: {
+                语文: 20,
+                数学: 50,
+            },
+            李四: {
+                语文: 15,
+                数学: 51,
+            },
+            王五: {
+                语文: 25,
+                数学: 52,
+            },
+        };
+        // 期待得到:
+        // {
+        //     语文: 20,
+        //     数学: 51,
+        // }
+        var score = {
+            语文: 0,
+            数学: 0,
+        };
+        var count = 0;
+        for (var key in students) {
+            // 得到各科总成绩
+            // 语文成绩 
+            // 数学成绩
+            score.语文 += students[key].语文;
+            score.数学 += students[key].数学;
+            count++;
+        }
+        score.语文 /= count;
+        score.数学 /= count;
+        console.log(score);
+    </script>
+</body>
+
+</html>

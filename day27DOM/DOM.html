@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // DOM 
+            // 在js中访问的页面元素
+
+        // 选中元素
+            // // 选中第一个匹配的元素
+            // const el = document.querySelector('#abc');
+            // // 选中所有匹配的元素
+            // const elements = document.querySelectorAll('#abc');  // 打印页面中所有div组成的伪数组。
+            // // 选body
+            // console.log(document.body);
+
+        // 操作元素
+             // 选中body  可以直接写 document.body;
+            document.body;
+        // 查 （选择器）
+            const ele = document.querySelector('#abc');
+            // 选多个，放到一个数组里面。
+            const elements = document.querySelectorAll('#abc'); 
+        // 创建元素（增）
+            const el = document.createElement('div');
+        // 删除元素
+                // 先选中，再删除
+                // 元素.remove();
+            // 元素中添加属性
+            el.setAttribute('class', 'a');
+            // 元素中添加文本
+            el.innerText = 'hello word';
+            // 可以添加标签到元素中（不推荐）
+            el.innerHtml = '<span>455</span>';
+            // 追加至父元素
+            document.body.appendChild(el);
+
+        
+        // 操作属性
+            // 属性的增删改查
+                // 增  (属性名， 属性值)
+                // el.setAttribute('class', 'b');
+                // 删  (属性名)
+                // el.removeAttribute('id');
+                // 改  (属性名， 属性值)
+                // el.setAttribute('class', 'c');
+                // 查  查询属性值
+                // el.getAttribute('id'); // null
+        
+        // 事件
+                // 元素.addEventListener('事件名'，等待执行的事件处理函数)；
+        
+        // 表单元素
+                // input (单标签无 innerText/ innerHTML) 
+                // 有输入值
+                const inp = document.querySelector('input');
+                console.log(inp.value); // 打印输入值
+
+    </script>
+</body>
+</html>

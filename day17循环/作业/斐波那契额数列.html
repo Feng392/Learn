@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斐波那契额数列</title>
+</head>
+
+<body>
+    <script>
+        // 1 1 2 3 5 8  输出第n项    n-1  +  n-2     4 - 2
+
+        //         f       s
+        // 1       1       2       3       5       8        13      21
+        // first   second  third      
+
+        var n = +prompt('输入一个n');
+        var first = 1;
+        var second = 1;
+        var third = 1;
+
+        for (var i = 0; i < n - 2; i++) {
+            third = first + second;
+            first = second;
+            second = third;
+        }
+        console.log(third);
+    </script>
+</body>
+
+</html>

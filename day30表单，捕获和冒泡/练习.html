@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const data = [
+            {
+                a: 1,
+                b: 2,
+                data: [
+                    { value: 12, c: 3 },
+                    { value: 13, c: 4 },
+                    { value: 14, c: 5 },
+                    { value: 14, c: 5 },
+                    { value: 14, c: 5 },
+                    { value: 999, c: 5 },
+                    { value: 14, c: 5 },
+                    { value: 14, c: 5 },
+                ],
+            },
+            {
+                a: 1,
+                b: 2,
+                data: [
+                    { value: 12, c: 3 },
+                    { value: 13, c: 4 },
+                    { value: 14, c: 5 },
+                    { value: 14, c: 5 },
+                    { value: 14, c: 5 },
+                    { value: 123, c: 5 },
+                    { value: 14, c: 5 },
+                    { value: 14, c: 5 },
+                ],
+            },
+        ];
+        // const arr = [];
+        // for (const obj of data) {
+        //     // data: { value: 12, c: 3 }
+        //     const nums = obj.data;
+        //     for (const { value, c } of nums) {
+        //         arr.push(value);
+        //     }
+        // }
+        // console.log(Math.max(...arr));
+
+        // 利用数组方法
+        // 1.先用map得到只有data的新数组 2.然后降维 3.然后用map得到只有value的新数组  4.然后...解构。5.最后用求最大值的方法。
+
+        
+        function getMax(data) {
+            // item.data: [ [{ value: 12, c: 3 }], []]
+            // item.data.flat: [{ value: 12, c: 3 }];
+            return Math.max(...data.map(item => item.data).flat().map(item => item.value));
+        }
+        console.log(getMax(data));
+    </script>
+</body>
+
+</html>

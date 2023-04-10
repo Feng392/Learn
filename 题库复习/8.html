@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <数组方法加强练习>求最大值
+        const input = [
+            { value: 1 },
+            { value: 2 },
+            { value: 3 },
+            [
+                { value: 11 },
+                { value: 22 },
+                { value: 33 },
+                [
+                    { value: 111 },
+                    { value: 222 },
+                ],
+            ],
+        ];
+
+        // const output = 222;
+        // function getMax(input) {
+        //     return Math
+        //         .max(...input.flat(Infinity)
+        //         .map(item => item.value)); 
+        // }
+        // console.log(getMax(input));
+
+        // 手写递归实现
+        function getMax(input) {
+            // 1, 2, 3, 11, 22, 33, ...
+            let max = -Infinity;
+            for (const item of input) {
+                if (!Array.isArray(item)) {
+                    max = item.value;
+                } else {
+                    if (max < getMax(item)) {
+                        max = getMax(item);
+                    }
+                }
+            }
+            return max;
+        }
+        console.log(getMax(input));
+
+    </script>
+</body>
+
+</html>

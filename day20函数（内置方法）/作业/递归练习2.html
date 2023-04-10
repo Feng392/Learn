@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 2. 打印链表, 期待结果'a>>b>>c>>d>>e'
+        var list = {
+            value: 'a',
+            next: {
+                value: 'b',
+                next: {
+                    value: 'c',
+                    next: {
+                        value: 'd',
+                        next: {
+                            value: 'e',
+                            // 出口，list.next 为null（假）
+                            next: null,
+                        },
+                    },
+                },
+            },
+        };
+
+        function concat(list) {
+            var str = list.name;
+            return str + (list.next ? '>>' + concat(list.next) : '');
+        }
+        console.log(concat(list));
+
+        // 只输出 a b c d e
+        function log(list) {
+            console.log(list.value);
+            // 出口 如果list有值，为真
+            if (list.next) {
+                console.log(list.next);
+            }
+            // 出口优化写法  短路语句 && 全真为真
+            // list.next && console.log(list.next);
+        }
+        log(list);
+    </script>
+</body>
+
+</html>

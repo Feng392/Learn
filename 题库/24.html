@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 检查数据中是否每一项的value都为true
+        const input = {
+            value: true,
+            next: {
+                value: true,
+                next: {
+                    value: true,
+                    next: {
+                        value: false,
+                    },
+                },
+            },
+        };
+
+        function check(input) {
+            for (const key in input) {
+                const value = key.value;
+                if (value) {
+                    if (key.next) {
+                        check(key.next);
+                    } else {
+                        return value;
+                    }
+                } else {
+                    return false;
+                }
+            }
+            return value;
+        }
+
+        console.log(check(input)); // false 
+    </script>
+</body>
+
+</html>

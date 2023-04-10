@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text</title>
+</head>
+<body>
+    <form action="">
+        用户名：<input type="text" name="username" placeholder="请输入">
+        <br>
+        密码：<input type="password" name="password">
+        <br>
+        性别：
+        <input type="radio" name="gender" id="nan" checked value="nan"><label for="nan">男</label>
+        <input type="radio" name="gender" id="nv" value="nv"><label for="nv">女</label>
+        <br>
+        爱好：
+        <input type="checkbox" name="hobby" value="learn" checked>学习
+        <input type="checkbox" name="hobby" value="book" id="看书"><label for="看书">看书</label>
+        <input type="checkbox" name="hobby" value="game" id="游戏"><label for="游戏">游戏</label>
+        <br>
+        籍贯：
+        <select name="district">
+            <option>北京</option>
+            <option>重庆</option>
+            <option>上海</option>
+        </select>
+        <p>自我介绍</p>
+        <textarea rows="5" cols="10" name="About"></textarea>
+        <p>上传文件</p>
+        <input type="file" name="file" multiple>
+        <!-- 按钮标签方法一 -->
+        <hr>
+        提交按钮：<input type="submit" >
+        重置按钮：<input type="reset">
+        普通按钮：<input type="button" value="普通按钮">
+        <br>
+
+        <!-- 按钮标签方法二 -->
+        <button type="submit">提交按钮</button>
+        <button type="reset">重置</button>
+        <button type="button">普通按钮</button>
+    </form>
+</body>
+</html>

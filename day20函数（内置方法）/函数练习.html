@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // // 执行型
+        // function log(a) {
+        //     console.log(a);
+        // }
+        // log(456);
+
+        // // 取值型
+        // var arr1 = [1, 2, 3];
+        // var arr2 = [3, 4, 5];
+        // function getSum(nums) {
+        //     var sum = 0;
+        //     for (var num of nums) {
+        //         sum += num;
+        //     }
+        //     return sum;
+        // }
+        // // 把sum的值赋给sum1；
+        // var sum1 = getSum(arr1);    
+
+        // 1.封装一个函数，输入一个数字数组，返回奇数的个数
+        function getOddCount(nums) {
+            var count = 0;
+            for (num of nums) {
+                if (num % 2) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        console.log(getOddCount([1, 2, 3]));
+        console.log(getOddCount([1, 3, 5, 7, 8]));
+
+        // 2.输入俩个数字，返回较大的数
+
+        function getMaxFromTwoNum(n1, n2) {
+            // var big = n1;
+            // if (n1 < n2) {
+            //     big = n2;
+            // }
+            // return big;
+            // return 三元表达式
+            return n1 > n2 ? n1 : n2;
+        }
+        console.log(getMaxFromTwoNum(2, 5));
+        console.log(getMaxFromTwoNum(6, 5));
+        // 3.输入一个数字数组，返回数组中最大的数字
+
+        function getMax(nums) {
+            var bigItem = -Infinity;
+            for (i = 0; i < nums.length; i++) {
+                if (bigItem < nums[i]) {
+                    bigItem = nums[i];
+                }
+            }
+            return bigItem;
+        }
+        console.log(getMax([1, 2, 3]));
+        console.log(getMax([1, 3, 5, 7, 8, -1]));
+        // 4.输入一个数字数组，返回数组中第一个偶数，如果没有则返回undefined；
+
+        function findEven(nums) {
+            for (var item of nums) {
+                if (!(item % 2)) {
+                    return item;
+                }
+            }
+        }
+        console.log(findEven([1, 2, 3]));
+        console.log(findEven([1, 3, 5, 7, 9, -1]));
+
+        // 5.不定量参数练习
+        // 求所有参数的最小值
+
+        function getMin() {
+            var min = Infinity;
+            for (var arg of arguments) {
+                if (arg < min) {
+                    min = arg;
+                }
+            }
+            return min;
+        }
+        console.log(getMin(1, 2, 3, 4, -1));
+        console.log(getMin(1, 2, 3, 4, 5));
+    </script>
+</body>
+
+</html>

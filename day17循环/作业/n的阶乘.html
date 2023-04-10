@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n的阶乘</title>
+</head>
+
+<body>
+    <script>
+        // 计算n的阶乘，n可输入；
+        // 5! = 5 * 4 * 3 * 2 * 1   *1
+        // 4! = 4 * 3 * 2 * 1       *1
+        // 3! = 3 * 2 * 1           *1
+        // 2! = 2 * 1               *1
+        // 1! = 1                   *1
+        // 0! = 1                   *1
+
+        var n = +prompt('输入n');
+        var num = 1;
+        for (var i = n; i > 0; i--) {
+            num *= i;
+        }
+        console.log(num);
+    </script>
+</body>
+
+</html>

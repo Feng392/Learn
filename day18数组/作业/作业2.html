@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 查找nums数组中，有没有三位数的数字，如果有，打印true，否则打印false
+        var nums = [123, 5, 9, 1, 45, 10, 66];
+        var hasHundred = false;
+        for (i = 0; i < nums.length; i++) {
+            if (nums[i] > 99 && nums[i] < 1000) {
+                console.log('true');
+                hasHundred = true;
+                break;
+            }
+        }
+        if (!hasHundred) {
+            console.log('false');
+        }
+    </script>
+</body>
+
+</html>

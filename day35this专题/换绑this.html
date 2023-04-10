@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // bind(),只换了this没有执行
+        // call(),换了this并且执行，call() 接收多个参数。
+        // apply(),换了this并且执行。apply() 只接收俩个参数。
+        function fn() {
+            console.log(this);
+        }
+
+        const obj = { a: 1, b: 2, };
+        setTimeout(fn, 1000);
+        fn.bind(obj)();
+        fn.call(obj);
+        fn.apply(obj);
+    </script>
+</body>
+</html>

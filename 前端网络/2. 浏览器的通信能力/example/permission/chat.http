@@ -1,0 +1,8 @@
+POST /api/chat HTTP/1.1
+Host: study.duyiedu.com
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTQzYzcxMTFjOTAxMzFjMTRjMmIzNSIsImlhdCI6MTY3MzcwMjc1NywiZXhwIjoxNjc0MzA3NTU3fQ.Je2PUTCgPmg66UpEEglmeo9d1UduxGr9mBOUFnjkg1g
+
+{
+  "content": "给大爷乐一个"
+}

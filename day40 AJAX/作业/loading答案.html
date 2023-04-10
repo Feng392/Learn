@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #list {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    姓名: <input id="name" type="text">
+    描述: <input id="description" type="text">
+    <button id="add">新增</button>
+    <div class="loading">loading...</div>
+    <table id="list">
+        <thead>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>描述</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <input type="text">
+                </td>
+                <td>
+                    <input type="text">
+                </td>
+                <td>
+                    <button>修改</button>
+                    <button>删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <script>
+
+        function loading(btn, content) {
+            function operator(disabled) {
+                $(btn)
+                    .text(content)
+                    .attr({ disabled });
+            }
+
+            return {
+                open() {
+                    operator(true);
+                },
+                close() {
+                    operator(false);
+                },
+            }
+        }
+
+        // 删除
+        async function onDelete(id, btn) {
+
+            // 询问用户是否删除
+            const isConfirm = confirm('确认删除？');
+
+            if (isConfirm) {
+                // 加loading 禁用
+                loading(btn).open('正在删除');
+
+                // 发请求
+                const res = await axios({
+                    method: 'delete',
+                    url: 'http://47.98.249.40:1234/todo/' + id,
+                });
+
+                loading(btn).close('删除');
+
+                alert(res.data.msg);
+                // 刷新列表
+                refresh();
+            }
+        }
+
+        // 修改
+        function onEdit(id, btn) { // btn: 原生的修改按钮
+            function changeToInput(name) {
+                const el = $(`#${ name }-${ id }`);
+                const content = el.text(); // 'zhangsan'
+                el.html('');
+                const input = $(`<input id="${ name }-inp-${ id }" value="${ content }" type="text">`); // 返显
+                input.appendTo(el);
+            }
+
+            changeToInput('name');
+            changeToInput('description');
+
+            // 把修改变成确认
+            $(btn)
+                .text('确认')
+                .attr({
+                    type: 'edit-ok-btn',
+                });
+        }
+
+        // 修改确认
+        async function onEditOk(id, btn) {
+
+            // 加loading 禁用
+            loading(btn, '正在修改').open();
+
+            // 发请求
+            const res = await axios({
+                method: 'put',
+                url: 'http://47.98.249.40:1234/todo/' + id,
+                data: {
+                    name: $(`#name-inp-${ id }`).val(),
+                    description: $(`#description-inp-${ id }`).val(),
+                },
+            })
+
+            loading(btn, '确认').close();
+
+            alert(res.data.msg);
+            refresh();
+        }
+
+        // 查询所有
+        async function refresh() {
+            // 请求之前 开启loading
+            $('.loading').show();
+            $('#list').hide();
+
+            const res = await axios({
+                method: 'get',
+                url: 'http://47.98.249.40:1234/todo/list',
+            });
+
+            // 请求之后 关闭loading
+            $('.loading').hide();
+            $('#list').show();
+
+            // 成功
+            console.log(res.data.data);
+            // 渲染列表
+            const tbody = $('#list tbody');
+            // 1. 清空容器
+            tbody.html('');
+            // 2. 循环渲染
+            for (const d of res.data.data) {
+                // d: { name: 'zs', description: '123', id: 1 },
+                const tr = $(`
+                    <tr>
+                        <td>${ d.id }</td>
+                        <td id="name-${ d.id }">${ d.name }</td>
+                        <td id="description-${ d.id }">${ d.description }</td>
+                        <td>
+                            <button type="edit-btn" data-id="${ d.id }">修改</button>
+                            <button type="del-btn" data-id="${ d.id }">删除</button>
+                        </td>
+                    </tr>
+                `);
+
+                tr.appendTo(tbody);
+            }
+        }
+
+        refresh();
+
+        // 点击table
+        // 事件委托
+        $('#list').on('click', (e) => {
+            const id = $(e.target).attr('data-id');
+            // 点到父元素时 现场获取最新的e.target
+            switch ($(e.target).attr('type')) {
+
+                // 删除
+                case 'del-btn':
+                    onDelete(id, e.target);
+                    break;
+
+                // 修改
+                case 'edit-btn':
+                    onEdit(id, e.target);
+                    break;
+
+                // 修改确认
+                case 'edit-ok-btn':
+                    onEditOk(id, e.target);
+                    break;
+
+                default:
+                    break;
+            }
+
+        });
+
+        $('#add').on('click', async function () {
+
+            // 加loading 禁用
+            loading(this, '正在新增').open();
+
+            // 发请求
+            const res = await axios({
+                method: 'post',
+                url: 'http://47.98.249.40:1234/todo',
+                data: {
+                    name: $('#name').val(),
+                    description: $('#description').val(),
+                },
+            }).catch(err => alert('新增失败'));
+
+            loading(this, '新增').close();
+
+            alert(res.data.msg);
+            // 刷新列表
+            refresh();
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数, 输入两个数组, 返回两个数组的交集
+        function getIntersection(arr1, arr2) {
+            var arr = [];
+            for (var num1 of arr1) {
+                for (var num2 of arr2) {
+                    if (num1 === num2) {
+                        arr.push(num2);
+                    }
+                }
+
+            }
+            return arr;
+        }
+        console.log(getIntersection([1, 2, 3], [2, 3, 4])); // [2, 3]
+        console.log(getIntersection([1, 2, 3], [4, 5, 6])); // []
+    </script>
+</body>
+
+</html>

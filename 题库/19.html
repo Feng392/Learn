@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <对象&字符串练习>字符串转对象
+        const input = 'name=zhangsan&age=18&sex=nan&height=180';
+        const output = {
+            name: 'zhangsan',
+            age: 18, // 这里是数字的18
+            sex: 'nan',
+            height: 180,
+        };
+
+        function str2obj(input) {
+            // input.split('&'):['name=zhangsan', 'age=18', 'sex=nan' , 'height=180']
+            const arr = input.split('&');
+            const output = arr.reduce((prev, current) => {
+                // current : 'name=zhangsan'
+                // const res = current.split('=');
+                // res: ['name', 'zhangsan']
+                // es6
+               
+                const [key, value] = current.split('=');
+                prev[key] = value;
+                if (value == 18) {
+                    prev[key] = 18;
+                }
+                return prev;
+            }, {})
+            console.log(output);
+            return output;
+        }
+        str2obj(input);
+    </script>
+</body>
+
+</html>

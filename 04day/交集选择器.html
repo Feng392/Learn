@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>并集/交集选择器</title>
+    <style>
+        /* 并集选择器 */
+        h1,
+        div,
+        p,
+        span {
+            font-size: 20px;
+            color: #f40;
+        } */
+        /* 交集选择器 
+        标签选择器后面跟 class选择器 或者 id选择器 */
+       
+        div.p {
+            color: #00f;
+        }
+        p#sdk {
+            color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>123</h1>
+    <div>123</div>
+    <div id="sdk"><p>123</p></div>  
+    <span>123</span>
+
+    <div class="im">交集选择器</div>
+
+
+    
+    <p class="im"> <div>456</div>  </p>
+    <div id="sdk">交集选择器</div>
+    <p id="sdk">123</p>
+</body>
+</html>

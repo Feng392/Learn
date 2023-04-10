@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格标签</title>
+</head>
+
+<body>
+    <table border="1" width="400px">
+        <caption>
+            <h3>学生成绩表</h3>
+        </caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>成绩</th>
+                <th>评语</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>三儿</td>
+                <td>100</td>
+                <td>聪明</td>
+            </tr>
+            <tr>
+                <td>秀儿</td>
+                <td>80</td>
+                <td>优良</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>总结</td>
+                <td>好朋友</td>
+                <td>好朋友</td>
+            </tr>
+        </tfoot>
+    </table>
+    <table border="1" width="400">
+        <caption>
+            <h2>表格大标题</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>姓名</th> <!-- 表头/加粗/居中-->
+                <th>成绩</th>
+                <th>评分</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>王</td>
+                <td rowspan="2">100</td>
+                <td>好</td>
+            </tr>
+            <tr>
+                <td>李</td>
+                <td>优秀</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>总结</td>
+                <td colspan="2">好朋友</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

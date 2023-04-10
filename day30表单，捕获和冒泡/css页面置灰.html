@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 给html的所有元素都加了 */
+        /* html {
+            filter: grayscale(100%);
+        } */
+
+        /* 做一个遮罩层 */
+        .mask {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            /* 给蒙版下方的元素加滤镜 */
+            backdrop-filter: grayscale(100%);
+            /* 让鼠标事件忽略此蒙版，可以穿过他 */
+            pointer-events: none;
+            /* 让它的层级排到最前面,达到遮罩的目的 */
+            z-index: 999;
+        }
+
+        div {
+            font-size: 50px;
+            color: blue;
+        }
+
+        span {
+            font-size: 50px;
+            color: red;
+        }
+
+        /* 让他显示红色 */
+        .colorful {
+            color: red;
+            position: relative;
+            z-index: 99999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mask"></div>
+    <div>123</div>
+    <div>123</div>
+    <div>123</div>
+    <div class="colorful">hello world</div>
+    <span>564</span>
+    <span>564</span>
+    <span>345</span>
+    <button>点我</button>
+    <img src="../脑图/js基础.png" alt="">
+    <script>
+        document.querySelector('button').addEventListener('click', () => {
+            alert('点击成功');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 1;
+        console.log(String(!!a)); 
+        'ture'
+
+        var b = 'hello';
+        var typeb = typeof b;
+        console.log(!!typeb);
+        true
+
+        var c = 1;
+        var d = '';
+        var e = c + d;
+        console.log(typeof e);
+        String
+
+        var f;
+        var g = f + d;
+        console.log(typeof g);
+        'String'
+
+        var h = !!Number(b);   //false
+        console.log(Number(h)); //0
+        0
+
+        console.log(h - a);
+        -1
+
+        var i = '123';
+        console.log(Number(i) + Number(b));
+        NaN
+
+        var j = 'false';
+        console.log(!!j);
+        true
+
+        var k = '0';
+        console.log(!!k);
+        true
+    </script>
+</body>
+
+</html>

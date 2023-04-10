@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <对象(映射)&数组练习>转换数组
+        // 已知条件
+        const mapping = {
+            生煎: 'shengjian',
+            灌汤包: 'baozi',
+            水饺: 'jiaozi',
+            汉堡: 'burger',
+        };
+
+        // 输入
+        const input = [
+            {
+                label: 'shengjian',
+                value: 'shengjian',
+            },
+            {
+                label: 'baozi',
+                value: 'baozi',
+            },
+            {
+                label: 'jiaozi',
+                value: 'jiaozi',
+            },
+            {
+                label: 'burger',
+                value: 'burger',
+            },
+        ];
+
+        // 期待输出
+        const output = [
+            {
+                label: '生煎',
+                value: 'shengjian',
+            },
+            {
+                label: '灌汤包',
+                value: 'baozi',
+            },
+            {
+                label: '水饺',
+                value: 'jiaozi',
+            },
+            {
+                label: '汉堡',
+                value: 'burger',
+            },
+        ];
+
+        // function transform(input, mapping) {
+        //     var output = input.concat();
+        //     for (const key in mapping) {
+        //         output.map(obj => {if(obj.label === mapping[key]) {
+        //             obj.label = key; // 条件满足时，一次只能赋值一个
+        //         }});
+        //     }
+        //     return output;
+        // }
+
+        // 老师方法
+        function transform(input, mapping) {
+            // 反转mapping
+            const reversedMapping = {};
+            for (const key in mapping) {
+                reversedMapping[mapping[key]] = key;
+            }
+            return input.map(item => ({
+                ...item,
+                // ...item
+                // label: 'shengjian',
+                // value: 'shengjian',
+                label: reversedMapping[item.label],
+            }))
+        }
+
+        // 方法二
+        function getValue(mapping, input) {
+            // input: 'shengjian'
+            // 期待： '生煎'
+            for (const key in mapping) {
+                // key: '生煎'
+                // mapping[key]: 'shengjian'
+                if (mapping[key] === input) {
+                    return key;
+                }
+            }
+        }
+        function transform(input, mapping) {
+            // 已知mapping， 通过 'shengjian' 获取 '生煎'，
+            // getValue(mapping, 'shengjian') >>> '生煎'
+            return input.map(item => ({
+                ...item,
+                // ...item
+                // label: 'shengjian',
+                // value: 'shengjian',
+                label: getValue(mapping, item.label),
+            }))
+        }
+
+        function transform(input, mapping) {
+           // 反转mapping
+           var reversedMapping = {};
+           for (const key in mapping) {
+                reversedMapping[mapping[key]] = key;
+           }
+           return input.map( item => ({
+                ...item,
+                // ...item
+                // label: 'shengjian',
+                // value: 'shengjian',
+                label: reversedMapping[item.label],
+           }))
+        }
+        console.log(transform(input, mapping));
+
+        // 方法二
+        function getLabel(mapping, input) {
+            for (const key in mapping) {
+                if (mapping[key] === input) {
+                    return key;
+                }
+            }
+        }
+        function transform(input, mapping) {
+            // 已知mapping， 通过 'shengjian' 获取 '生煎'
+            // getLabel(mapping, 'shengjian') >>> 生煎
+            return input.map(item => ({
+                ...item,
+                // label: 'shengjian',
+                // value: 'shengjian',
+                label: getLabel(mapping, item.label),
+            }))
+        }
+
+    </script>
+</body>
+
+</html>

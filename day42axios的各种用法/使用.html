@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <script>
+
+        // 1无限.then （.then返回的值会给下一轮）
+        axios({
+            // 请求方式
+            method: 'get',
+            url: 'http://47.98.249.40:1234/todo/list',
+            // 47.98.249.40  ip
+            // :1234 端口
+            // /todo/list  路由
+        })
+            // 请求成功
+            .then((res) => {
+                console.log(res);  // 服务器返回的数据
+                return 123
+            })
+            .then(res => {
+                console.log(res);  // 123
+            })
+            .then(res => {
+                console.log(res);  // undefined, 因为上个.then,没有return任何值
+            })
+        // 2 .then 里面的报错会让程序进入.catch 回调
+        axios({
+            // ...
+        })
+            .then((res) => {
+                console.log(undefined.b);
+            })
+            .catch((err) => {
+                console.error(err); // 报错
+            })
+
+        // 3    await等到的结果是最后一个.then的返回值
+        async function fn() {
+            const res = await axios({
+                method: 'get',
+                url: 'http://47.98.249.40:1234/todo/list',
+            })
+                .then(() => {
+                    return 123;
+                })
+                .then((res) => {
+                    console.log(res);  // 123
+                })
+            console.log(res);  // undefined  
+            // 因为这个时候的res是 await axios() 最后一次的.then，但是最后一次.then 没有return任何值，所以是 undefined
+        }
+        fn();
+
+
+        // 4 重要（工作用）封装函数
+        // 需求，得到姓名列表
+
+        // 封装 
+        function getNameList() {
+            return axios({
+                method: 'get',
+                url: 'http://47.98.249.40:1234/todo/list',
+            })
+                .then(res => {
+                    return res.data.data.map(d => d.name);
+                })
+        }
+
+        // 第一种使用
+        getNameList().then(res => {
+            console.log(res);  // 姓名列表
+        });
+
+        // 第二种使用
+        (async function () {
+            const res = await getNameList();
+            console.log(res); // 姓名列表
+        })();
+    </script>
+</body>
+
+</html>

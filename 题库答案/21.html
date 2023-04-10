@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知data, 完成以下要求
+        const data = [
+            {
+                sku: '1001',
+                name: 'iPhone 7 Plus 128G 玫瑰金色 移动联通电信4G手机',
+                is5G: false,
+                price: 6188,
+                count: 100, // 库存
+                suggestions: [
+                    '1002',
+                    '1003',
+                    '1004',
+                ], // 相关推荐
+            },
+            {
+                sku: '1002',
+                name: 'iPhone 14 Pro 256G 深空灰色 移动联通电信5G手机',
+                is5G: true,
+                price: 9999,
+                count: 100,
+                suggestions: [
+                    '1001',
+                    '1003',
+                ],
+            },
+            {
+                sku: '1003',
+                name: 'iPhone 14 Pro Max 256G 深空灰色 移动联通电信5G手机',
+                is5G: true,
+                price: 10999,
+                count: 0,
+                suggestions: [
+                    '1001',
+                    '1002',
+                ],
+            },
+            {
+                sku: '1004',
+                name: 'iPhone 14 Pro Max 256G 白色 移动联通电信5G手机',
+                is5G: true,
+                price: 10999,
+                count: 9,
+                suggestions: [
+                    '1001',
+                ],
+            },
+        ];
+        // 1. 找出所有5G手机
+        console.log(data.filter(d => d.is5G));
+
+        // 2. 找出所有有货的手机
+        console.log(data.filter(d => d.count));
+
+        // 3. 找出所有有货的5G手机
+        console.log(data.filter(d => d.is5G && d.count));
+    </script>
+</body>
+
+</html>

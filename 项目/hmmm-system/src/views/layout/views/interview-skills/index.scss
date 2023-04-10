@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f2f5;
+  //  左边框内阴影
+  box-shadow: 0 0 -10px 0 rgba(0, 0, 0, .1);
+
+  .top {
+    position: relative;
+    margin-bottom: 18px;
+
+    .add-skill {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+  }
+
+  .record {
+    padding: 8px 16px;
+    background-color: #f4f4f5;
+    color: #909399;
+    margin-bottom: 20px;
+  }
+}
+
+// 新增用户弹出框
+.formBtns {
+  text-align: center;
+  margin: 0 auto;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        for (var i = 0; i < 3; i++) {
+            setTimeout(() => {
+                console.log(i); // 3
+            }, i * 1000); // 0s 1s 2s
+            console.log(i); // 0, 1, 2
+        }
+
+        console.log(i); // 0, 1, 2
+
+
+        // 1. 解决闭包保留之前的作用域问题 （由3对1 变成1对1 ）
+        // 立即执行函数，来让setTimeout的每一次作用域变成立即执行函数的作用域 
+
+        for (var i = 0; i < 3; i++) {
+            (function (j) {
+                setTimeout(() => {
+                    console.log(j);
+                }, 0);
+            })(i);
+            console.log(i);
+        }
+
+        // 2. 给回调函数实参和形参
+        for (var i = 0; i < 3; i++) {
+            setTimeout((i) => {
+                console.log(i);
+            }, 0, i);
+            console.log(i);
+        }
+        
+    </script>
+</body>
+
+</html>

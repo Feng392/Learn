@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 统计文件种类的个数
+        // 映射对象
+        const fileTypeMapping = {
+            md: 'markdown',
+            doc: 'word',
+            docx: 'word',
+            html: 'web',
+            xls: 'excel',
+        };
+        // 输入的数组
+        const input = [
+            'js-this.md',
+            'vue.docx',
+            'js-class.md',
+            'react.xixi.doc',
+            'mp.xls',
+            'fe06.xls',
+            'fe06.heihei.xls',
+            'index.html',
+        ];
+        // 输出的数组
+        const output = {
+            word: 2,
+            markdown: 2,
+            excel: 3,
+            web: 1,
+        };
+
+        function getFileCount(input, fileTypeMapping) {
+            // to do
+            const output = {};
+            for (const item of input) {
+                const suffix = item.split('.').pop(); // 分割为数组，然后删除最后一项当成变量返回  
+                let count = 0;
+                for (const key in fileTypeMapping) {
+                    if (suffix === key) {
+                        count++;
+                        if (suffix in output) {
+                            output[key]++;
+                        } else {
+                            output[key] = count;
+                        }
+                    } 
+                }
+            }
+            return output;
+        }
+        console.log(getFileCount(input, fileTypeMapping));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 父级（大类）
+        class Car {
+            constructor(name) {
+                this.name = name;
+            }
+
+            speed(s) {
+                console.log(s);
+            }
+        }
+        // 子级 （小类，需要继承(extends)父级的一些特性）
+        class Bma extends Car {
+            // 接收参数，并且把参数传给父类
+            constructor(...args) {
+                // 调用父类的构造函数
+                super(...args);
+            }
+
+            CC(a) {
+                console.log(a + 'cc');
+                console.log(this.name);
+            }
+        }
+        const bmax3 = new Bma('x3');
+        bmax3.speed(180);
+        bmax3.CC(2000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>姓名</th>
+                <th>地址</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2021-01-01</td>
+                <td>zs</td>
+                <td>北京市朝阳区</td>
+            </tr>
+            <tr>
+                <td>2021-01-02</td>
+                <td>ls</td>
+                <td>北京市海淀区</td>
+            </tr>
+            <tr>
+                <td>2021-01-03</td>
+                <td>ww</td>
+                <td>北京市昌平区</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // 通过已有数据渲染表格
+        // 数据
+        const data = [
+            {
+                date: '2021-01-01',
+                name: 'zs',
+                address: '北京市朝阳区',
+            },
+            {
+                date: '2021-01-02',
+                name: 'ls',
+                address: '北京市海淀区',
+            },
+            {
+                date: '2021-01-03',
+                name: 'ww',
+                address: '北京市昌平区',
+            },
+        ];
+
+        // 表格列信息
+        const columns = [
+            {
+                title: '日期', // 表头
+                dataIndex: 'date', // 数据中的字段名
+            },
+            {
+                title: '姓名',
+                dataIndex: 'name',
+            },
+            {
+                title: '地址',
+                dataIndex: 'address',
+            },
+        ];
+        
+        
+    </script>
+</body>
+</html>

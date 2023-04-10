@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // arr.push()  在后面增加； arr.unshift() 在开头增加
+        // 生成一个从1开始的50项目奇数数组
+        // var arr = [];
+        // for (i = 1; arr.length < 50; i++) {  //arr[i] 是从0开始的所以到49就是50了， 所以arr.length < 50
+        //     if (i % 2) {
+        //         arr.push(i);
+        //     }
+        // }
+        // console.log(arr);
+
+        // 生成一个10项的数组，如[1, 2, 4, 8, ...] 2的平方 2**3,2的3次方
+        // var arr = [];
+        // for (i = 0; i < 10; i++) {
+        //     arr.push(2 ** i);
+        // }
+        // console.log(arr);
+
+
+        // 删除  会改变原数组 
+        // 1.按照索引删除 arr.splic(开始的索引，删除数量)
+            // 2.从后面删除， nums.pop(); 删除最后一项,会把最后一项当成变量返回  var last = nums.pop();
+        // 3.删除第一项 会把第一项当成变量返回  var first = nums.shift();
+             // nums.shift();
+
+        // nums.splic(要删除项的索引，要删除几项（如果不写则删除到结尾）)； nums.splic(2, 1)
+        // var n = nums.splic(2, 2)  返回值为被删除的数组项组成的数组
+
+        // 1.从已有数组中删除所有的假值项
+        // var arr = [1, 2, 0, 'a', '', 5, undefined, 100, null, 'hello'];
+        // for (i = 0; i < arr.length; i++) {
+        //     if (!(arr[i])) {
+        //         arr.splice(i, 1);
+        //         i--;
+        //     }
+        // }
+        // console.log(arr);
+
+        // 2.从已有数组中删除所有的数字，并放入新数组中
+        var n = [];
+        var arr = [1, 2, 0, 'a', '', 5, undefined, 100, null, 'hello'];
+        for (i = 0; i < arr.length; i++) {
+            if (typeof arr[i] === 'number') {
+                // var items = arr.splice(i, 1);
+                // n.push(items[0]);
+                // 第二种
+                // n.push(arr.splice(i, 1)[0]);
+                // i--;
+                // 第三种
+                n.push(arr[i]);
+                arr.splice(i, 1)
+            }
+        }
+        console.log(n);
+
+        // 3.从已有数组中删除所有的字符串，并将所有的字符串拼接在一起
+        // var str = '';
+        // var arr = [1, 2, 'h', 3, 'e', 4, '1', '1', null, 'o'];
+        // for (i = 0; i < arr.length; i++) {
+        //     if (typeof arr[i] === 'string') {
+        //         str += arr[i];
+        //         arr.splice(i, 1);
+        //         i--;
+        //     }
+        // }
+        // console.log(n);
+
+
+        // 修改,用索引去修改 arr[i] = 新值
+        // 1.将arr中所有的1，更换为0
+        // var arr = [0, 1, 1, 0, 1, 0, 0, 1]
+        // for (i = 0; i < arr.length; i++) {
+        //     if (arr[i]) {
+        //         arr[i] = 0;
+        //     }
+        // }
+
+        // 将arr中每组数字求和 将arr变为[10, 6, 27]
+        // var arr = [
+        //     [1, 2, 3, 4],
+        //     [1, 2, 3],
+        //     [8, 8, 9],
+        // ];
+        // for (i = 0; i < arr.length; i++) {
+        //     var sum = 0;
+        //     for (j = 0; j < arr[i].length; j++) {
+        //         sum += arr[i][j];
+        //     }
+        //     arr[i] = sum;
+        // }
+        // console.log(arr);
+
+        // 3.将arr中的内容进行拼接,将arr变为 ['张三18岁'，'','']
+        // var arr = [
+        //     ['张三', 18],
+        //     ['李四', 21],
+        //     ['王五', 31],
+        // ];
+        // var n = [];
+        // for (i = 0; i < arr.length; i++) {
+        //     arr[i].push('岁');
+        //     var str = '';
+        //     for (j = 0; j < arr[i].length; j++) {
+        //         str += arr[i][j];
+        //     }
+        //     n.push(str);
+        // }
+        // console.log(n);
+
+        // var arr = [
+        //     ['张三', 18],
+        //     ['李四', 21],
+        //     ['王五', 31],
+        // ];
+        // var n = [];
+        // for (i = 0; i < arr.length; i++) {
+        //     arr[i] = `${arr[i][0] + arr[i][1]}岁`;
+        // }
+        // console.log(arr);
+
+
+        // 查
+    </script>
+</body>
+
+</html>

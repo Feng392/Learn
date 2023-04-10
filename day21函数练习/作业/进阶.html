@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个数组，返回children长度最大的那一项的name，如果有children长度相同的，返回平均年龄最大的那一项的name
+        var arr = [
+            {
+                name: 'zs',
+                age: 50,
+                children: [
+                    { name: 'zs1', age: 19 },
+                    { name: 'zs2', age: 20 },
+                    { name: 'zs3', age: 21 },
+                ],
+            },
+            {
+                name: 'ls',
+                age: 40,
+                children: [
+                    { name: 'ls1', age: 19 },
+                ],
+            },
+            {
+                name: 'ww',
+                age: 60,
+                children: [
+                    { name: 'ww1', age: 22 },
+                    { name: 'ww2', age: 23 },
+                    { name: 'ww3', age: 24 },
+                ],
+            },
+        ];
+
+        function getName(arr) {
+            var long = {
+                children: [],
+            }
+            var sum1 = 0;
+            var sum2 = 0;
+            for (var obj of arr) {
+                if (obj.children.length > long.children.length) {
+                    long.children = obj.children;
+                    long.name = obj.name;
+                    return obj.name;
+                } else if (obj.children === long.children.length && obj.children !== 'undefined') {
+                    sum1 += obj.children[i].age;
+                    sum2 += long.children[i].age;
+                    if (sum1 > sum2) {
+                        return obj.name;
+                    } else {
+                        return long.name;
+                    }
+                }
+            }
+        }
+        console.log(getName(arr)); // 'ww'
+    </script>
+</body>
+
+</html>

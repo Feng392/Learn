@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正整数反向输出</title>
+</head>
+
+<body>
+    <script>
+        // 输入一个三位数的正整数，输出时反向输出。如输入456，输出654.  num[0] num[1] 
+
+        // 4       5       6       
+        // 4 * 100 + 5 * 10 + 6 * 1 
+        // 6       5       4       
+        // 6 * 100 + 5 * 10 + 4 * 1
+        var num = +prompt('输入一个正整数');
+        var a = num % 100;  //56
+        var third = a % 10;     //6
+        var second = parseInt(a / 10);  //5
+        var first = parseInt(num / 100); // 4
+
+        var n = third * 100 + second * 10 + first * 1;
+        console.log(n);
+
+        // var num = prompt('');   
+        // var str = '';
+        // for (var i = num.length - 1; i >= 0; i--) {
+        //     str += num[i];
+        // }
+        // console.log(str);
+    </script>
+</body>
+
+</html>

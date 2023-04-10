@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知一个固定格式的学生成绩数组, 筛选成绩大于等于80分的信息组成的新数组
+        // 如:
+        var arr = [
+            { name: '张三', score: 89 },
+            { name: '李四', score: 90 },
+            { name: '王五', score: 78 },
+        ];
+        // 输出: [{ name: '张三', score: 89 }, { name: '李四', score: 90 }]
+        var newArr = [];
+        // 找出大于80分的
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i].score > 80) {
+                newArr.push(arr[i]);
+            }
+        }
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

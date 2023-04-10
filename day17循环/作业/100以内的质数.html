@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100以内的质数</title>
+</head>
+
+<body>
+    <script>
+        // 质数只能被1和他本身整除的数------换句话说--只能被2个数整除的数；
+
+        // var count = 0;
+        // var n = prompt('输入一个数字');
+        // for (i = 0; i <= n; i++) {
+        //     for (j = 0; j <= i; j++) {
+        //         if (i % j === 0) {
+        //             count++;
+        //         }
+        //     }
+        //     if (count === 2) {
+        //         console.log(i);
+        //     }
+
+
+
+        //     count = 0;  // count 需要重置
+        // }
+
+
+        // 只能被俩个数整除的数,  0-100内的质数   6  1 2 3 4 5 6  
+        var n = +prompt('');
+        var count = 0;
+        for (var i = 0; i <= n; i++) {
+            if (n % i === 0) {            
+                count++; 
+            }
+        }
+        console.log(count === 2 ? `zhishu` : `不是`);
+
+    </script>
+</body>
+
+</html>

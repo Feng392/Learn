@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灌溉信息化平台</title>
+    <style>
+        body {
+            height: 100vh;
+            flex-direction: column;
+            margin: 0;
+            background-color: #2c3461;
+            padding: 0 20px;
+        }
+
+        header {
+            width: 100%;
+            height: 52px;
+            outline: solid 1px red;
+        }
+
+        content {
+            height: calc(100vh - 52px);
+            width: 100%;
+            display: flex;
+            outline: solid 1px red;
+        }
+
+        section {
+            width: 860px;
+            height: 100%;
+            margin-right: 20px;
+            outline: solid 1px red;
+            flex-direction: column;
+        }
+
+        aside {
+            flex: 1;
+            height: 100%;
+            outline: solid 1px red;
+        }
+
+        .section-top {
+            height: 124px;
+            width: 100%;
+            display: flex;
+            outline: solid 1px red;
+        }
+
+        /* 气象指标 */
+        .weather {
+            width: 50%;
+            height: 124px;
+            outline: solid 1px red;
+            margin-right: 20px;
+        }
+
+        /* 设备浇灌 */
+        .irrigate {
+            width: 50%;
+            height: 124px;
+            outline: solid 1px red;
+        }
+
+        .section-content {
+            width: 100%;
+            height: 300px;
+            outline: solid 1px red;
+        }
+
+        .section-bottom {
+            width: 100%ca;
+            height: calc(100% - 124px - 300px);
+            display: flex;
+            outline: solid 1px red;
+        }
+
+        .section-bottom-left {
+            width: 330px;
+            height: 100%;
+            outline: solid 1px red;
+        }
+
+        .section-bottom-right {
+            flex: 1;
+            height: 100%;
+            outline: solid 1px red;
+        }
+
+        /* 侧边栏 */
+        aside {
+            flex: 1;
+            height: 100%;
+            outline: solid 1px red;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .aside-top {
+            flex: 1;
+            width: 100%;
+            outline: solid 1px red;
+            margin-bottom: 20px;
+        }
+
+        .aside-bottom {
+            flex: 1;
+            width: 100%;
+            outline: solid 1px red;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <content>
+        <section>
+            <div class="section-top">
+                <div class="weather"></div>
+                <div class="irrigate"></div>
+            </div>
+            <div class="section-content">
+            </div>
+            <div class="section-bottom">
+                <div class="section-bottom-left"></div>
+                <div class="section-bottom-right"></div>
+            </div>
+        </section>
+        <aside>
+            <div class='aside-top'></div>
+            <div class='aside-bottom'></div>
+        </aside>
+    </content>
+
+
+</body>
+
+</html>

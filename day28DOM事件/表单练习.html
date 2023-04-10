@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button id="add">新增</button>
+    <ul></ul>
+    <script>
+        // 实现 新增，删除
+        const btn = document.querySelector('#add');
+        const inp = document.querySelector('input');
+        const ul = document.querySelector('ul');
+        // 新增
+        btn.addEventListener('click', () => {
+            // 新增一个li
+            const li = document.createElement('li');
+            li.innerText = inp.value;
+            ul.appendChild(li);
+            // 清空输入框
+            inp.value = '';
+            // 创建删除按钮
+            const delBtn = document.createElement('button');
+            delBtn.innerText = '删除';
+            li.appendChild(delBtn);
+            delBtn.addEventListener('click', () => {
+                    li.remove();
+                })
+        });
+    </script>
+</body>
+
+</html>

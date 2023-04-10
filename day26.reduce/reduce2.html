@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const str = 'name=zhangsan&age=18&sex=nan&height=180';
+        // 用reduce生成对象
+        // str.slice('&'): [name=zhangsan, age=18, sex=nan, height=180]
+        const res = [];
+        for (const item of str.split('&')) {
+                res.push(item.split('='));
+                // item.split('='): ['name', 'zhangsan']
+                // key = item.split('=')[0]
+                // value = item.split('=')[1]
+                
+        }       
+        console.log(res.reduce((prev, current) => {
+            // current 为数组每一项
+            // 第一轮 current: ['name', 'zhangsan']
+            const [key, value] = current;
+            prev[key] = value;
+            return prev;
+        }, {})); 
+    </script>
+</body>
+</html>

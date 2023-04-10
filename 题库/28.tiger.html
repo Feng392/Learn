@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // rgba转颜色&透明度
+        function rgba2color(input) {
+            const numsStr = input.split('(')[1]; // [(   255,    0,   0,   0.5)]
+            const [r, g, b, a] = numsStr.split(',') // '255, 0, 0, 0.5 '
+            const red = +r;
+            const grenn = +r;
+            const blue = +r;
+            const alpha = parseFloat(a); // 0.5
+
+            const getNum16 = (num) => {
+                const num16 = num.toString(16);
+                return num16 < 10 ? 0 + num16 : num16;
+            }
+        }
+        
+        // 空格是故意写的 就是让你用str.trim()
+        console.log(rgba2color('rgba(   255,    0,   0,   0.5)')); // 'color: #ff0000; opacity: 0.5;'
+        console.log(rgba2color('rgba(254, 0, 103, 0.9)')); // 'color: #fe0067; opacity: 0.9;'
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景图尺寸</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-image: url(./images/1.jpg);
+            background-repeat: no-repeat;
+            background-color: #f40;
+            /* 自动缩放，不会超出盒子宽高 */
+            /* background-size: contain; */
+            /* 自动缩放，保证覆盖盒子宽高 */
+            /* background-size: cover; */
+            /* 给具体宽高 */
+            /* background-size: 100px 100px;
+            参照盒子的宽高百分比值 */
+            background-size: 100% 80%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>

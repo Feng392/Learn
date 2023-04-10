@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 10对一闭包
+        // function test() {
+        //     var arr = [];
+        //     for (var i = 0; i < 10; i++) {
+        //         arr[i] = function () {
+        //             console.log(i);
+        //         }
+        //     }
+        //     return arr;
+        // }
+
+        // var myArr = test();
+        // for (var j = 0; j < myArr.length; j++) {
+        //     myArr[j]();
+        // }
+
+        // 10对10闭包(利用立即执行函数，生成新的作用域链)
+        function test() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                (function (j) {
+                    arr[j] = function () {
+                    console.log(j);
+                }
+                } (i))
+            }
+            return arr;
+        }
+
+        var myArr = test();
+        for (var j = 0; j < myArr.length; j++) {
+            myArr[j]();
+        }
+    </script>
+</body>
+
+</html>

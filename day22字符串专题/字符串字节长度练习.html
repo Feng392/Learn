@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const str = 'hello world 中国你好';
+        // function getBey(str) {
+        //     let long = 0;
+        //     for (i = 0; i < str.length; i++) {
+        //         if (str.charCodeAt(i) <= 255) {
+        //             long++;
+        //         } else {
+        //             long += 2;
+        //         }
+        //     }
+        //     return long;
+        // }
+        // console.log(getBey(str));
+
+        // 方法二
+        const str = 'hello world 中国你好';
+        function getBey(str) {
+            let long = str.length;
+            for (i = 0; i < str.length; i++) {
+                if (str.charCodeAt(i) > 255) {
+                    long++;
+                } 
+            }
+            return long;
+        }
+        console.log(getBey(str));
+    </script>
+</body>
+</html>

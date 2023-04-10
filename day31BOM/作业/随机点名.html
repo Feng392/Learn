@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <button>点名</button>
+    <script>
+        // 给定一个名单(没有重名)数组，点击随机一个名字，在三分钟内，不会再次随机到这个人。
+        // 如果三分钟之内抽取了5个人，那么提示n秒之后可以再次抽签
+
+        const nameList = [
+            '张三',
+            '李四',
+            '王麻子',
+            '刘一手',
+            '赵大头',
+        ];
+        // 转换为对象
+        const nameObj = nameList
+            .reduce((prev, current) => {
+                prev[current] = new Date().getTime();
+                return prev;
+            }, {});
+        console.log(nameObj);
+        // 点击事件 
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', getName);
+
+        // 取整 Math.floor(Math.random() * 6
+        function getName(...nameObj) {
+            const index = Math.floor(Math.random() * 6);
+            console.log([...nameObj][index]);
+        }
+
+
+    </script>
+</body>
+
+</html>

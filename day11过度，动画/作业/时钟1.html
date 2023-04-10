@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟1</title>
+    <style>
+        /* 居中 */
+        .centent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 钟表外圈 */
+        .clock {
+            width: 600px;
+            height: 600px;
+            border: 5px solid #000;
+            border-radius: 50%;
+        }
+
+        /* 钟表背景图片 */
+        .clock::after {
+            content: "";
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(./images/微信图片_20221107212746.jpg);
+            /* 背景图片自动缩放，不会超出盒子宽高 */
+            background-size: contain;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        /* 刻度 */
+        .scale {
+            width: 1px;
+            height: 20px;
+            background-color: #000;
+        }
+
+        /* 短刻度 */
+        .scale .short {
+            height: 10px;
+        }
+
+        /* 数字 */
+        .num {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .scale:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(0deg) translateY(-290px);
+        }
+
+        .scale:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(6deg) translateY(-295px);
+        }
+
+        .scale:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(12deg) translateY(-295px);
+        }
+
+        .scale:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(18deg) translateY(-295px);
+        }
+
+        .scale:nth-child(5) {
+            transform: translate(-50%, -50%) rotate(24deg) translateY(-295px);
+        }
+
+        .scale:nth-child(6) {
+            transform: translate(-50%, -50%) rotate(30deg) translateY(-290px);
+        }
+
+        .scale:nth-child(7) {
+            transform: translate(-50%, -50%) rotate(36deg) translateY(-295px);
+        }
+
+        .scale:nth-child(8) {
+            transform: translate(-50%, -50%) rotate(42deg) translateY(-295px);
+        }
+
+        .scale:nth-child(9) {
+            transform: translate(-50%, -50%) rotate(48deg) translateY(-295px);
+        }
+
+        .scale:nth-child(10) {
+            transform: translate(-50%, -50%) rotate(54deg) translateY(-295px);
+        }
+
+        .scale:nth-child(11) {
+            transform: translate(-50%, -50%) rotate(60deg) translateY(-290px);
+        }
+
+        .num:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(0deg) translateY(-268px);
+        }
+
+        .num:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(30deg) translateY(-268px) rotate(-30deg);
+        }
+
+        .num:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(60deg) translateY(-268px) rotate(-60deg);
+        }
+
+        .num:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(90deg) translateY(-268px) rotate(-90deg);
+        }
+
+        .num:nth-child(5) {
+            transform: translate(-50%, -50%) rotate(180deg) translateY(-268px) rotate(-180deg);
+        }
+
+        .num:nth-child(6) {
+            transform: translate(-50%, -50%) rotate(270deg) translateY(-268px) rotate(-270deg);
+        }
+
+        /* 指针下面的所有div */
+        .pointer div {
+            background-color: #000;
+            transform-origin: center bottom;
+        }
+
+        /* 时针 */
+        /* 时针偏移
+        6.4分10秒  250/3600 *30 */
+        .pointer .h {
+            width: 8px;
+            height: 180px;
+            transform: translate(-50%, -100%) rotate(182.083deg);
+        }
+
+        /* 分针偏移 10/60 *6 */
+        .pointer .m {
+            width: 4px;
+            height: 200px;
+            transform: translate(-50%, -100%) rotate(25deg);
+        }
+
+        .pointer .s {
+            width: 2px;
+            height: 240px;
+            transform: translate(-50%, -100%) rotate(60deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock centent">
+        <!-- 刻度 -->
+        <div class="scales centent">
+            <div class="scale centent"></div>
+            <div class="scale short centent"></div>
+            <div class="scale short centent"></div>
+            <div class="scale short centent"></div>
+            <div class="scale short centent"></div>
+            <div class="scale centent"></div>
+            <div class="scale short centent"></div>
+            <div class="scale short centent"></div>
+            <div class="scale short centent"></div>
+            <div class="scale short centent"></div>
+            <div class="scale centent"></div>
+        </div>
+        <!-- 数字 -->
+        <div class="nums">
+            <div class="num centent">12</div>
+            <div class="num centent">1</div>
+            <div class="num centent">2</div>
+            <div class="num centent">3</div>
+            <div class="num centent">6</div>
+            <div class="num centent">9</div>
+        </div>
+        <!-- 指针 -->
+        <div class="pointer">
+            <div class="h centent"></div>
+            <div class="m centent"></div>
+            <div class="s centent"></div>
+        </div>
+    </div>
+</body>
+
+</html>

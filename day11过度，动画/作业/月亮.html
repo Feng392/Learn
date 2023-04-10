@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月亮</title>
+    <style>
+        @keyframes move {
+
+            /* 0% {
+                transform: translate(-60%, -40%);
+            }
+
+            25% {
+                box-shadow: 0px 0px 70px #ffc0cb;
+            }
+
+            50% {
+                transform: translate(-40%, -60%);
+                box-shadow: 0px 0px 0px #ffc0cb;
+            }
+
+            75% {
+                box-shadow: 0px 0px 70px #ffc0cb;
+            }
+
+            100% {
+                transform: translate(-60%, -40%);
+                box-shadow: 0px 0px 0px #ffc0cb;
+            } */
+            0% {
+                transform: translate(-60%, -40%);
+            }
+
+            50% {
+                box-shadow: 0px 0px 70px #ffc0cb;
+            }
+
+            0% {
+                transform: translate(-40%, -60%);
+            }
+        }
+
+        /* 以旋转轴为动画,作为地球环绕 */
+        @keyframes axis {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* 模拟地球的白天黑夜 */
+        @keyframes earth {
+
+            12.5% {
+                opacity: 0.3;
+            }
+
+
+            37.5% {
+                opacity: 0.8;
+            }
+
+            62.5% {
+                opacity: 0.5;
+            }
+
+            75% {
+                opacity: 0.1;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        body {
+            background: url("https://img.tukuppt.com/png_preview/00/20/09/zoIBPDQX2M.jpg!/fw/780");
+        }
+
+        .circle::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-60%, -40%);
+            width: 206px;
+            height: 206px;
+            border-radius: 50%;
+            background-color: #ffc0cb;
+            /* 循环往复的动画 alternate--》 从100%--0% */
+            animation: move 3s linear alternate infinite;
+        }
+
+        .circle::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 5px #000;
+            background: #000 url("https://img.tukuppt.com/png_preview/00/25/29/KrBKiGzSoX.jpg!/fw/780");
+            background-size: contain;
+        }
+
+        /* 旋转轴 */
+        .axis {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 30px;
+            /* border: 1px solid #000; */
+            animation: axis 6s linear infinite;
+        }
+
+        /* 地球 */
+        .earth {
+            width: 30px;
+            height: 30px;
+            left: 0;
+            border-radius: 50%;
+            animation: earth 6s linear infinite;
+        }
+
+        /* 地球背景图片 */
+        .earth::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-image: url("https://img.tukuppt.com/png_preview/00/05/45/uXSzH6hmuz.jpg!/fw/780");
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle"></div>
+    <div class="axis">
+        <div class="earth"></div>
+    </div>
+</body>
+
+</html>

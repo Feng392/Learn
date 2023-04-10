@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <style>
+        /*  
+            水平排列的侧轴为垂直方向。
+            侧轴剧中 align-items: center;
+        */
+        body {
+            background-color: #aaa;
+        }
+
+        /* 变为弹性 */
+        section {
+            display: flex;
+            height: 80px;
+            width: 1200px;
+            background-color: #fff;
+            box-sizing: border-box;
+
+        }
+
+        /* section>div 成为弹性 */
+        section>div {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            margin: 0 10px;
+            /* 侧轴剧中 */
+            align-items: center;
+        }
+
+        /* 第四个盒子的样式去掉flex */
+        section>div:nth-child(4) {
+            flex: none;
+        }
+
+        /* 每个盒子的小圆 */
+        section>div .circle {
+            width: 50px;
+            height: 50px;
+            margin: 0 8px;
+            border-radius: 50%;
+            background-color: #05f;
+        }
+
+        @keyframes pay {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* pay 的小圆要转动 */
+        .pay .circle {
+            width: 50px;
+            height: 50px;
+            margin: 0 8px;
+            background-color: #fff;
+            box-shadow: 0 10px 0 -7px #05f;
+            animation: pay 2s linear infinite;
+        }
+
+        /* 线条 */
+        .line {
+            display: flex;
+            flex: 1;
+            margin: 0 8px;
+            height: 1px;
+            background-color: #05f;
+        }
+
+        .pay .line {
+            background-color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="login">
+            <div class="circle"></div>
+            login
+            <div class="line"></div>
+        </div>
+        <div class="verification">
+            <div class="circle"></div>
+            verification
+            <div class="line"></div>
+        </div>
+        <div class="pay">
+            <div class="circle"></div>
+            pay
+            <div class="line"></div>
+        </div>
+        <div class="done">
+            <div class="circle"></div>
+            done
+        </div>
+    </section>
+</body>
+
+</html>

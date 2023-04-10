@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button id="record">记录</button>
+    <button id="withdraw">撤回</button>
+
+    <script>
+        const inp = document.querySelector('input');
+        const record = document.querySelector('#record');
+        const withdraw = document.querySelector('#withdraw');
+
+        function fn() {
+            const recordList = [];
+
+            return {
+                // 原本的写法，可以省略成es6的写法
+                // record: function () {
+                //     recordList.push(inp.value);
+                // },
+                record() {
+                    recordList.push(inp.value);
+                },
+                withdraw() {
+                    if (recordList.length === 0) {
+                        alert('没得了');
+                        return;
+                    }
+                    inp.value = recordList.pop();
+                },
+            };
+        }
+        const events = fn();
+        record.addEventListener('click', events.record);
+        withdraw.addEventListener('click', events.withdraw);
+
+    </script>
+    </script>
+</body>
+</html>

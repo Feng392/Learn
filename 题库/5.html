@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <对象(映射)&数组练习>转换数组
+        const mapping = {
+            shengjian: '生煎',
+            baozi: '灌汤包',
+            jiaozi: '水饺',
+            burger: '汉堡',
+        };
+        const input = [
+            {
+                label: '生煎',
+                value: '生煎',
+            },
+            {
+                label: '灌汤包',
+                value: '灌汤包',
+            },
+            {
+                label: '水饺',
+                value: '水饺',
+            },
+            {
+                label: '汉堡',
+                value: '汉堡',
+            },
+        ];
+
+        const output = [
+            {
+                label: '生煎',
+                value: 'shengjian',
+            },
+            {
+                label: '灌汤包',
+                value: 'baozi',
+            },
+            {
+                label: '水饺',
+                value: 'jiaozi',
+            },
+            {
+                label: '汉堡',
+                value: 'burger',
+            },
+        ];
+
+        function transform(input, mapping) {
+            const output = input.concat();
+            for (const key in mapping) {
+                output.map(item => { if (item.label === mapping[key]) {item.value = key}});
+            }
+            return output;
+        }
+
+        // 老师方法
+        function getValue(mapping, input) {
+            // ['shengjian', 'baozi',...]
+            // k : 'shengjian'
+            // mapping[k]: '生煎'
+            // 访问所有字段 Object.keys(对象名) -- []
+            // 访问所有值 Object.valuess(对象名) -- []
+            return Object.keys(mapping).find(k => mapping[k] === input);
+        }
+
+        function transform(input, mapping) {
+           return input.map(item => ({
+                ...item,
+                value: getValue(mapping, item.value),  //输入'生煎'  输出'shengjian'
+           }))
+        }
+        console.log(transform(input, mapping));
+    </script>
+</body>
+
+</html>

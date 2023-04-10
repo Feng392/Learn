@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // try catch 不耽误后面代码执行
+        function fn() {  
+            if (Math.random() > .5) {
+                // throw 抛出异常
+                throw new Error('哈哈哈哈');
+            }
+        }
+
+        try {
+            // 试着运行一下fn，成功了最好
+            fn();
+        } catch (error) {
+            // 不成功拉倒
+        }
+
+        console.log(1);
+    </script>
+</body>
+</html>

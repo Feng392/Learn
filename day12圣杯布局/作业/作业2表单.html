@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业2</title>
+    <style>
+        body {
+            background-color: #999;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            width: 600px;
+            background-color: #fff;
+        }
+
+        form .row {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        form .row .lable {
+            margin-right: 10px;
+            width: 200px;
+            text-align: right;
+        }
+
+        form .row .lable span {
+            color: #f00;
+        }
+
+        form .row .content {
+            flex: 1;
+        }
+
+        /* form .row .content 下面的所有子元素 */
+        form .row .content>* {
+            width: 100%;
+            height: 100%;
+        }
+
+        form .row .content textarea {
+            resize: none;
+        }
+
+        form .row .content button {
+            width: 100px;
+        }
+
+        form .row .content button:nth-child(1) {
+            margin-left: 210px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="row">
+            <div class="lable">Top coders:</div>
+            <div class="content">
+                <input type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="lable">
+                <span>*</span>
+                Bio:
+            </div>
+            <div class="content">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content">
+                <button>Submit</button>
+                <button>Reset</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

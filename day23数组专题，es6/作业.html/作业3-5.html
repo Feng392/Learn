@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var data = [
+            {
+                weekIndexType: 'all',
+                classNames: [ // 班级名称列表
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: 'N4503', // 教室id
+                indexes: [2, 3], // 第3, 4节课     0 1 2 3 4 
+                weekdays: [0], // 星期1
+                teacherName: '张三', // 教师
+                courseName: '概率论与数理统计A', // 课程名称
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: '室外',
+                indexes: [4, 5],
+                weekdays: [1],
+                teacherName: '李四',
+                courseName: '大学体育',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: 'N4419',
+                indexes: [2, 3],
+                weekdays: [2],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级经济与金融(中英)1班',
+                    '2021级经济与金融(中英)2班',
+                ],
+                classroomId: 'N4503',
+                indexes: [0, 1],
+                weekdays: [0],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级经济与金融(中英)1班',
+                    '2021级经济与金融(中英)2班',
+                ],
+                classroomId: 'N4320',
+                indexes: [6, 7],
+                weekdays: [1],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+        ];
+        // 3.5 封装一个函数, 输入教室id, 星期几, 第几节课, 返回这个教室在这节课是否空闲
+        function isFree(classroomId, weekday, index) {
+            for (var dataItem of data) {
+                if (dataItem.classroomId.includes(classroomId) && dataItem.weekdays.includes(weekday) && dataItem.indexes.includes(index)) {
+                    return false;
+                }
+              
+            }  
+            return true;
+        }
+        console.log(isFree('N4503', 0, 2)); // false (N4503在星期1的第3节课有课)
+        console.log(isFree('N4503', 0, 4)); // true
+    </script>
+</body>
+
+</html>

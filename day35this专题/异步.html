@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 定时器
+        const obj = {
+            run() {
+                setTimeout(() => {
+                    console.log(this);  // obj
+                }, 1000)
+            }
+        }
+
+        obj.run();
+
+        const obj2 = {
+            run() {
+                console.log(this);
+            }
+        }
+        // obj2.run 没有执行，还是由window来调用的。
+        setTimeout(obj2.run, 1000);
+    </script>
+</body>
+</html>

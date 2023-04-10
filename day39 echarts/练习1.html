@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #05092a;
+        }
+
+        #chart {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chart"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script>
+        // 话务情况统计
+        const telTotal = [
+            { type: '呼入话务量', value: 240 },
+            { type: '呼出话务量', value: 200 },
+            { type: '呼入接通量', value: 312 },
+        ];
+        console.log(telTotal.map(item => item.type));
+        // 基于准备好的dom，初始化echarts实例
+        const myChart = echarts.init(document.querySelector('#chart'));
+
+        // 指定图表的配置项和数据
+        const option = {
+            grid: {
+                left: 60,
+                bottom: 60,
+                right: 40,
+            },
+            color: [
+                {
+                    type: 'linear',
+                    x: 0,
+                    y: 0,
+                    x2: 0,
+                    y2: 1,
+                    colorStops: [{
+                        offset: 0, color: '#04a8fd' // 0% 处的颜色
+                    }, {
+                        offset: 1, color: '#0256ff' // 100% 处的颜色
+                    }],
+                },
+            ],
+            xAxis: {
+                type: 'category',
+                data: telTotal.map(item => item.type),
+                axisLabel: {
+                    color: 'white',
+                },
+                axisTick: {
+                    show: false,
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#08399c',
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    color: 'white',
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#08399c',
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        type: [4, 4],
+                        color: ['#2f3c69'],
+                    },
+                },
+            },
+            // 图表系列
+            series: [
+                {
+                    data: telTotal.map(item => item.value),
+                    type: 'bar',
+                    barWidth: 60,
+                }
+            ]
+        }
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

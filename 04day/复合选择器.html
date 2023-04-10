@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后代选择器</title>
+    <style>
+        /* 后代选择器，全部后代选中 */
+        div p {
+            color: #f00;
+        }
+        /* 子代选择器，只选中儿子 */
+        div > p {
+            color: #00f;
+        }
+        div > span > p {
+            color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>儿子</p>
+        <span>
+            <p>孙子</p>
+        </span>
+    </div>
+</body>
+</html>

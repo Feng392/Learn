@@ -1,0 +1,38 @@
+/* 开关 */
+.switch {
+  width: 200px;
+  height: 100px;
+  background-color: blue;
+  border-radius: 50px;
+  position: relative;
+  transition: background-color 1s ease;
+
+  // 关闭状态
+  &.off {
+    background-color: #aaa;
+
+    .btn {
+      transform: translateX(-100px); /* 性能更优（重排重绘）（面试题） */
+    }
+  }
+
+  &:active {
+    .btn {
+      width: 100px;
+      right: -10px;
+    }
+  }
+
+  // 内部按钮
+  .btn {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 40px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: all 1s ease;
+    box-shadow: 0 0 12px #000;
+  }
+}

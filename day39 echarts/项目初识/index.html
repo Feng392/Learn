@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/layout.css">
+    <!-- 气象指标 -->
+    <link rel="stylesheet" href="./css/temp-measure.css">
+    <!-- 设备浇灌 -->
+    <link rel="stylesheet" href="./css/device-status.css">
+    <!-- 空气温度 -->
+    <link rel="stylesheet" href="./css/air-temp.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <header>灌区信息化平台</header>
+    <!-- 下方主要内容 -->
+    <section>
+        <!-- 左侧核心区域 -->
+        <main>
+            <!-- 上方信息卡 -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="card-title">气象指标</div>
+                    <div class="data">
+                        <!-- 天气 -->
+                        <div class="temp-wrapper">
+                            <div class="container">
+                                <div class="temp">
+                                    <i class="icon iconfont icon-dakaqiandao"></i>
+                                    <div>
+                                        <div id="temp-today" class="num">2000°C</div>
+                                        <div id="weather-today" class="sub-title">晴天</div>
+                                    </div>
+                                </div>
+                                <div id="temp-tomorrow" class="sub-title">明天 24°C</div>
+                                <div id="temp-after-tomorrow" class="sub-title">后天 24°C</div>
+                            </div>
+                        </div>
+                        <!-- pm2.5 & 湿度 & 光照强度 & 气压 -->
+                        <div class="detail">
+                            <div class="row">
+                                <div class="num">
+                                    <i class="icon iconfont icon-dakaqiandao"></i>
+                                    <div>
+                                        <div id="pm25">888888</div>
+                                        <div class="sub-title">pm2.5</div>
+                                    </div>
+                                </div>
+                                <div class="num">
+                                    <i class="icon iconfont icon-dakaqiandao"></i>
+                                    <div>
+                                        <div id="light-intensity">888888</div>
+                                        <div class="sub-title">光照强度</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="num">
+                                    <i class="icon iconfont icon-dakaqiandao"></i>
+                                    <div>
+                                        <div id="humidity">888888</div>
+                                        <div class="sub-title">湿度</div>
+                                    </div>
+                                </div>
+                                <div class="num">
+                                    <i class="icon iconfont icon-dakaqiandao"></i>
+                                    <div>
+                                        <div id="pressure">888888</div>
+                                        <div class="sub-title">气压</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-title">设备浇灌</div>
+                    <div class="data">
+                        <!-- 设备状态列表 -->
+                        <div class="device-status">
+                            <!-- <div class="row">
+                                <div class="item">
+                                    1号设备
+                                    <span class="active">
+                                        <i class="icon iconfont icon-dakaqiandao"></i>
+                                        灌溉中
+                                    </span>
+                                </div>
+                                <div class="item">
+                                    1号设备
+                                    <span>
+                                        <i class="icon iconfont icon-dakaqiandao"></i>
+                                        未灌溉
+                                    </span>
+                                </div>
+                            </div> -->
+                        </div>
+                        <!-- 设备状态占比 -->
+                        <div class="device-status-rate">
+                            <div id="device-status-rate"></div>
+                            <div id="device-status-rate-value">123</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 空气 -->
+            <div class="air">
+                <div class="title">空气温度/湿度</div>
+                <div id="air-temp" class="chart"></div>
+            </div>
+            <!-- 土壤 -->
+            <div class="soil">
+                <div class="title">
+                    <div class="soil-data">土壤详情</div>
+                    <div class="soil-data">土壤湿度温度</div>
+                </div>
+            </div>
+        </main>
+        <!-- 右侧区域 -->
+        <aside>
+            <!-- 消息提醒 -->
+            <div class="msg-tip"></div>
+            <!-- 消息占比 -->
+            <div class="msg-rate">
+                <div class="title">消息占比</div> 40
+                <div class="card"></div>80
+                <div class="card"></div>80
+                <div class="card"></div>80
+            </div>
+        </aside>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

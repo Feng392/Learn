@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- target实际操作的目标元素 -->
+    <style>
+        .outer {
+            height: 200px;
+            width: 200px;
+            background-color: #f40;
+            border: 1px solid #000;
+        }
+
+        .inner {
+            margin: 50px;
+            height: 100px;
+            width: 100px;
+            background-color: #ffc0bb;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+
+    <script>
+        const inp = document.querySelector('input');
+        inp.addEventListener('input', (e) => {
+            // 打印input 中输入的内容
+            console.log(e.target.value);
+        })
+
+        const outer = document.querySelector('.outer');
+        outer.addEventListener('click', (e) => {
+            console.log(e.target);
+            // inner在outer的里面，当点击inner时可以调用事件，
+            // e.target是实际操作的目标元素 inner元素。
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实现lodash的pull方法
+        // https://www.lodashjs.com/docs/lodash.pull
+        // 改变了原数组
+        function pull(arr, ...values) {
+            for (const value of values) {
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i] === value) {
+                        arr.splice(i, 1);
+                    }
+                }
+            }
+            return arr;
+        }
+
+        const arr = [1, 2, 3, 1, 2, 3];
+        console.log(pull(arr, 2, 3)); // [1, 1]
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数, 输入几个数组, 返回这几个数组的交集
+        function get2ArrIntersection(arr1, arr2) {
+            var res = [];
+            for (var item2 of arr2) {
+                // item2: 2, 3, 4
+                // arr1中有没有item2
+                for (var item1 of arr1) {
+                    // item1: 1, 2, 3
+                    if (item1 === item2) {
+                        res.push(item2);
+                    }
+                }
+            }
+            return res;
+        }
+
+        console.log(get2ArrIntersection([1, 2, 3], [2, 3, 4])); // [2, 3]
+        console.log(get2ArrIntersection([1, 2, 3], [4, 5, 6])); // []
+
+
+        function getIntersection(...arrs) {
+            // var arr1 = arrs[0];
+            // var arr2 = arrs[1];
+            // var arr3 = arrs[2];
+            // var arr4 = arrs[3];
+            // var arr5 = arrs[4];
+            // var arr6 = arrs[5];
+
+            // var intersection12 = get2ArrIntersection(arr1, arr2); // [2, 3]
+            // var intersection123 = get2ArrIntersection(intersection12, arr3);
+            // var intersection1234 = get2ArrIntersection(intersection123, arr4);
+            // var intersection12345 = get2ArrIntersection(intersection1234, arr5);
+            // var intersection123456 = get2ArrIntersection(intersection12345, arr6);
+
+            // 定义一个比对值，不比第一项，第一项和后面的去比较，比较出来的结果再和后面的比较
+            var intersection = arrs.shift();
+            for (var arr of arrs) {
+                // arr: arr2, arr3, arr4, ...
+                intersection = get2ArrIntersection(intersection, arr);
+            }
+            return intersection;
+        }
+
+        console.log(getIntersection([1, 2, 3], [2, 3, 4], [3, 4, 5, 6, 7])); // [3]
+        console.log(getIntersection([1, 2, 3], [4, 5, 6], [7, 8, 9])); // []
+    </script>
+</body>
+
+</html>

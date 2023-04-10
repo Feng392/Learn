@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 数组归类
+        const input = [
+            {
+                id: '000001',
+                exchange: 'sz',
+            },
+            {
+                id: '000002',
+                exchange: 'sz',
+            },
+            {
+                id: '600001',
+                exchange: 'sh',
+            },
+            {
+                id: '600002',
+                exchange: 'sh',
+            },
+            {
+                id: '600003',
+                exchange: 'sh',
+            },
+        ];
+
+        const output = {
+            sz: ['000001', '000002'],
+            sh: ['600001', '600002', '600003'],
+        };
+
+        function transform(input) {
+            const output = {};
+            for (const { id, exchange } of input) {
+                // obj: {  }
+                 
+                if (!output[exchange]) {
+                    output[exchange] = [];
+                } 
+                output[exchange].push(id);
+            }
+            return output;
+        }
+        console.log(transform(input));
+
+        // reduce 做法
+        function transform(input) {
+            return input.reduce((res, { id, exchange }) => {
+                if (!res[exchange]) {
+                    res[exchange] = [];
+                }
+                res[exchange].push(id);
+                return res;
+            }, {});
+        }
+        console.log(transform(input));
+    </script>
+</body>
+
+</html>

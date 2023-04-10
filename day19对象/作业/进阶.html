@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知一个固定格式的数组, 统计平均分, 生成所示数组
+        // 输出: [{ teacher: '于老师', avg: 3 }, { teacher: '易老师', avg: 8 }]
+        var data = [
+            {
+                name: '于老师',
+                students: [
+                    { name: 'zs1', score: 1 },
+                    { name: 'zs2', score: 2 },
+                    { name: 'zs3', score: 3 },
+                    { name: 'zs4', score: 4 },
+                    { name: 'zs5', score: 5 },
+                ],
+            },
+            {
+                name: '易老师',
+                students: [
+                    { name: 'ls1', score: 6 },
+                    { name: 'ls2', score: 7 },
+                    { name: 'ls3', score: 8 },
+                    { name: 'ls4', score: 9 },
+                    { name: 'ls5', score: 10 },
+                ],
+            },
+        ];
+        // // 需要俩个for循环
+        // var arr = [];
+        // for (var i = 0; i < data.length; i++) {
+        //     var sum = 0;
+        //     // 定义一个变量来代替
+        //     var students = data[i].students;
+        //     for (var j = 0; j < students.length; j++) {
+        //         // students[j]--对象，求对象里面的score的值
+        //         sum += students[j].score;
+        //     }
+        //     // 只添加俩次对象
+        //     arr.push({
+        //         teacher: data[i].name,
+        //         avg: sum / students.length
+        //     });
+        // }
+        // console.log(arr);
+
+        // 老师答案
+        var res = [];
+        for (var item of data) {
+            // item { name: '于老师', students: [....]
+            var sum = 0;
+            var students = item.students
+            for (var student of students) {
+                // student { name: 'ls1', score: 6 }
+                sum += student.score;
+            }
+            // sum求解完成
+            res.push({
+                teacher: item.name,
+                avg: sum / students.length,
+            })
+        }
+        console.log(res);
+    </script>
+</body>
+
+</html>

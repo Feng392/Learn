@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知一个固定格式的数组, 生成所示新对象
+        // 如:
+        var arr = [
+            { key: 'a', value: 1 },
+            { key: 'b', value: 2 },
+            { key: 'c', value: 3 },
+        ];
+        // 输出: { a: 1, b: 2, c: 3 }
+
+        // arr[i]是对象
+        // 取 arr[i].key 作为属性名
+        // 取 arr[i].value 作为属性值
+
+        var obj = {};
+        for (i = 0; i < arr.length; i++) {
+            // arr[i]为变量，obj数组名用[]
+            obj[arr[i].key] = arr[i].value;
+        }
+        console.log(obj);
+    </script>
+</body>
+
+</html>

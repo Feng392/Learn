@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var n = prompt('输入一个数字');
+        // 假装 flag 是质数；
+        var flag = true;
+        for (var i = 2; i < n / 2; i++) {
+            if (n % i === 0) {
+                // 除了1和自身还有能否整除n的数
+                console.log('不是质数');
+                flag = false;
+                // 打断循环，只要有一个能整除的 就不是质数了
+                break;
+            }
+        }
+        // 真的是质数
+        if (flag) {
+            console.log('是质数');
+        }
+
+
+
+        // var count = 0;
+        // var n = prompt('输入一个数字');
+        // for (i = 0; i <= n; i++) {
+        //     if (n % i === 0) {
+        //         count++;
+        //     }
+        // }
+        // console.log(count === 2 ? '是质数' : '不是质数'); // 三元运算 三元判断
+    </script>
+</body>
+
+</html>

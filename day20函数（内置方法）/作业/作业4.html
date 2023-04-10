@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入所示数组和限制条件，返回筛选过后的数组
+
+        function filter(arr, standard) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].score > standard) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+        var students = [
+            { name: 'zs', score: 59 },
+            { name: 'ls', score: 69 },
+            { name: 'ww', score: 79 },
+            { name: 'll', score: 89 },
+        ];
+
+
+        // 筛选大于60分的同学
+        console.log(filter(students, 60));
+        /*
+            [
+            { name: 'ls', score: 69 },
+            { name: 'ww', score: 79 },
+            { name: 'll', score: 89 },
+          ]
+        */
+        // 筛选大于80分的同学
+        console.log(filter(students, 80));
+        /*
+            [
+            { name: 'll', score: 89 },
+          ]
+        */
+    </script>
+</body>
+
+</html>

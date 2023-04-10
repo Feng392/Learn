@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 统计点赞数量
+        const input = [
+            {
+                username: 'zhangsan',
+                starCount: 10,
+                content: '感觉不会再爱了',
+                timestamp: 1642579353575,
+                replies: [
+                    {
+                        username: 'lisi',
+                        starCount: 3,
+                        content: '感觉不会再爱了',
+                        timestamp: 1642579354575,
+                        replies: [],
+                    },
+                    {
+                        username: 'wangwu',
+                        starCount: 3,
+                        content: '感觉不会再爱了',
+                        timestamp: 1642579355575,
+                        replies: [
+                            {
+                                username: 'liuliu',
+                                starCount: 1,
+                                content: '感觉不会再爱了',
+                                timestamp: 1642579357575,
+                                replies: [],
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                username: 'yuqi',
+                starCount: 99,
+                content: '感觉不会再爱了',
+                timestamp: 1642579323575,
+                replies: [
+                    {
+                        username: 'zhaoqi',
+                        starCount: 12,
+                        content: '感觉不会再爱了',
+                        timestamp: 1642579333575,
+                        replies: [],
+                    },
+                ],
+            },
+        ];
+
+        const output = [
+            {
+                username: 'zhangsan',
+                // 总点赞数
+                totalStarCount: 17,
+                // 评论数
+                commentCount: 3,
+                content: '感觉不会再爱了',
+                timestamp: 1642579353575,
+            },
+            {
+                username: 'yuqi',
+                totalStarCount: 111,
+                commentCount: 1,
+                content: '感觉不会再爱了',
+                timestamp: 1642579323575,
+            },
+        ];
+        // // 总点赞数
+        // function getTotalStarCount(value) {
+        //     let sum = 0;
+        //     for (const item of value) {
+        //         sum += item.starCount;
+        //         if (item.replies) {
+        //             sum += getTotalStarCount(item.replies);
+
+        //         }
+        //     }
+        //     return sum;
+        // }
+        // // 总评论数
+        // function getCommentCount(value) {
+        //     let count = 0;
+        //     for (const item of value) {
+        //         const replies = item.replies;
+        //         if (replies.length) {
+        //             count += replies.length;
+        //             count += getCommentCount(replies);
+        //         }
+        //     }
+        //     return count;
+        // }
+        // function totalStar(input) {
+        //     return input.reduce((prev, current) => {
+        //         // current:{ }
+        //         const { username, content, timestamp } = current;
+        //         const totalStarCount = getTotalStarCount([current]);
+        //         const commentCount = getCommentCount([current]);
+        //         prev.push({
+        //             username,
+        //             content,
+        //             timestamp,
+        //             totalStarCount,
+        //             commentCount,
+        //         })
+        //         return prev;
+        //     }, []);
+        // }
+        // console.log(totalStar(input));
+
+        // 用对象来求 总点赞数 和 总评论数，只定义一个函数
+        function getTotalStar(item) {
+            const res = {
+                totalStarCount: item.starCount,
+                commentCount: item.replies.length,
+            };
+            for (const reply of item.replies) {
+                res.totalStarCount += getTotalStar(reply).totalStarCount;
+                res.commentCount += getTotalStar(reply).commentCount;
+            }
+            return res;
+        }
+        function totalStar(input) {
+            return input.map(item => ({
+                username: item.username,
+                content: item.content,
+                timestamp: item.timestamp,
+                ...getTotalStar(item),
+            }));
+        }
+        console.log(totalStar(input));
+    </script>
+</body>
+
+</html>

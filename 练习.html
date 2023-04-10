@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px 0;
+            background-color: #f40;
+            /* overflow: hidden; 隐藏技能触发bfc */
+        }
+
+        .box1 {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            position: absolute;
+        }
+
+        .box2 {
+            position: absolute;
+            left: 100px;
+            background-color: #ffc0cb;
+        }
+
+        .box3 {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: #999;
+        }
+
+        .wrappet {
+            border: 1px solid #f40;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+            height: 0px;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">123</div>
+    <div class="wrappet clearfix">
+        <div class="box1"></div>
+        <div class="box1 box2"></div>
+    </div>
+    <div class="box3"></div>
+</body>
+
+
+</html>

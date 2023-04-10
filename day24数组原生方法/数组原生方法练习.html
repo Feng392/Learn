@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const data = [
+            { name: 'zsa', score: 100 },
+            { name: 'ls', score: 90 },
+            { name: 'www', score: 80 },
+            { name: 'zl', score: 70 },
+        ];
+        // filter 练习
+        // 1.获取分数大于90的学生
+        data.filter(item => item.score > 90);
+        // 2.获取所有名字为3个字的学生
+        data.fillter(item => item.name.length === 3);
+        // 3.获取所有名字以z开头的学生
+        data.filter(item => item.name.startsWith('z'));
+        // 4.获取所有索引为偶数的学生
+        // 第一项没用，以_代替
+        data.filter((_, i) => i % 2 === 0);
+
+
+        // find 练习
+        // 1.获取第一个分数大于等于90的学生
+        arr.find(item => item.score > 90);
+        // 2.获取第一个名字为3个字的学生
+        arr.find(item => item.name.length === 3);
+        // 3.获取第一个名字以z开头的学生
+        arr.find(item => item.name.startsWith('z'));
+        //4 .获取第一个索引为偶数的学生
+        arr.find((_, i) => i % 2 === 0);
+
+
+        // map 练习
+        // 封装一个函数，传入一个数组，返回一个新数组，新数组中的每个元素是原数组中的元素的平方
+        function square(arr) {
+            return arr.map(item => item ** 2);
+        }
+        console.log(square([1, 2, 3, 4, 5])); // 
+
+        // 2. 封装一个函数, 传入一个数组, 返回一个所示新数组
+        const input = [
+            { name: '张三', age: 18 },
+            { name: '李四', age: 19 },
+            { name: '王五', age: 20 },
+            { name: '赵六', age: 21 },
+        ];
+
+        function getNames(arr) {
+            const str = arr.map(item => item.name);
+        }
+
+        console.log(getNames(input)); // ['张三', '李四', '王五', '赵六']
+
+        // 3. 封装一个函数, 传入一个数组, 返回一个所示新数组
+        const input = [
+            { name: '张三', age: 18 },
+            { name: '李四', age: 19 },
+            { name: '王五', age: 20 },
+            { name: '赵六', age: 21 },
+        ];
+
+        function getNames(arr) {
+            const res = arr.map(item => `${item.name}的年龄是${item.age}`);
+
+        }
+
+        console.log(getNames(input)); // ['张三的年龄是18', '李四的年龄是19', '王五的年龄是20', '赵六的年龄是21']
+
+        // 4. 封装一个函数, 传入一个数组, 返回一个所示新数组
+        const input = [
+            {
+                name: '张三',
+                age: 18,
+                children: [
+                    { name: '张三的儿子', age: 1 },
+                    { name: '张三的女儿', age: 2 },
+                ],
+            },
+            {
+                name: '李四',
+                age: 19,
+                children: [
+                    { name: '李四的儿子', age: 1 },
+                    { name: '李四的女儿', age: 2 },
+                ],
+            },
+        ];
+
+        function getKids(arr) {
+            var res = arr.map(item => item.children).map(child => child.name);
+            return res;
+        }
+
+        console.log(getKids(input)); // [['张三的儿子', '张三的女儿'], ['李四的儿子', '李四的女儿']]
+
+
+        // 5. 封装一个函数, 传入一个数组, 返回一个所示新数组
+        const input = [
+            {
+                name: '张三',
+                age: 18,
+                children: [
+                    { name: '张三的儿子', age: 1 },
+                    { name: '张三的女儿', age: 2 },
+                ],
+            },
+            {
+                name: '李四',
+                age: 19,
+                children: [
+                    { name: '李四的儿子', age: 1 },
+                    { name: '李四的女儿', age: 2 },
+                ],
+            },
+        ];
+
+        function getKids(arr) {
+            var res = [];
+            arr.map(item => item.children).map(child => child.name);
+            res.push(arr.map(item => item.children).map(child => child.name));
+            return res;
+        }
+        console.log(getKids(input)); // ['张三的儿子', '张三的女儿', '李四的儿子', '李四的女儿']
+
+
+        // 6. 封装一个函数, 传入一个数组, 返回一个所示新数组
+        const input = [
+            {
+                name: '张三',
+                age: 18,
+                children: [
+                    { name: '张三的儿子', age: 1 },
+                    { name: '张三的女儿', age: 2 },
+                ],
+            },
+            {
+                name: '李四',
+                age: 19,
+                children: [
+                    { name: '李四的儿子', age: 1 },
+                    { name: '李四的女儿', age: 2 },
+                ],
+            },
+        ];
+
+        function getKidsAvgAge(arr) {
+            const res = [];
+            //children [[{ name: '张三的儿子', age: 1}] [{ name: '李四的儿子', age: 1}]]
+            const children = arr.map(item => item.children)
+            console.log(children);
+            // child [[1,2],[1,2]]
+            const child = children.map(child => child.map(childItem => childItem.age));
+            console.log(child);
+            let sum = 0;
+            for (const childItem of child) {
+                for (let i = 0; i < childItem.length; i ++) {
+                    sum += childItem[i];
+                    let agv = sum / i;
+                    res.push(agv);
+                }
+            }
+            return res;
+        }
+        console.log( getKidsAvgAge(input) ); // [1.5, 1.5]
+    </script>
+</body>
+
+</html>

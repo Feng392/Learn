@@ -1,0 +1,26 @@
+.card {
+    width: 500px;
+    height: 200px;
+    border: 1px saddlebrown solid;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:20px;
+        height: 40px;
+        background-color: #fff;
+        border-bottom: 1px solid #e5e5e5;
+        .title {
+            font-size: 16px;
+            color: #333;
+            font-weight: 700;
+        }
+        .more {
+            font-size: 14px;
+            color: #f40;
+        }
+    }
+    .content {
+        padding: 20px;
+    }
+}

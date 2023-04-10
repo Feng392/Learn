@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 封装异步逻辑
+        // 2 创建 Promise实例 
+        function fn() {  
+            return new Promise((resolve, reject) => {
+                // 一段异步逻辑
+                setTimeout(() => {
+                    console.log(2);
+                    // 需要告知Promise等待完成  (等待的结果)
+                    resolve(999);
+                    // 不会失败，所以不需要 reject
+                }, 1000);
+            });
+        }
+        
+        // 1  async 让大家一起异步
+        (async () => {
+            console.log(1);
+            // await 后面只能写 Promise实例
+            // await fn();
+            const res = await fn(); // res 999
+            console.log(3);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米模块</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrappet {
+            margin: 0 auto;
+        }
+
+        .box {
+            width: 1226px;
+            height: 614px;
+        }
+
+        .left {
+            float: left;
+            width: 234px;
+            height: 614px;
+            background-color: #800080;
+        }
+
+        .content {
+            float: left;
+            width: 978px;
+            height: 614px;
+            /* background-color: #333; */
+            margin-left: 14px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .content li {
+            float: left;
+            width: 234px;
+            height: 300px;
+            background-color: #87ceeb;
+            margin-right: 14px;
+        }
+
+        li:nth-child(4n) {
+            margin-right: 0;
+        }
+
+        li:nth-child(-n+4) {
+            margin-bottom: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box wrappet">
+        <div class="left"></div>
+        <div class="content">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

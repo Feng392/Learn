@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            height: 200px;
+            width: 200px;
+            background-color: #f40;
+            border: 1px solid #000;
+        }
+        .inner {
+            margin: 50px;
+            height: 100px;
+            width: 100px;
+            background-color: #ffc0bb;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    
+    <script>
+        const outer = document.querySelector('.outer');
+        const inner = document.querySelector('.inner');
+        // 捕获 (默认外向内)，水里丢石头
+        // 内部元素的click事件全部失效
+        outer.addEventListener('click', function (e) {
+            // 阻止捕获
+            e.stopPropagation();
+            alert('outer');
+        }, true);
+
+        inner.addEventListener('click', function (e) {
+            alert('inner');
+        } , true);
+    </script>
+</body>
+</html>

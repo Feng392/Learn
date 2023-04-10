@@ -1,0 +1,19 @@
+$primary: #1177fb;
+
+.radio-tag {
+  display: inline-block;
+  margin-right: 16px;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+    color: $primary;
+  }
+
+  &.highlight {
+    background-color: $primary;
+    color: #fff;
+  }
+}

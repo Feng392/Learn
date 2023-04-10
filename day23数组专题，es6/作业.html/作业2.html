@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个数组，返回一个新数组
+        function getNewArray(arr) {
+            var newArr = [];
+            var res = [];
+            for (var i = 0; i < arr.length; i++) {
+                newArr.push(arr[i].split(':'));
+                // newArr [['zs', '13012341234']]
+                res.push({
+                    name: newArr[i][0],
+                    phone: newArr[i][1],
+                })
+            }
+            return res;
+        }
+
+        // 老师方法
+        function getNewArray(arr) {
+            var res = [];
+            for (var item of arr) {
+                // 期待：'zs'， '130....'
+                // var tmp = item.split(':');  //tmp: ['zs'， '130....']
+                // var name = tmp[0];
+                // var phone = tmp[1];
+
+                //es6 
+                var [name, phone] = item.split(':');
+                res.push({
+                    name,  //name: name
+                    phone, //phone: phone
+                })
+            }
+            return res;
+        }
+
+        var arr = [
+            'zs:13012341234',
+            'ls:13012341235',
+            'ww:13012341326',
+        ];
+
+        console.log(getNewArray(arr));
+        // [
+        //     { name: 'zs', phone: '13012341234' },
+        //     { name: 'ls', phone: '13012341235' },
+        //     { name: 'ww', phone: '13012341326' },
+        // ]
+    </script>
+</body>
+
+</html>

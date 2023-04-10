@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    姓名: <input type="text" id="name">
+    描述: <input type="text" id="description">
+    <button id="add">新增</button><br>
+    ID: <input type="text" id="id">
+    <button id="delete">删除</button>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        // [
+        //     {
+        //         name: '泰坦尼克号',
+        //         description: '卡神导演'
+        //     },
+        //     {
+        //         name: '阿凡达1',
+        //         description: '卡神导演'
+        //     },
+        //     {
+        //         name: '阿凡达2水之道',
+        //         description: '卡神导演'
+        //     },
+        //     {
+        //         name: '阿凡达3带种者',
+        //         description: '卡神导演'
+        //     },
+        // ];
+
+        const ul = $('<ul></ul>');
+
+        const getData = function () {
+            axios({
+                method: 'get',
+                url: 'http://47.98.249.40:1234/todo/list',
+            })
+                .then((res) => {
+                    // console.log(res.data.data[0]);
+                    const data = res.data.data;
+                    for (const d of data) {
+                        console.log(d);
+                        const li = $('<li></li>');
+                        li.text(`id:${d.id}\u00A0\u00A0\u00A0 name:${d.name}\u00A0\u00A0\u00A0description:${d.description}`);
+                        ul.append(li);
+                    }
+                    $('body').append(ul);
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+        };
+        getData();
+
+        // 新增点击事件
+        $('#add').click(function () {
+            // 新增
+            axios({
+                method: 'post',
+                // 服务地址: 'http://47.98.249.40:1234/todo' 请求方法: 'POST' 参数:
+                url: 'http://47.98.249.40:1234/todo',
+                data: {
+                    name: $('#name').val(),
+                    description: $('#description').val()
+                    // name: 12,
+                    // description: 12
+                }
+            })
+                .then((res) => {
+                    console.log(res);
+                    // 清空 ul 标签
+                    $('li').remove();
+                    getData();
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+        });
+
+        // 删除点击事件
+        // 服务地址: 'http://47.98.249.40:1234/todo/:{id}' 请求方法: 'DELETE' 响应:
+        
+        $('#delete').click(function () {
+            const id = +$('#id').val();
+            axios({
+                method: 'delete',
+                url: `http://47.98.249.40:1234/todo/${id}`
+            })
+                .then((res) => {
+                    console.log(res);
+                    // 清空 ul 标签
+                    $('li').remove();
+                    getData();
+                })
+                .catch((err) => {
+                    console.error(err);
+                })
+        })
+        
+
+    </script>
+</body>
+
+</html>

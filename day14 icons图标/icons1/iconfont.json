@@ -1,0 +1,37 @@
+{
+  "id": "3767487",
+  "name": "text",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "25687547",
+      "name": "充值",
+      "font_class": "chongzhi",
+      "unicode": "ff6e",
+      "unicode_decimal": 65390
+    },
+    {
+      "icon_id": "25687548",
+      "name": "打卡",
+      "font_class": "daka",
+      "unicode": "ff6f",
+      "unicode_decimal": 65391
+    },
+    {
+      "icon_id": "25687545",
+      "name": "VIP",
+      "font_class": "VIP",
+      "unicode": "ff6c",
+      "unicode_decimal": 65388
+    },
+    {
+      "icon_id": "25687546",
+      "name": "才艺",
+      "font_class": "caiyi",
+      "unicode": "ff6d",
+      "unicode_decimal": 65389
+    }
+  ]
+}

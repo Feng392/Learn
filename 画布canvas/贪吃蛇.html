@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>贪吃蛇</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+</style>
+
+<body>
+  <canvas></canvas>
+
+    <script>
+      let score = 0;
+      // 定义栅格大小
+      const GRID_Size = 30;
+      // 定义蛇头的颜色
+      const SNAKE_HEAD_COLOR = 'green';
+      // 定义蛇身的颜色
+      const SNAKE_BODY_COLOR = 'pink';
+      // 定义食物的颜色
+      const FOOD_RED = 'red';
+
+      const canvas = document.querySelector('canvas');
+      // 上下文
+      const context = canvas.getContext('2d');
+
+      // 定义画布的大小，是栅格的整数倍
+      // 向下取整
+      canvas.width = Math.floor(innerWidth / GRID_Size) * GRID_Size;
+      canvas.height = Math.floor(innerHeight / GRID_Size) * GRID_Size;
+
+      // 画个背景   // 后面清除画布后需要补上
+      function drawBg() {
+        // 1.先给颜色
+        context.fillStyle = '#333'; // 填充颜色
+        // 2 再画图形
+        context.fillRect(0, 0, canvas.width, canvas.height); // fillRect--填充矩形
+
+        // 绘制文本
+        context.fillStyle = '#fff';
+        context.font = "32px serif";
+        context.fillText("得分" + score, canvas.width - 100, 50);
+      }
+
+
+      //  渲染蛇的方法
+      function createSnakeItem([x, y], color) {
+        context.fillStyle = color;
+        context.fillRect(x * GRID_Size + 1, y * GRID_Size + 1, GRID_Size - 2, GRID_Size - 2);
+      }
+      // 创建一个食物的类
+      class Food {
+        position = [0, 0];
+
+        random (){
+          const x  = Math.floor(Math.random() * canvas.width / GRID_Size);
+          const y = Math.floor(Math.random() * canvas.height / GRID_Size);
+          this.position = [x, y];
+          if ([snake.head,...snake.body].some(([sx, sy]) => sx === x && sy === y)) {
+            this.random();
+          }
+        }
+      
+        render() {
+          createSnakeItem(this.position, FOOD_RED);
+        }
+        
+       
+      }
+
+      // 创建一个蛇的类
+      class Snake {
+        // 初始方向
+        direction = 'right';
+        head = [4, 1];
+        body = [
+          [3, 1],
+          [2, 1],
+          [1, 1],
+          [0, 1],
+        ];
+
+        //  按照现有的蛇的数据，渲染蛇
+        render() {
+          createSnakeItem(this.head, SNAKE_HEAD_COLOR);
+          this.body.forEach(item => {
+            createSnakeItem(item, SNAKE_BODY_COLOR);
+          })
+        }
+
+        // 判断是否吃到食物
+        eatFood() {
+          if (this.head[0] === food.position[0] && this.head[1] === food.position[1]) {
+            // 得分加+
+            score++;
+            // 吃到食物，蛇的身体增加
+            this.body.push(this.body[this.body.length - 1].concat());
+            food.random();
+          }
+        }
+
+        // 判断是否撞墙或者撞自己
+        check() {
+          const [x, y] = this.head;
+          // 撞墙
+          const hasHitWall =
+            x < 0 ||
+            y < 0 ||
+            x >= canvas.width / GRID_Size ||
+            y >= canvas.height / GRID_Size;
+          // 撞自己
+          const hasHitSelf = this.body.some(([bx, by]) => bx === x && by === y);
+          return hasHitWall || hasHitSelf;
+        }
+
+        // 蛇的移动
+        move() {
+          // this.hasAlive();
+          // 1.蛇的身体移动，去掉最后一个，添加到头部
+          this.body.pop();
+          this.body.unshift(this.head.concat());  // 因为this.head数组里面是基础数据类型，所以可以直接复制，不会影响原来的值
+          // 2.蛇的头部移动
+          switch (this.direction) {
+            case 'right':
+              this.head[0]++;
+              break;
+            case 'left':
+              this.head[0]--;
+              break;
+            case 'up':
+              this.head[1]--;
+              break;
+            case 'down':
+              this.head[1]++;
+              break;
+          }
+        }
+
+
+        // 定时器控制蛇的变化
+        timer = setTimeout(() => {
+          this.nextRes();
+        }, 1000);
+
+
+        // 立刻响应键盘事件
+        nextRes() {
+          // 前置条件
+          // 清除画布 --清除后都没有了
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          // 补个背景颜色
+          drawBg();
+          // 1.蛇的移动
+          this.move();
+          this.eatFood();
+          // 补个食物
+          food.render();
+
+          // 是否撞墙
+          if (this.check()) {
+            if (window.confirm(
+              '游戏结束'
+            )) {
+              window.location.reload()
+            }
+          }
+          // 2.蛇的渲染
+          this.render();
+          // 清除定时器
+          clearInterval(this.timer);
+          // 重新开启定时器
+          this.timer = setTimeout(() => {
+            this.nextRes();
+          }, 1000);
+
+        }
+      }
+
+
+      // 监听键盘事件
+      document.addEventListener('keydown', e => {
+        switch (e.key) {
+          case 'ArrowUp':
+            if (snake.direction === 'down') return;
+            snake.direction = 'up';
+            break;
+          case 'ArrowDown':
+            if (snake.direction === 'up') return;
+            snake.direction = 'down';
+            break;
+          case 'ArrowLeft':
+            if (snake.direction === 'right') return;
+            snake.direction = 'left';
+            break;
+          case 'ArrowRight':
+            if (snake.direction === 'left') return;
+            snake.direction = 'right';
+            break;
+        }
+        snake.nextRes(food);
+      })
+
+      drawBg();
+      const snake = new Snake();
+      const food = new Food();
+
+      food.random();
+      food.render();
+      snake.render();
+
+
+
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #abc {
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+        .abc {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+        <div id="abc">1</div>
+        <div class="abc">2</div>
+        <div class="abc">3</div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+
+    <script>
+        // DOM 
+            // 在js中访问的页面元素
+        // 选中
+        // const el = document.querySelector('#abc');
+        // const abc = document.querySelector('abc'); // 查询选择器
+        // console.dir(abc); // console.dir 展开查看查看元素的方法，属性
+
+        // const elements = document.querySelectorAll('#abc'); // 伪数组 （类似于装函数实参的arguments）
+
+        // console.dir(el); //  console.dir 可以展开查看元素的属性、方法。
+        // console.log(elements);
+
+        // 增
+        // const el = document.querySelector('#abc');
+        // 新增
+        // el.setAttribute('class', 'b');
+        // 改
+        // el.setAttribute('style', 'background-color:#ffc0cb; color: blue');
+        // el.setAttribute('style','color: #000; bgc: #f40');
+        // 原有的样式上，添加8px的圆角，不能复制。
+        // const style = el.getAttribute('style'); // 把原来的style取出来，+=， 字符串拼接。
+        // el.setAttribute('style', style + 'border-radius: 8px');
+
+        // 删除元素
+            // 先选中，再删除 元素.remove();
+        const span3 = document.querySelector(':nth-child(6)');
+        span3.remove();
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实现lodash的findKey方法
+        // https://www.lodashjs.com/docs/lodash.findKey
+
+        function findKey(obj, props) {
+            if (typeof props === 'function') {
+                for (const key in obj) {
+                    if (obj[key] === props()) {
+                        return key;
+                    }
+                }
+            }
+            for (const key in obj) {
+                if (obj[key] === props) {
+                    return key;
+                }
+            }
+        }
+
+        const o = { a: 1, b: '2', c: 3 };
+        console.log(findKey(o, 1)); // 'a'
+        console.log(findKey(o, 2)); // undefined
+        console.log(findKey(o, '2')); // 'b'
+        console.log(findKey(o, (value) => value % 2 === 1)); // 'a'
+    </script>
+</body>
+
+</html>

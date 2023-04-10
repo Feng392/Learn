@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li.hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <button id="add">新增</button>
+    <button id="query">查询</button>
+    <ul></ul>
+    <script>
+        // 实现 新增，删除
+        const btn = document.querySelector('#add');
+        const inp = document.querySelector('input');
+        const ul = document.querySelector('ul');
+        const queryBtn = document.querySelector('#query');
+        // 新增
+        
+        btn.addEventListener('click', () => {
+            // 新增一个li
+            const li = document.createElement('li');
+            li.innerText = inp.value;
+            // 增加自定义属性
+            li.setAttribute('data', inp.value);
+            ul.appendChild(li);
+            // 清空输入框
+            inp.value = ''; 
+            // 创建删除按钮
+            const delBtn = document.createElement('button');
+            delBtn.innerText = '删除';
+            li.appendChild(delBtn);
+            delBtn.addEventListener('click', () => {
+                li.remove();
+            })
+        });
+         // 创建查询按钮
+            // *=表示模糊匹配，[href*="163"]可以匹配href="163.com"、href="mail.163.com"等元素；
+            // queryBtn.addEventListener('click', () => {
+            //     // li.innerText 里面包含 inp.value 的都会被选中
+            //     const value = inp.value;
+            //     if (![li.innerText *= value]) {
+            //         li.remove();
+            //     }
+            // });
+            queryBtn.addEventListener('click', () => {
+                const lilist = document.querySelectorAll('li');
+                for (const li of lilist) {
+                    const data = li.getAttribute('data');
+                    if (data.includes(inp.value)) {
+                        li.removeAttribute('class');
+                    } else {
+                        li.setAttribute('class', 'hide')
+                    }
+                }
+            });
+
+    </script>
+</body>
+
+</html>

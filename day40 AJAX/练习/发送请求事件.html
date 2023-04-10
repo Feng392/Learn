@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="send">发送</button>
+    <button id="wait">发送中...</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        $('#send').click(function() {
+            $('#send').text($('#wait').text());
+            axios({
+                method: 'get',
+                url: 'http://47.98.249.40:1234/todo/list',
+            })
+                .then((res) => {
+                    console.log(res);
+                    $('#send').text('完成');
+                })
+                .catch((err) => {
+                    console.error(err);
+                    $('#send').text('完成');
+                })
+        });
+    </script>
+</body>
+
+</html>

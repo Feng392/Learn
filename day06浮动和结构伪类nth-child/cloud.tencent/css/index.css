@@ -1,0 +1,202 @@
+/* 常用样式设置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrappet {
+    width: 1200px;
+    margin: 0 auto;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+body {
+    background-color: #fff;
+}
+/* <!-- 导航 --> */
+.nav {
+    width: 100%;
+    height: 40px;
+    background-color: #2b303b;
+}
+.nav .left {
+    float: left;
+}
+.nav > .center h1 {
+    height: 40px;
+}
+.nav > .center .left a {
+    position: relative;
+    display: block;
+    width: 78px;
+    height: 40px;
+}
+.nav > .center .left a img {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+.nav > .center .right {
+    float: right;
+}
+.nav > .center .right li {
+    float: left;
+    margin-top: 10px;
+}
+.nav > .center .right a {
+    border-right: 1px solid #fff;
+    padding: 0 6px;
+    font-size: 14px;
+    color: #fff;
+}
+.nav > .center .right li:last-child a:last-child {
+    border-right: 0px;
+}
+
+/* <!-- 头部 --> */
+.background {
+    background-color: #181c28;
+}
+.header {
+    background: url(../images/banner.png) no-repeat;
+}
+.header > .left {
+    width: 250px;
+    height: 480px;
+    padding: 50px 20px 0px;
+    background-color: #1b2a3f;
+}
+/* .header > .left ul {
+    margin: auto 20px;
+} */
+/* .header > .left li {
+    float: left;
+} */
+.header > .left li a {
+    display: block;
+    padding-bottom: 20px;
+    font-size: 14px;
+    color: #fff;
+}
+.header > .left li span {
+    float: right;
+    font-size: 14px;
+}
+/* .header > .right {
+    float: right;
+    width: 950px;
+    height: 480px;
+    background-image: url(./images/banner.png);
+} */
+
+/* <!-- 内容 --> */
+.content {
+    height: 740px;
+}
+.content .title {
+    height: 138px;
+    padding-top: 40px;
+    /* background-color: #ffc0cb; */
+}
+.content .title h2 {
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+}
+.content .title p {
+    font-size: 14px;
+    text-align: center;
+}
+/* <!-- 内容中心 --> */
+.content > .center {
+    height: 462px;
+    padding: 40px 52px 0px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+}
+.content > .center > .text {
+    float: left;
+}
+.content > .center h2 {
+    width: 90px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 22px;
+    font-weight: 400;
+}
+.content > .center p {
+    font-size: 12px;
+    line-height: 30px;
+    color: #333;
+}
+.content > .center a {
+    display: block;
+    width: 162px;
+    height: 42px;
+    border: 1px solid #ffa500;
+    font-size: 14px;
+    line-height: 42px;
+    text-align: center;
+    color: #000;
+}
+.content > .center img {
+    float: right;
+    width: 580px;
+    height: 348px;
+}
+
+/* <!-- 尾部 --> */
+.footer {
+    width: 100%;
+    background-color: #2e3033;
+}
+.footer > .content {
+    padding-top: 30px;
+}
+.footer > .content .left dl {
+    float: left;
+}
+.footer > .content .left dt {
+    margin-right: 126px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 28px;
+}
+.footer > .content .left dd a {
+    font-size: 12px;
+    color: #fff;
+    line-height: 20px;
+}
+.footer > .content .right {
+    float: right;
+}
+.footer > .content .right span {
+    padding-right: 44px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+}
+.footer > .content .right a {
+    display: block;
+    width: 190px;
+    height: 34px;
+    margin-top: 14px;
+    background-color: #00a4ff;
+    text-align: center;
+    line-height: 34px;
+    font-size: 12px;
+    color: #fff;
+}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #list {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    姓名: <input id="name" type="text">
+    描述: <input id="description" type="text">
+    <button id="add">新增</button>
+    <div class="loading">loading...</div>
+    <table id="list">
+        <thead>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>描述</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <input type="text">
+                </td>
+                <td>
+                    <input type="text">
+                </td>
+                <td>
+                    <button>删除</button>
+                    <button>修改</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <script>
+        // 封装loading  return的对象是为了控制 disabled属性为true或者是false,相当于封装了2个函数
+        // function loading(btn, content) {  
+        //     return {
+        //         poen() {
+        //             $(btn)
+        //                 .text(content)
+        //                 .attr({ disabled: true });
+        //         },
+        //         close() {
+        //             $(btn)
+        //                 .text(content)
+        //                 .attr({ disabled: false });
+        //         },
+        //     }
+        // }
+        // 还可以优化为
+        function loading(btn, content) {  
+            function operator(disabled) {  
+                $(btn)
+                    .text(content)
+                    .attr({ disabled });
+            }
+            return {
+                poen() {
+                    operator(true);
+                },
+                close() {
+                    operator(false);
+                },
+            }
+        }
+        // 删除功能
+        async function onDelete(id, btn) {
+            // 询问用户是否删除（js原生方法）（危险操作）
+            const isConfirm = confirm('确认删除？');
+
+            if (isConfirm) {
+                // 请求之前，加loading 禁用
+                // $(btn)
+                //     .text('正在删除')
+                //     .attr({ disabled: true });
+                loading(btn, '正在删除').poen();
+                // 发请求
+                const res = await axios({
+                    method: 'delete',
+                    url: 'http://47.98.249.40:1234/todo/' + id,
+                });
+                // 请求之后，变回来
+                loading(btn, '正在删除').close();
+                // 刷新列表
+                refresh();
+            }
+        }
+
+        // 修改功能函数
+        function onEdit(id, btn) {  // btn 原生的修改按钮
+            function changeToInput(name) {
+                const el = $(`#${name}-${id}`);
+                const content = el.text();
+                el.html('');
+                // 反显
+                // id="${name}-inp-${id}"  ${name} 区分哪个输入框，${id} 区分选中哪个数据
+                const input = $(`<input id="${name}-inp-${id}" value=${content} type="text">`);
+                input.appendTo(el);
+            }
+            // 注意这里传的参数是字符串
+            changeToInput('name');
+            changeToInput('description');
+
+            // 把修改变成确认
+            $(btn)
+                .text('确认')
+                .attr({
+                    type: 'edit-ok-btn',
+                });
+        }
+
+        // 修改确认
+        async function onEditOK(id, btn) {
+            // 请求之前，加loading 禁用
+            loading(btn, '正在修改').poen();
+
+            // 发请求
+            const res = await axios({
+                method: 'put',
+                url: 'http://47.98.249.40:1234/todo/' + id,
+                data: {
+                    name: $(`#name-inp-${id}`).val(),
+                    description: $(`#description-inp-${id}`).val(),
+                }
+            });
+            // 请求之后，恢复
+            loading(btn, '确认').close();
+            alert(res.data.msg);
+            refresh();
+        }
+        // 利用冒泡的规则 (事件委托)
+        // table的点击对象 
+        $('table').on('click', function (e) {
+            // 获取id，因为删除和修改都需要知道id  'http://47.98.249.40:1234/todo/:{id}'
+            const id = $(e.target).attr('data-id');
+            // 点击父元素时获取最新的e.target
+            switch ($(e.target).attr('type')) {
+                // 删除
+                case 'del-btn':
+                    onDelete(id, e.target);
+                    break;
+                // 修改
+                case 'edit-btn':
+                    onEdit(id, e.target);
+                    break;
+                // 修改确认
+                case 'edit-ok-btn':
+                    onEditOK(id, e.target);
+                    break;
+                default:
+                    break;
+            }
+        })
+
+        // 查询全部
+        async function refresh() {
+            // 请求之前 开启loading
+            $('.loading').show();
+            $('#list').hide();
+            const res = await axios({
+                method: 'get',
+                url: 'http://47.98.249.40:1234/todo/list',
+            }).catch(err => console.error(err));
+
+            // 请求之后关闭loading
+            $('.loading').hide();
+            $('#list').show();
+            // 成功
+            console.log(res.data.data);
+            // 渲染列表
+            const tbody = $('#list tbody');
+            // 1. 清空容器
+            tbody.html('');
+            // 2.循环渲染
+            for (const d of res.data.data) {
+                const tr = $(`
+                    <tr>
+                        <td>${d.id}</td>
+                        <td id="name-${d.id}">${d.name}</td>
+                        <td id="description-${d.id}">${d.description}</td>
+                        <td>
+                            <button type="del-btn" data-id="${d.id}">删除</button>
+                            <button type="edit-btn" data-id="${d.id}">修改</button>
+                        </td>
+                    </tr>
+                `);
+                tr.appendTo(tbody);
+            }
+        }
+        refresh();
+
+        // 新增
+        $('#add').on('click', async function () {
+            // 新增之前，加loading 禁用
+            loading(btn, '确认').open();
+            // 发请求
+            const res = await axios({
+                method: 'post',
+                url: 'http://47.98.249.40:1234/todo',
+                data: {
+                    name: $('#name').val(),
+                    description: $('#description').val(),
+                }
+            }).catch(err => alert('新增失败'));
+
+            // 请求之后要变回来
+            // $(this)
+            //     .text('新增')
+            //     .attr({ disabled: false });
+            loading(btn, '新增').close();
+            alert(res.data.msg);
+            // 刷新列表
+            refresh();
+        })
+    </script>
+</body>
+
+</html>

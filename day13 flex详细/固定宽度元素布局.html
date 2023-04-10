@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定宽度元素布局</title>
+    <!-- space-between-->
+    <!-- space-around -->
+    <!-- space-evenly -->
+    <style>
+        content {
+            display: flex;
+            height: 100px;
+            background-color: #999;
+            /* 主轴排列 */
+            /* justify-content: center; */
+            /* justify-content: space-between; */
+            /* justify-content: space-around; */
+            justify-content: space-evenly;
+        }
+
+        .box {
+            width: 100px;
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <content>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </content>
+</body>
+
+</html>

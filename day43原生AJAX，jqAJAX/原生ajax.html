@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://47.98.249.40:1234/todo/list'); // 准备发请求
+        xhr.send(); // 发送
+        // 拿数据
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // 请求成功了
+                    console.log(JSON.parse(xhr.responseText));
+                } else {
+                    console.error('请求失败');
+
+                }
+            }
+        }
+
+        // const xhr = new XHLHttpRequest();
+        // // 准备发请求
+        // xhr.open('get', 'http://47.98.249.40:1234/todo/list');
+        // // 发送
+        // xhr.send(); 
+        // // 拿数据
+        // xhr.onreadystatechange = function () {  
+        //     if (xhr.readyState === 4) {
+        //         if (xhr.status === 200) {
+        //             // 请求成功了
+        //             console.log(JSON.parse(xhr.responseText));
+        //         } else {
+        //             console.log('失败');
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

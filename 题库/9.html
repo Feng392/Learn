@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <对象&字符串练习>对象转字符串
+        const input = {
+            name: 'zhangsan',
+            age: 18,
+            sex: 'nan',
+        };
+        // const output = 'name=zhangsan&age=18&sex=nan';
+
+        function obj2str(input) {
+            let output = '';
+            for (const key in input) {
+                output += `${output ? '&' : ''}${key}=${input[key]}`;
+            }
+            return output;
+        }
+
+        // 老师方法
+        function obj2str(input) {
+            // Object.keys(input): [ 'name', 'age', 'sex']
+            // Object.keys(input).map(k => `${ k }=${ input[k] }`) : ['name=zhangsan', 'age=18', 'sex=nan']
+            return Object.keys(input).map(k => `${ k }=${ input[k] }`).join('&');
+        }
+        console.log(obj2str(input));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    姓名: <input id="name" type="text">
+    描述: <input id="description" type="text">
+    <button id="add">新增</button>
+    <table id="list">
+        <thead>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>描述</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+            <tr id="d.id">
+                <td>1</td>
+                <td>zs</td>
+                <td>123</td>
+                <td>
+                    <button>删除</button>
+                    <button>修改</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <script>
+        // 删除
+        // 点击table
+        // 事件委托
+        $('#list').on('click', function (e) {
+            // 点到父元素时 现场获取最新的e.target
+            if ($(e.target).attr('type') === 'del-btn') {
+                // 删除按钮的点击事件
+                const id = $(e.target).attr('data-id');
+
+                // 询问用户是否删除
+                const isConfirm = confirm('确认删除？');
+
+                if (isConfirm) {
+                    // 发请求
+                    axios({
+                        method: 'delete',
+                        url: 'http://47.98.249.40:1234/todo/' + id,
+                    })
+                        .then(res => {
+                            alert(res.data.msg);
+                            // 刷新列表
+                            refresh();
+                        })
+                        .catch(() => {
+                            alert('删除失败');
+                        })
+                }
+
+            }
+
+        });
+
+
+        function refresh() {
+            axios({
+                method: 'get',
+                url: 'http://47.98.249.40:1234/todo/list',
+            })
+                .then(res => {
+                    // 成功
+                    console.log(res.data.data);
+                    // 渲染列表
+                    const tbody = $('#list tbody');
+                    // 1. 清空容器
+                    tbody.html('');
+                    // 2. 循环渲染
+                    for (const d of res.data.data) {
+                        // d: { name: 'zs', description: '123', id: 1 },
+                        const tr = $(`
+                            <tr id="${d.id}">
+                                <td>${d.id}</td>
+                                <td id="name">${d.name}</td>
+                                <td id="description">${d.description}</td>
+                                <td>
+                                    <button type="del-btn" data-id="${d.id}">删除</button>
+                                </td>
+                            </tr>
+                        `);
+                        tr.appendTo(tbody);
+                    }
+                })
+                .catch(err => {
+                    // 失败
+                });
+        }
+
+        refresh();
+
+        $('#add').on('click', () => {
+            // 发请求
+            axios({
+                method: 'post',
+                url: 'http://47.98.249.40:1234/todo',
+                data: {
+                    name: $('#name').val(),
+                    description: $('#description').val(),
+                },
+            })
+                .then(res => {
+                    alert(res.data.msg);
+                    // 刷新列表
+                    refresh();
+                })
+                .catch(() => {
+                    alert('新增失败');
+                })
+        });
+
+    </script>
+</body>
+
+</html>

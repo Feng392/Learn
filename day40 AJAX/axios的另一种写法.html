@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>查询数据</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+
+        // 原来的获取方式
+
+        // axios({
+        //     // 请求方式
+        //     method: 'get',
+        //     url: 'http://47.98.249.40:1234/todo/list',
+        //     // 47.98.249.40  ip
+        //     // :1234 端口
+        //     // /todo/list  路由
+        // })
+        //     // 请求成功
+        //     .then((res) => {
+        //         console.log(res);  // 服务器返回的数据
+        //     })
+        //     // 请求失败
+        //     .catch((err) => {
+        //         console.error(err);  // console.error 打印出来是红色的
+        //     })
+
+        // 新的写法
+
+        // await axios()： 最近一层函数必须为async(把函数变为异步) 
+        // await 可以理解为等待执行
+        // res：(等待 axios执行成功后的值) 
+
+        $('button').on('click', async function () {
+            const res = await axios({
+                method: 'get',
+                url: 'http://47.98.249.40:1234/todo/list',
+            });
+            console.log(res.data.data);
+        });
+    </script>
+</body>
+
+</html>

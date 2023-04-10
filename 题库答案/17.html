@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <数组&字符串&函数练习>封装函数输出正确的结果
+
+        function classNames(...input) {
+            return input.filter(item => item).join(' ');
+        }
+
+        console.log(classNames('active', 'container', 'flex-box')); // 'active container flex-box'
+        console.log(classNames(undefined, 'container', 'flex-box')); // 'container flex-box'
+        console.log(classNames('', 'container', 'flex-box')); // 'container flex-box'
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数, 输入几个数组, 返回最长的数组的和
+        function getSum() {
+            var arr = [];
+            var sum = 0;
+            var logArr = -Infinity;
+            for (i = 0; i < arguments.length; i++) {
+                if (logArr < arguments[i].length) {
+                    logArr = arguments[i].length;
+                    for (num of arguments[i]) {
+                        sum += num;
+                    }
+                }
+            }
+            return sum;
+        }
+
+        // 老师答案
+        function getSum(...numslist) {
+            var longest = [];
+            for (var nums of numslist) {
+                if (nums.length > longest.length) {
+                    longest = nums;
+                }
+            }
+            var sum = 0;
+            for (var num of longest) {
+                sum += num;
+            }
+            return sum;
+        }
+
+        console.log(getSum([1, 2, 3, 4], [4, 5], [6, 7])); // 10
+        console.log(getSum([1, 2, 3, 4, 5], [4, 5], [100, 101])); // 15
+    </script>
+</body>
+
+</html>

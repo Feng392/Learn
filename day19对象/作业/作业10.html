@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知一个字符串数组, 统计每个字符串出现的次数
+        // 如:
+        var arr = ['a', 'b', 'c', 'a', 'b', 'a'];
+        // 输出: { a: 3, b: 2, c: 1 }
+        var obj = {};
+        for (var i = 0; i < arr.length; i++) {
+            if ((arr[i] in obj)) {
+                obj[arr[i]] += 1; // 如果存在一次就在在原来的值上+1； obj[arr[i]] = obj[arr[i]] + 1; 
+            } else {
+                obj[arr[i]] = 1; // obj 中创建arr[i]属性等于1； 
+            }
+            // 优化写法，三元运算
+            // arr[i] in obj ? obj[arr[i]] += 1 : obj[arr[i]] = 1;
+        }
+        console.log(obj);
+
+        // 老师写法
+        // var res = {};
+        // for (var item of arr) {
+            // 如果里面没有 item
+        //     if (!res[item]) {
+        //         res[item] = 1;
+            // 如果里面有 item
+        //     } else {
+        //         res[item]++;
+        //     }
+        // }
+        // console.log(res);
+    </script>
+</body>
+
+</html>

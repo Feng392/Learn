@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 字符串
+        // 取某个字符
+        var msg = 'hello'
+        console.log(msg[2]);
+        console.log(msg.charAt(2));
+        
+        // 以...分割 str.split（转换为arr）
+        var msg = 'hello world';
+        console.log(msg.split(' '));
+        var date = '2011-01-01';
+        console.log(date.split('-'));
+
+        // 以...开头 返回值是布尔值
+        var msg = 'hello world';
+        console.log(msg.startsWith('h')); // 是否以H开头 startsWith()
+        console.log(msg.endsWith('!')); // 是否以！结尾
+
+
+        // 是否包含str.includes('')
+        var msg = 'hello world';  // 是否包含hellow
+        console.log(msg.includes('hello')); // true
+        msg.includes('hello')  //true
+
+        // 移除前后空格 str.trim()
+        var msg = ' hello word ';
+        console.log(msg.trim()); // --- 'hello word'
+
+        // 切换大小写 str.toUpperCase
+        var msg = 'hello world';
+        console.log(msg.toUpperCase); // 'HELLO WORLD'
+        console.log(msg.toLowerCase); //'hello world'
+
+        // 替换  str.replace('要被替换的内容/正则表达式', '要换的内容/回调函数'); 
+        
+        var date = '2011-01-01';  // 2011/01/01
+        console.log(date.replace('-', '/')); // 2011/01-01 ，只换第一个
+        console.log(date.replaceAll('-', '/'));  // 全部替换
+        // 通过匹配规则替换
+        // 把所有的数字替换为*
+        console.log(date.replace(/[0-9]/g, '*')); 
+
+        // 截取 str.substring(开始索引, 结束索引+1)
+        var date = '2011-01-01';  // 2011   
+        date.substring(0, 4);   substring(开始项, 到哪一项结束) // [0, 4)
+        date.substring(5, 7); // [5, 7)
+        date.substring(5);  // 从5截取到后面全部 [5, +infinity)
+    </script>
+</body>
+
+</html>

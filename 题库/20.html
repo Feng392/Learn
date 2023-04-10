@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <字符串练习>颜色&透明度转rgba
+        function color2rgba(input) {
+            const arr = input.split(';').filter(item => item.trim()); // 有几个分号 3个 分割成3项,所以要去掉空格项；
+            // arr: [ 'color: #fe0068', 'opacity: 0.9'，];
+            // 应该放到对象里面找，用键值对的方式去找 值，因为他们俩个的顺序可以是反的；
+            // 期待 const style = {
+            //     color: #ff0000,
+            //     opacity: 0.5,
+            // }
+            // 所以需要循环arr 得到每一项，把他加到对象里面去
+            // 循环可以用reduce 代替
+            const style = arr.reduce((prve, current) => {
+                const [key, value] = current.split(':');
+                prve[key.trim()] = value.trim();
+                return prve;
+            }, {});
+            // const style = {};
+            // for (const item of arr) {
+            //     // item：'color: #fe0068'  item：'opacity: 0.9'
+            //     // 字符串转化为数组
+            //     const [key, value] = item.split(':');
+            //     // [color, #fe0068]
+            //     style[key.trim()] = value.trim();
+            //     //     style = {
+            //     //      color: #ff0000,
+            //     //      opacity: 0.5,
+            //     // }
+            // }
+            // 得到 0.9 和 fe0068，然后把 fe0068 转化为10进制
+
+            // const rStr = style.color.substring(1, 3);
+            // const gStr = style.color.substring(3, 5);
+            // const bStr = style.color.substring(5, 7);
+            // // 转化为10进制
+            // const r = parseInt(rStr, 16);
+            // const g = parseInt(gStr, 16);
+            // const b = parseInt(bStr, 16);
+
+            //  可以用函数来代替重复
+            function reverseColor(startString, endString) {
+                return parseInt((style.color.substring(startString, endString)), 16);
+            }
+            const r = reverseColor(1, 3);
+            const g = reverseColor(3, 5);
+            const b = reverseColor(5, 7);
+            return `rgba(${r}, ${g}, ${b}, ${style.opacity})`;
+        }
+
+        
+        // 看到要求的值，应该想到把字符串分割成俩部分
+        console.log(color2rgba('color: #ff0000; opacity: 0.5;')); // 'rgba(255, 0, 0, 0.5)'
+        console.log(color2rgba('color: #fe0068; opacity: 0.9;')); // 'rgba(254, 0, 104, 0.9)'
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+# POST /api/user/login HTTP/1.1
+# Host: study.duyiedu.com
+
+# {
+#     "loginId":"adim",
+#     "loginPwd":"123123"
+# }
+GET /前端网络/index.html Http/1.1
+Host: 127.0.0.1:5500

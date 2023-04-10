@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知两个对象, 将他们合并为一个新对象
+        // 案例1:
+        // var obj1 = { a: 1, b: 2 };
+        // var obj2 = { c: 3, d: 4 };
+        // // 输出: { a: 1, b: 2, c: 3, d: 4 }
+
+        // var obj = {};
+        // // obj1，obj2 属性作为obj 属性
+        // for (var key in obj1) {
+        //     obj[key] = obj1[key];
+        // }
+        // for (var key in obj2) {
+        //     obj[key] = obj2[key];
+        // }
+        // console.log(obj);
+
+        // 案例2:
+        var obj1 = { a: 1, b: 2 };
+        var obj2 = { a: 3, d: 4 };
+        // 输出: { a: 3, b: 2, d: 4 }
+        // // obj1，obj2 属性作为obj 属性
+        var obj = {};
+        for (var key in obj1) {
+            if (!(key in obj)) {
+                obj[key] = obj1[key];
+            }
+        }
+        for (var key in obj2) {
+            if (key in obj) {
+                obj[key] = obj2[key];
+            } else {
+                obj[key] = obj2[key];
+            }
+        }
+        console.log(obj);
+
+        // 老师方法
+        var obj = {};
+        for (var key in obj1) {
+            obj[key] = obj1[key];
+        }
+        for (var key in obj2) {
+            // 属性覆盖就可以了（obj2覆盖obj1）
+            obj[key] = obj2[key];
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 8. 封装一个函数, 传入一个数组, 返回一个所示新数组
+        const input = [
+            {
+                name: '张三',
+                age: 18,
+                children: [
+                    { name: '张三的儿子', age: 1 },
+                    { name: '张三的女儿', age: 2 },
+                ],
+            },
+            {
+                name: '李四',
+                age: 19,
+                children: [
+                    { name: '李四的儿子', age: 1 },
+                    { name: '李四的女儿', age: 3 },
+                ],
+            },
+        ];
+
+        function getKidsMaxAge(arr) {
+            //  期待3 [1, 2, 1, 3]
+            /** 期待2 
+             * [ 
+             *      { name: '张三的儿子', age: 1 },
+             *      { name: '张三的女儿', age: 2 },
+             *      { name: '李四的儿子', age: 1 },
+             *      { name: '李四的女儿', age: 3 },
+             * ]
+             */
+            /** 期待1 
+             * [
+             *      [ { name: '张三的儿子', age: 1 },{ name: '张三的女儿', age: 2 }],
+             *      [ { name: '李四的儿子', age: 1 },{ name: '李四的女儿', age: 3 }],
+             * ]
+             */
+
+            // 链式写法
+            const ageList = arr
+                .map(item => item.children)
+                .falt(Infinity)
+                .map(item => item.age);
+            return Math.max(...ageList);
+        }
+
+        console.log(getKidsMaxAge(input)); // 3
+    </script>
+</body>
+
+</html>

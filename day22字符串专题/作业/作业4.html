@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个数据数组和敏感词数组，返回将敏感词过滤后的数组
+        // function transform(arr, sensitive) {
+        //     for (var obj of arr) {
+        //         for (item of sensitive) {
+        //             obj.content = obj.content.replace(item, '***');
+        //         }
+        //     }
+        //     return arr;
+        // }
+
+        // 老师方法
+        function transform(arr, sensitive) {
+           var res = [];
+           for (var item of arr) {
+            var newContent = item.content;
+            for (sensitiveItem of sensitive) {
+                if (item.content.includes(sensitiveItem)) {
+                    newContent = newContent.replaceAll(sensitiveItem, '***');
+                }
+            }
+            res.push({
+                name: item.name,
+                content: newContent
+                })
+           }
+           return res;
+        }
+
+        var arr = [
+            {
+                name: '张三',
+                content: '疫情防控人人有责,rnm什么时候解封',
+            },
+            {
+                name: '李四',
+                content: '我是李四,rnm什么时候解封',
+            },
+            {
+                name: '王五',
+                content: '我是王五，我太难了',
+            },
+        ];
+
+        var sensitive = ['疫情', 'rnm'];
+
+        console.log(transform(arr, sensitive));
+        // [
+        //     {
+        //         name: '张三',
+        //         content: '**防控人人有责',
+        //     },
+        //     {
+        //         name: '李四',
+        //         content: '我是李四，***什么时候解封',
+        //     },
+        //     {
+        //         name: '王五',
+        //         content: '我是王五，我太难了',
+        //     },
+        // ]
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画 animation</title>
+    <style>
+        /* 定义动画 （名字） */
+        @keyframes box {
+
+            /* 0秒的样式 */
+            0% {
+                transform: rotate(0deg);
+            }
+
+            /* 1秒的样式 */
+            50% {
+                transform: rotate(90deg);
+            }
+
+            /* 2秒的样式 */
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #f40;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transform-origin: left top;
+            /* 使用动画 */
+            /* 动画的名字 一个周期时常 动画节奏（默认是ease） 是否循环  延迟*/
+            animation: box 2s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

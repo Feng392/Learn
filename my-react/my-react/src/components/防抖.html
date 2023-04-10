@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>防抖，装饰折模式，闭包</title>
+</head>
+<body>
+  <button onclick="f()">点击</button>
+
+  <script>
+    function fn() {
+      console.log('点击了')
+    }
+
+  //  装饰者模式
+    function debounce(fn, delay) {
+    // 闭包
+      let timer = null;
+    // 伪造fn
+      return function (...args) {
+      //  伪造传参
+      //  伪造this
+      //  设置运行条件
+
+      //  清除定时器
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          fn.apply(this, args)
+        }, delay);
+      }
+    }
+  let  f = debounce(fn, 1000)
+
+  //  如果是在Vue场景中，要销毁定时器
+  //  f = null;
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 数组归类
+        const input = [
+            'sz000001',
+            'sz000002',
+            'sh600001',
+            'sh600002',
+            'sh600003',
+        ];
+
+        const output = {
+            sz: ['000001', '000002'],
+            sh: ['600001', '600002', '600003'],
+        };
+
+        function transform(input) {
+            return input.reduce((prve, current) => {
+                // current: 'sz000001'...
+                const key = current.substring(0, 2);
+                const value = current.substring(2);
+                if (!prve[key]) {
+                    prve[key] = [];
+                }
+                prve[key].push(value);
+                return prve;
+            }, {});
+        }
+        console.log(transform(input));
+
+        // 普通方法
+        function transform(input) {
+            const res = [];
+            for (const item of input) {
+                // item : 'sz000001'
+                const key = item.substring(0, 2);
+                const value = item.substring(2);
+                if (!res[key]) {
+                    res[key] = [];
+                }
+                res[key].push(value);
+            }
+            return res;
+        }
+        console.log(transform(input));
+    </script>
+</body>
+
+</html>

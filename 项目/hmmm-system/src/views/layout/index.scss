@@ -1,0 +1,32 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  header {
+    height: 70px;
+    background-color: #eee;
+  }
+
+  section {
+    flex: 1;
+    display: flex;
+
+
+    main {
+      flex: 1;
+      height: 100%;
+      background-color: #ccc;
+
+      .nav {
+        position: relative;
+        top: 0;
+        background: #fff;
+        height: 34px;
+        border-bottom: 1px solid #d8dce5;
+        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
+      }
+    }
+  }
+}

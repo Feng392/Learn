@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 将vDOM渲染为真实DOM
+        // 期待的结果: <div id="a" class="b">hello world!</div>
+        const vDOM = {
+            tagName: 'div',
+            attrs: {
+                id: 'a',
+                class: 'b'
+            },
+            content: 'hello world!',
+        };
+        function createRealDOM(vDOM, parent) {
+            const el = document.createElement(vDOM.tagName);
+            for (const key in vDOM.attrs) {
+                el.setAttribute(key, vDOM.attrs[key]);
+            }
+            el.innerText = vDOM.content;
+            parent.appendChild(el);
+        }
+        // body 直接选中 document.body
+        createRealDOM(vDOM, document.body);
+    </script>
+</body>
+
+</html>

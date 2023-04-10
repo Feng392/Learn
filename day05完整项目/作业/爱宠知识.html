@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱宠知识</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .centent {
+            width: 260px;
+            height: 340px;
+            background-image: url(./images/bg.gif);
+            margin: 50px auto;
+            padding: 10px;
+            border: 1px solid #090;
+        }
+
+        .title {
+            height: 25px;
+        }
+
+        /* 俩个 inline-block 如果其中一个有内容会造成内容底部与另外一个盒子底部对齐，造成基线下移，vertical-align: top 属性实现基线对齐 */
+
+        .title span {
+            display: inline-block;
+            width: 5px;
+            height: 25px;
+            background-color: #c9e143;
+            vertical-align: top;
+            margin-right: 10px;
+        }
+
+        .title h2 {
+            font-size: 20px;
+            display: inline-block;
+            color: #fff;
+            vertical-align: top;
+        }
+
+        .centent .body {
+            background-color: #FFF;
+            width: 240px;
+            height: 280px;
+            margin-top: 3px;
+        }
+
+        .body li {
+            width: 220px;
+            height: 31px;
+            margin: 0 auto;
+            border-bottom: 1px dashed #666;
+            font-size: 12px;
+            color: #551a8b;
+            line-height: 31px;
+            overflow: hidden;
+        }
+
+        .body a {
+            margin-left: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="centent">
+        <div class="title">
+            <span></span>
+            <h2>爱宠知识</h2>
+        </div>
+        <div class="body">
+            <ul>
+                <li><img src="./images/tb.gif"><a href="#">养狗比养猫对健康更有利</a></li>
+                <li><img src="./images/tb.gif"><a href="#">日本正宗柴犬亮相，你怎么看柴犬</a></li>
+                <li><img src="./images/tb.gif"><a href="#">狗狗歌曲《新年旺旺》</a></li>
+                <li><img src="./images/tb.gif"><a href="#">带宠兜风，开车带宠需要注意什么？</a></li>
+                <li><img src="./images/tb.gif"><a href="#">【爆笑】这狗狗太不给力了</a></li>
+                <li><img src="./images/tb.gif"><a href="#">狗狗与男童相同着装拍有爱造型照</a></li>
+                <li><img src="./images/tb.gif"><a href="#">狗狗各个阶段健康大事件</a></li>
+                <li><img src="./images/tb.gif"><a href="#">调皮宠物狗陷在沙发里的搞笑瞬间</a></li>
+                <li><img src="./images/tb.gif"><a href="#">为什么每次大小便后，会用脚踢土？</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

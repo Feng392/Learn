@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个单词，返回元音字母的数量
+        function getCount(word, letters) {
+            var count = 0;
+            var wordList = word.split('');
+            // wordList ['h','e','l','l','o']
+            for (var i = 0; i < wordList.length; i++) {
+                if (letters.includes(wordList[i])) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        // 方法二
+        function getCount(word, letters) {
+            var count = 0;
+            var wordList = word.split('');
+            // wordList ['h','e','l','l','o']
+            for (var i = 0; i < wordList.length; i++) {
+                for (var index of letters) {
+                    if (wordList[i] === index) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+        // 老师方法
+        /**
+         * @param {string[]} letters  全量数组
+         * @param {string} expect     要找的数组项
+        */
+       
+        function includes(letters, expect) {
+            for (var letter of letters) {
+                if (letter === expect) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function getCount(word, letters) {
+            var count = 0;
+            // 期待：单词中所有的字母
+            for (var letter of word) {
+                // letter 'h' 'e'....
+                // 在letter数组中查询当前字母，有就计数；
+                if (includes(letter, letter)) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        var letters = ['a', 'u', 'i', 'o', 'e'];
+        console.log(getCount('hello', letters)); // 2
+        console.log(getCount('hello world', letters)); // 3
+    </script>
+</body>
+
+</html>

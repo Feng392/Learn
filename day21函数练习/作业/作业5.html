@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个数组，依次打印所有name   
+        var arr = [
+            {
+                name: 'zs',
+            },
+            {
+                name: 'ls',
+                children: [
+                    {
+                        name: 'ls1',
+                        children: [
+                            {
+                                name: 'ls12',
+                            },
+                        ],
+                    },
+                    {
+                        name: 'ls2',
+                    },
+                ],
+            },
+            {
+                name: 'ww',
+                children: [
+                    {
+                        name: 'ww1',
+                    },
+                ],
+            },
+        ];
+
+        // function log(arr) {
+        //     for (var obj of arr) {
+        //         console.log(obj.name);
+        //         if ('children' in obj && obj.children !== 'undefined') {
+        //             log(obj.children);
+        //         }
+        //         // if (obj.children.length > 0) {
+        //         //     console.log(log(obj.children));
+        //         // }
+        //     }
+        // }
+
+        // 老师方法
+        function log() {
+            for (var item of arr) {
+                console.log(item.name);
+                item.children && console.log(item.children);
+            }
+        }
+        log(arr); // 依次打印所有name: 'zs', 'ls', 'ls1', ...
+    </script>
+</body>
+
+</html>

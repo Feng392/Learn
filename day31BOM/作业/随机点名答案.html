@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>抽签</button>
+    <script>
+        // 给定一个名单(没有重名)数组，点击随机一个名字，在三分钟内，不会再次随机到这个人。
+        // 如果三分钟之内抽取了5个人，那么提示n秒之后可以再次抽签
+
+        const nameList = [
+            '张三',
+            '李四',
+            '王麻子',
+            '刘一手',
+            '赵大头',
+        ];
+        const btn = document.querySelector('button');
+
+        btn.addEventListener('click', function random() {
+            // 随机索引 [0, 4]之间的整数
+            const idx = Math.floor(Math.random() * nameList.length);
+            // 随机出来的数组项
+            const name = nameList[idx];
+            // 拿当前时间戳
+            const timestamp = Date.now();
+
+            // 取之前记的数据
+            const record = JSON.parse(localStorage.getItem('record')) || {};
+
+            // 判断一下当前抽到的名字 时间戳是不是在3分钟之内
+            if (timestamp - record[name] < 3 * 60 * 1000) {
+                // 先判断是否所有人都在3分钟内
+                if (
+                    Object.keys(record).length === nameList.length
+                    && Object.values(record).every(r => timestamp - r < 3 * 60 * 1000)
+                ) {
+                    const second = 3 * 60 * 1000 - (timestamp - Math.min(...Object.values(record)));
+                    alert(`${Math.ceil(second / 1000)}秒后可以再次抽签`);
+                    return;
+                }
+
+                // 自动开始下一轮抽签
+                random();
+                return;
+            }
+
+            // 更新当前所随机的名字
+            console.log(name);
+            record[name] = timestamp;
+            localStorage.setItem('record', JSON.stringify(record));
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

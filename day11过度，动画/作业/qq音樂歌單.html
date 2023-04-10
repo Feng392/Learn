@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qq音樂歌單</title>
+    <style>
+        /* 居中 */
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        /* 背景圖片 */
+        .box::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            width: 300px;
+            height: 300px;
+            background: url("https://qpic.y.qq.com/music_cover/qySHBaLckrOIYib7GXCWmDbG7K4GRBmyCFoDqHm3R8zjnYLooxtEj63hvgB1vE8TT/300?n=1") no-repeat center center;
+            background-size: 100%, 100%;
+            opacity: 1;
+            transition: all 0.3s linear;
+        }
+
+        .box:hover::after {
+            transform: scale(1.1);
+            opacity: .9;
+        }
+
+        /* 圓形按鈕 */
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: #fff;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s linear;
+        }
+
+        .box:hover .circle {
+            /* width: 80px;
+            height: 80px; */
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.8);
+        }
+
+        /* 三角形按鈕 */
+        .triangle {
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-35%, -50%) scale(0.5);
+            width: 0px;
+            height: 0px;
+            border-left: 30px solid #666;
+            border-top: 20px solid #fff;
+            border-right: 20px solid #fff;
+            border-bottom: 20px solid #fff;
+            opacity: 0;
+            transition: all 0.3s linear;
+        }
+
+        .box:hover .circle .triangle {
+            opacity: 1;
+            /* border-left: 60px solid #666;
+            border-top: 40px solid #fff;
+            border-right: 40px solid #fff;
+            border-bottom: 40px solid #fff; */
+            transform: translate(-35%, -50%) scale(0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box center">
+        <div class="circle center">
+            <div class="triangle"></div>
+        </div>
+    </div>
+</body>
+
+</html>

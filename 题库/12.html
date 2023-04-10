@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <封装函数>输入一个id, 返回这个id对应的最近一层的子节点的标题组成的数组
+        // 输入
+        const input = [
+            {
+                label: '标题一',
+                id: '1',
+                children: [
+                    {
+                        label: '标题1.1',
+                        id: '1-1',
+                    },
+                    {
+                        label: '标题1.2',
+                        id: '1-2',
+                    },
+
+                ],
+            },
+            {
+                label: '标题二',
+                id: '2',
+                children: [
+                    {
+                        label: '标题2.1',
+                        id: '2-1',
+                        children: [
+                            {
+                                label: '标题2.1.1',
+                                id: '2-1-1',
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                label: '标题三',
+                id: '3',
+            },
+        ];
+        function getItem(id, targeList) {
+            let list = [];
+            for (const obj of targeList) {
+                if (obj.id === id) {
+                    list.push(obj.children);
+                }
+                if (obj.children && obj.children.length > 0) {
+                    list.push(getItem(id, obj.children));
+                }
+            }
+            return list;
+
+        }
+        function findChildren(id) {
+            let tarList = getItem(id, input);
+            return tarList.flat(Infinity).map(item => item.label);
+        }
+        console.log(findChildren('2-1')); // ['标题2.1.1']
+        console.log(findChildren('1')); // ['标题1.1', '标题1.2']
+        
+        // 老师方法
+        function findChildren(id) {
+           
+        }
+        
+    </script>
+</body>
+
+</html>

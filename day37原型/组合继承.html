@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 父类
+        function Animal(name) {
+            this.name = name;
+        }
+
+        Animal.prototype.move = function () {
+            console.log('正在移动');
+        }
+
+        // 子类
+        function Dog(...args) {
+            // 1.继承this
+            // 换绑Animal的this
+            // Animal(...args)  // 直接运行，Animal的this是window
+
+            Animal.apply(this, args);
+        }
+
+        Dog.prototype.wangwnag = function () {
+            console.log('wangwnag' + this.name);
+        };
+
+        // 继承prototype
+        // 合并prototype  Animal.prototype 合并至 Dog.prototype，给Dog的实例继承
+        Object.assign(Dog.prottoype, Animal.prototype)
+        // Object.assign(参数1，参数2)，对象合并方法：把参数2合并到参数1
+
+        const dog = new Dog('旺财');
+
+        dog.move();
+        dog.wangwnag();
+    </script>
+</body>
+
+</html>

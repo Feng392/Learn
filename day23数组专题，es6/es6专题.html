@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 箭头函数  执行型
+        var f2 = (a) => {
+            console.log(a);
+        }
+        f2();
+
+        // 箭头函数  取值型
+        var fn = (n1, n2) => n1 + n2;
+        var fn = (n1, n2) => {
+            return n1 + n2;
+        }
+
+        // 回调函数
+            // 当参数传入的函数,并且在里面调用了，就是回调函数
+            // 回调函数中一般使用匿名函数，因为匿名函数用完就销毁，不会占用内存。
+            // 匿名函数后面直接写括号就是匿名函数自调了
+        function f2(cb) {
+            console.log(2);
+            cb();
+        }
+        f2(function f1() {
+            console.log(1);
+        });
+        // const/let/var
+            // var 的问题
+                // 1. 变量声明提升
+                // 2.异步问题
+                // 3.全局变量，污染全局
+                // 4.可以重复声明
+                // 5.只有俩个作用域（全局作用域和函数作用域） 非函数的代码块外，可以访问var声明的变量（全局）
+
+            // const
+                // 1.const声明的变量不能变，但是复杂数据类型存的是地址，复杂数据类型只要地址不变，就不报错
+                // 2.能用const声明的变量不要用let
+
+
+        // 解构 ...
+        const o1 = { a: 1, b: 2};
+        const o2 = { b: 3, d: 4};
+
+        const o = {...o1, ...o2}; //{a: 1, b: 3, d: 4}
+        const o1copy = {...o1}; // { a: 1, b: 2 }
+        console.log(o1 === o1copy); // false 因为没有指向同一数组。
+    </script>
+</body>
+</html>

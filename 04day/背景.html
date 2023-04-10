@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景</title>
+    <style>
+        /* 背景图片 */
+        .bj {
+            background-image: url(./xue.webp);
+            width: 300px;
+            height: 300px;
+            color: #000;
+            border: 1px solid;
+        }
+        .bjc {
+            background-color: #f40;
+            width: 300px;
+            height: 300px;
+            color: #000;
+            border: 1px solid;
+        }
+        /* 背景图片平铺 */
+        .repeat {
+            background-image: url(./xue.webp);
+            background-repeat: no-repeat;
+            width: 600px;
+            height: 600px;
+            color: #000;
+            border: 1px solid;
+        }
+
+        /* 背景图片的位置 */
+        .position {
+            width: 400px;
+            height: 400px;
+            background-image: url(./xue.webp);
+            background-repeat: no-repeat;
+            background-position: 100px 100px;
+        }
+        .img {
+          width: 400px;
+          height: 400px;
+          background-color: #f40;
+          background-image: url(./xue.webp);
+          background-repeat: no-repeat;
+          background-position: center bottom;
+        }
+        .repeat2 {
+            width: 400px;
+            height: 400px;
+            background-color: #888;
+            background-image: url(./xue.webp);
+            background-repeat: repeat-x;
+            background-repeat: repeat-y;
+        }
+    </style>
+</head>
+<body>
+    <div class="bj">
+        这是CSS的背景图片
+    </div>
+    <div class="bjc">背景色</div>
+    <div class="repeat"></div>
+    <div class="position"></div>
+    <div class="img"></div>
+    <div class="repeat2"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用一个console输出以下效果(固定的5行5列)</title>
+</head>
+
+<body>
+    <script>
+        // aaaaa   5
+        // a   a   2
+        // a   a
+        // a   a
+        // aaaaa   5
+
+        // var str = '';
+        // for (var i = 0; i < 5; i++) {
+        //     var big = i === 0 || i === 4;
+        //     if (big == 1) {
+        //         str = 'aaaaa'
+        //     } else {
+        //         str = 'a\xa0\xa0\xa0a';
+        //     }
+        //     console.log(str);
+        // }
+
+        // 方法
+        var str = '';
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+                // 看成一个正方形，四周是 a
+                if (i === 0 || i === 4 || j === 0 || j === 4) {
+                    str += 'a';
+                } else {
+                    str += ' ';
+                }
+            }
+            // 每一行执行完要换行
+            if (i !== 4) {
+                str += '\n';
+            }
+        }
+        console.log(str);
+    </script>
+</body>
+
+</html>

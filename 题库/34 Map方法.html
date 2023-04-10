@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 统计文件归类
+        const fileTypeMapping = new Map([
+            ['md', 'markdown'],
+            ['doc', 'word'],
+            ['docx', 'word'],
+            ['html', 'web'],
+            ['xls', 'excel'],
+        ]);
+
+        const input = [
+            'js-this.md',
+            'vue.docx',
+            'js-class.md',
+            'react.xixi.doc',
+            'mp.xls',
+            'fe06.xls',
+            'fe06.heihei.xls',
+            'index.html',
+        ];
+
+        const output = {
+            word: [
+                'vue.docx',
+                'react.xixi.doc',
+            ],
+            markdown: [
+                'js-this.md',
+                'js-class.md',
+            ],
+            excel: [
+                'mp.xls',
+                'fe06.xls',
+                'fe06.heihei.xls',
+            ],
+            web: [
+                'index.html',
+            ],
+        };
+
+        function getFileCount(input, fileTypeMapping) {
+            const output = {};
+            for (const item of input) {
+                // item: 'js-this.md',
+                const suffix = item.split('.').at(-1);
+                const type = fileTypeMapping.get(suffix);
+                if (!(type in output)) {
+                    output[type] = [];
+                }
+                output[type].push(item);
+            }
+            return output;
+        }
+        console.log(getFileCount(input, fileTypeMapping));
+    </script>
+</body>
+
+</html>

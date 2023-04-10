@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <!-- <input type="email"> -->
+    <script>
+        // 正则：描述一段字符串的规则
+
+        const inp = document.querySelector('input');
+
+        // inp.value 是否为手机号
+        const reg = /^1[3-9]\d{9}$/;
+
+        // 是否为邮箱
+        // const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+        // 失去焦点验证是否为手机号，失焦事件
+        inp.addEventListener('blur', function (e) {
+            if (reg.test(e.target.value)) {
+                alert('验证成功');
+            } else {
+                alert('验证失败');
+            }
+        });
+    </script>
+</body>
+
+</html>

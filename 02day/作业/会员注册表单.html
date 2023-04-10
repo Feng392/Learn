@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员注册表单</title>
+</head>
+<body>
+    <h1>青春不常在，抓紧谈恋爱</h1>
+    <hr>
+    <form>
+        <p>
+            <label>昵称：<input type="text" placeholder="请输入昵称"></label>
+        </p>
+        <p>
+            性别：<label><input type="radio" name="gender" value="nan">男</label>
+            <label><input type="radio" name="gender" value="nv" checked>女</label>
+        </p>
+        <p>
+            所在城市： 
+            <select name="city" >
+                <option>北京</option>
+                <option>重庆</option>
+                <option selected>上海</option>
+            </select>
+        </p>
+        <p>
+            婚姻状况：
+            <input type="radio" name="marry" value="single" id="weihun" checked><label for="weihun">未婚</label>
+            <input type="radio" name="marry" value="married">已婚
+            <input type="radio" name="marry" value="baomi">保密
+        </p>
+        <p>
+            喜欢的类型：
+            <input type="checkbox" name="like" value="keai">可爱
+            <input type="checkbox" name="like" value="sex">性感
+            <input type="checkbox" name="like" value="type">御姐
+            <input type="checkbox" name="like" value="type">萝莉
+            <input type="checkbox" name="like" value="type">小鲜肉
+            <input type="checkbox" name="like" value="type">大叔
+        </p>
+        <p>
+            <p>个人介绍：</p> 
+            <textarea name="about"cols="60" rows="10"></textarea>
+        </p>
+        <h2>
+            我承诺
+        </h2>
+        <ul>
+            <li>年满18岁、单身</li>
+            <li>抱着严肃的态度</li>
+            <li>真诚寻找另一半</li>
+        </ul>
+        <p>
+            <input type="checkbox" >我同意所有条款
+        </p>
+        <p>
+            <button type="submit">免费注册</button>
+            <button type="reset">重置</button>
+        </p>
+    </form>
+</body>
+</html>

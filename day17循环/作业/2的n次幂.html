@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2的n次幂</title>
+</head>
+<body>
+    <script>
+        // 计算2的n次幂，n可输入；
+
+        var n = +prompt('输入n');
+        var num = 1;  // 存储值    
+        // 0        1
+        // 1        1*   2     
+        // 2        1*   2*2   
+        // 3        1*   2*2*2
+        // 4        1*   2*2*2*2
+
+        for (var i = 0; i < n; i++) {
+            num *= 2;
+        }
+        console.log(num);
+    </script>
+</body>
+</html>

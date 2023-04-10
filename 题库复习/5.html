@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <对象(映射)&数组练习>转换数组
+        const mapping = {
+            shengjian: '生煎',
+            baozi: '灌汤包',
+            jiaozi: '水饺',
+            burger: '汉堡',
+        };
+
+        const input = [
+            {
+                label: '生煎',
+                value: '生煎',
+            },
+            {
+                label: '灌汤包',
+                value: '灌汤包',
+            },
+            {
+                label: '水饺',
+                value: '水饺',
+            },
+            {
+                label: '汉堡',
+                value: '汉堡',
+            },
+        ];
+
+        const output = [
+            {
+                label: '生煎',
+                value: 'shengjian',
+            },
+            {
+                label: '灌汤包',
+                value: 'baozi',
+            },
+            {
+                label: '水饺',
+                value: 'jiaozi',
+            },
+            {
+                label: '汉堡',
+                value: 'burger',
+            },
+        ];
+
+        // function transform(input, mapping) {
+        //     // 反转mapping
+        //     const reversalMapping = {};
+        //     for (const key in mapping) {
+        //         reversalMapping[mapping[key]] = key;
+        //     }
+
+        //     return input.map(item => ({
+        //         ...item,
+        //         value: reversalMapping[item.label],
+        //     }))
+        // }
+        // console.log(transform(input, mapping));
+
+        // 利用函数实现映射
+        function getReversal(mapping, input) {  
+            for (const key in mapping) {
+                if (input === mapping[key]) {
+                    return key;
+                }
+            }
+        }
+        function transform(input, mapping) {
+            return input.map(item => ({
+                ...item,
+                value: getReversal(mapping, item.label),
+            }))
+        }
+        console.log(transform(input, mapping));
+    </script>
+</body>
+
+</html>

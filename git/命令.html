@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- git init 初始化，让git管理当前文件夹 -->
+    <!-- git status 检测当前目录文件的状态 -->
+    <!-- 三种状态的变化 -->
+        1. 红色 新增的文件或修改了原来的老文件   git add 文件名，管理某几个文件  git add . 管理全部的文件
+        2. 绿色 git已经管理起来了 git commit -m '描叙信息（随便写）'
+        3. 生成版本 
+        4. 查看版本记录  git log
+        5. 查看文件 ls
+
+    <!-- 回滚至之前的版本 -->
+        git reset --hard 版本号
+    <!-- 回滚至之前的下一个版本 -->
+        git reflog 
+        git reset --hard 版本号
+
+    <!-- 分支 -->
+        查看分支  git branch
+        创建分支  git branch  分支名称
+        切换分支  git checkout 分支名称
+        操作完成后....
+
+        分支合并（可能产生冲突）  git merge 要合并的分支
+        注意 切换到主分支上再合并  主分支  git merge  次分支
+
+        删除分支  git branch -d 分支名称
+        
+    <!-- 上传远程仓库 -->
+
+        1. 给远程仓库起名字
+        git remote add origin 远程仓库地址
+        2. 向远程推送代码
+        git push origin 分支名称
+        
+    <!-- 从远程仓库拉取信息 -->
+    第一次拉取（没有文件夹的时候）
+        克隆远程仓库代码
+        git clone 远程仓库代码 (内部已经实现git remote add origin 远程仓库地址)
+        切换分支
+        git checkout 分支名称
+
+    已经拉取过了，需要开发
+        1. 切换到dev分支进行开发
+        git checkout dev
+        2. 把master分支合并到dev [只执行一次]
+        git merge master
+        3. 修改代码
+        4. 提交代码
+            git add .
+            git commit -m 'xx'
+            git push origin dev
+
+    回到家继续再次开发时
+        1. 切换到dev分支进行开发
+        git checkout dev
+        2. 拉取仓库内的代码
+        git pull origin 分支名称
+        3. 开发代码
+        4. 提交代码
+            git add .
+            git commit -m 'xx'
+            git push origin dev
+
+    <!-- 开发完毕，上线 -->
+        
+
+</body>
+</html>

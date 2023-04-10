@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入所示数组，返回所示数组
+        // 4. 封装一个函数, 输入所示数组, 返回所示数组
+        function transform(arr) {
+            // var str = '';
+            // var newArr = [];
+            // for (var obj of arr) {
+            //     str = `${obj.name}在${obj.time}到达${obj.address}`;
+            //     newArr.push(str);
+            // }
+            // return newArr;
+
+            // 老师方法
+            var res = [];
+            for (var item of arr) {
+                // es5
+                var name = item.name;
+                var time = item.time;
+                var address = item.address;
+
+                // es6
+                var { name, time, address } = item;
+                res.push(`${name}在${time}到达${address}`);
+            }
+            return res;
+        }
+
+        var arr = [
+            {
+                name: '张三',
+                time: '07:05:45',
+                address: '黑马程序员办公室',
+            },
+            {
+                name: '李四',
+                time: '12:05:45',
+                address: '黑马程序员楼下',
+            },
+            {
+                name: '王五',
+                time: '12:35:11',
+                address: '农业银行',
+            },
+        ];
+
+        console.log(transform(arr));
+        // [
+        //    '张三在07:05:45到达黑马程序员办公室',
+        //    '李四在12:05:45到达黑马程序员楼下',
+        //    '王五在12:35:11到达农业银行',
+        // ]
+    </script>
+</body>
+
+</html>

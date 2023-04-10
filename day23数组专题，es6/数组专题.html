@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 拼接字符串 join (转换为字符串)
+                var arr = ['a', 'b', 'c']; // a>>b>>c
+
+                function join(arr, separator) {
+                    var str = '';
+                    for (var item of arr) {
+                        str += separator + item;
+                    }
+                    return str.replace(separator, ''); // 把第一个分隔符替换成空数组
+                }
+                join(arr, '>>');
+
+                // 原生方法
+                arr.join('>>') // 转换为字符串（）里面跟分割符号，
+        // 反转数组 arr.reverse(); , 原数组被反转--返回值是改变了之后的原数组
+                var arr = ['a', 'b', 'c'];
+                arr.reverse();
+
+        // 合并数组 arr1.concat(arr2)  不改变原数组，返回合成后的新数组
+                var arr1 = [1, 2, 3];
+                var arr2 = [4, 5];
+                // [1, 2, 3, 4, 5]
+                function concat(arr1, arr2) {
+                    var res = [];
+                    for (var item of arr1) {
+                        res.push(item);
+                    }
+                    for (var item of arr2) {
+                        res.push(item);
+                    }
+                    return res;
+                }
+
+                // 错误示例
+                function concat(arr1, arr2) {
+                    var res = arr1;  // res 和 arr1指向了同一地址，原数组改变了，不能用。
+                    for (var item of arr2) {
+                        res.push(item);
+                    return res;
+                    }
+                }
+
+                arr1.concat(arr2); // 产生了新数组。
+                arr1.concat(arr2) === arr1 // 合并后的新数组地址 === arr1数组的地址  false
+
+                // 用法
+                数组1.concat(数组2);
+                数组1.concat(新数组项);
+
+                // 案例
+                // 期待[1, 2, 3, [4]]
+                arr1.concat([[4]]);
+
+                // 合并 arr1和arr2
+                arr1.concat(arr2);
+                [...arr1, ...arr2];  // 打散每一项，放在新数组
+
+        // 填充 arr.fill(要被填充的数组项)   操作原数组
+                arr.fill(基础数据类型);
+                // 生成一个5项，每一项都为0的数组；
+                var arr = [0, 0, 0, 0, 0];
+                var arr = new Array(5);
+                arr.fill(5); // [5, 5, 5, 5, 5]
+                var arr = new Array(5).fill(1);
+                
+                // 期待得到
+                var expect = [
+                    {},
+                    {},
+                    {},
+                ];
+                
+                var arr2 = new Array(3).fill({});
+                arr2[0].name = 'zhang san';
+                console.log(arr[1].name);
+
+        // 截取 arr.slice(开始的索引，结束的索引+1)，不改原数组，返回截取到的新数组。
+                var arr = [1, 2, 3, 4, 5];
+                // 手写函数
+                function slice(arr, startIndex, endIndex) {
+                    var res = [];
+                    var len = endIndex !== undefined ? endIndex : arr.length;
+                    for (var i = startIndex; i < len; i++) {
+                        res.push(arr[i]);
+                    }
+                    return res;
+                    }
+                slice(arr, 1, 4);  //[2, 3, 4]
+                slice(arr, 1);  //[2, 3, 4, 5]
+                // 原生方法
+                arr.slice(1, 4);
+                arr.slice(-1); // 倒数第一项[5]
+                arr.slice(-2)  // 倒数第二项[4]
+                arr.slice(-1)[0];  5
+                arr.slice(-2)[0];  4
+        
+        // 7种查询方法
+        // 筛选 filter ，返回所有符合条件的 数组项 组成的 新数组
+
+            // 自己封装的函数
+            const arr = ['hello', 'word', 'a', 'abc', 'ab'];
+            // 返回所有长度大于3的单词
+            // 返回所有开头字母为a的单词
+            // 返回所有长度为偶数的单词
+            function filter(arr, getCondition) {
+                const res = [];
+                for (const item of arr) {
+                    // const condition = item.length > 3;
+                    const condition = getCondition(item);
+                    if (condition > 3) {
+                        res.push(item);
+                    }
+                }
+                return res;
+            }
+            // 箭头函数形参这里的括号可以省略
+            filter(arr, (item) => item.length > 3);
+            filter(arr, item => item.startsWith('a') );
+            filter(arr, item => item.length /2 === 0);
+
+            // 官方原生函数 
+            arr.filter(item => item.length > 3);
+            // 数组.filter((数组项,索引，数组) => 条件表达式)
+            
+            
+
+
+        // find 查找 第一项 符合条件的 数组项 （返回结果）
+
+            // 自己封装的函数 
+            const arr = ['hello', 'word', 'a', 'abc', 'ab'];
+            // 查找第一个长度大于3的单词
+            function find(arr, getCondition) {
+                for (let i = 0; i < arr.length; i++) {
+                    var item = arr[i];
+                    var condition = getConditaion(item, i, arr);
+                    if (condition) {
+                        return item;
+                    }
+                }
+                // return undefined;  默认return undefined；
+            }
+            // 原生方法
+            arr.find(item => item.length > 3);
+            // 数组.find((数组项，索引，数组) => 条件表达式)；
+
+
+
+        // findIndex 查找 第一项 符合条件的 数组项的索引
+             // 自己封装的函数 
+             const arr = ['hello', 'word', 'a', 'abc', 'ab'];
+            // 查找第一个长度大于3的单词的索引
+            function find(arr, getCondition) {
+                for (let i = 0; i < arr.length; i++) {
+                    var item = arr[i];
+                    var condition = getConditaion(item, i, arr);
+                    if (condition) {
+                        return i;
+                    }
+                }
+                return -1;
+            }  
+
+        // some 查找 有没有 符合条件的数组项
+            // 返回值是布尔值
+            // 自己封装的函数 
+            const arr = ['hello', 'word', 'a', 'abc', 'ab'];
+            // 查找是否存在长度大于3的单词
+            function some(arr, getCondition) {
+                for (let i = 0; i < arr.length; i++) {
+                    var item = arr[i];
+                    var condition = getConditaion(item, i, arr);
+                    if (condition) {
+                        return true;
+                    }
+                }
+                return false;
+            }  
+
+            //原生方法
+            arr.some(item => item.length > 3);
+
+
+
+        // every 检查 是否 每一项都符合条件
+            // 返回布尔值
+            // 自己封装的函数 
+            const arr = ['hello', 'word', 'a', 'abc', 'ab'];
+            // 查找是否每一项长度大于3的单词
+            function every(arr, getCondition) {
+                for (let i = 0; i < arr.length; i++) {
+                    var item = arr[i];
+                    var condition = getConditaion(item, i, arr);
+                    if (!condition) {
+                        return false;
+                    }
+                }
+                return true;
+            }  
+            // 原生方法
+            arr.every(item => item.length > 3);
+
+
+        // 垃圾查询
+        // 缺点 只能按值查，不能按条件查 ，只能查基础数据类型
+            //   查找某一项的索引  
+            
+            // 原生方法
+
+            const arr = ['hello', 'word', 'a', 'abc', 'ab'];
+            arr.indexOf('a'); // 返回索引2
+            arr.indexOf('b')  // -1
+
+            const data = [
+                { name: 'zs', time: 1654},
+                { name: 'ls', time: 1655},
+                { name: 'ww', time: 1656},
+            ];
+            data.indexOf({ name: 'zs', time: 1654}) // -1; 这个对象指向的是一个新的房间
+
+
+            // includes查找是否存在某一项 
+            // 原生方法
+            arr.includes('a'); //true
+            data.includes({ name: 'zs', time: 1654}) // false; 这个对象指向的是一个新的房间
+
+            // some 可以代替 includes
+            arr.some(item => item === 'a');
+
+
+
+        // map 映射数组项 (返回新数组)   数组.map((数组项,索引,数组) => 新的数组项);
+            const arr = ['hello', 'world', 'a', 'abc', 'ab'];
+            const expect = [5, 5, 1, 3, 2];
+            // 原生方法
+            数组.map((数组项,索引,数组) => 新的数组项);
+            arr.map(item => item.length);
+
+
+        // 数组降维  arr.flat(降低几个维度)
+            // [
+            //     ['张三的儿子', '张三的女儿'], 
+            //     ['李四的儿子', '李四的女儿']
+            // ]
+
+            // 想要降维变成 ['张三的儿子', '张三的女儿', '李四的儿子', '李四的女儿']
+
+            // 原生方法
+            // arr.flat(降低几个维度)
+            // 不知道多少层： arr.flat(Infinity)
+
+            // 手写函数
+            const arr = [
+                1, 2, 3,
+                [4, 5, 6],
+                [7, 8, 9, [10, 11, 12]],
+            ]
+            function flat(arr) {
+                const res = [];
+                for (const item of arr) {
+                    if (!Array.isArray(item)) {
+                        res.push(item);
+                    } else {
+                        res.push(...flat(item));
+                    }
+                }
+                return res;
+            }
+            flat(arr);
+        
+
+        // 排序 sort （修改了原数组）
+            const arr = [50, 99, 5, 12, -1, 123, 99];
+
+            // 快速排序（面试题）
+            function quickSort(arr) {
+                // 出口
+                if (arr.length < 2) {
+                    return arr;
+                }
+                const nums = arr.concat();
+                // 拿数组第一项作为标志位
+                const flag = nums.shift();
+                const left = [];
+                const right = [];
+                for (const num of nums) {
+                    if (num < flag) {
+                        left.push(num);
+                    } else {
+                        right.push(num);
+                    }
+                } 
+                return [...quickSort(left), flag, ...quickSort(right)];
+            }
+            console.log( quickSort(arr) );
+            // 原生方法 (操作原数组) a  b 作为数组项
+            arr.sort((a, b) => a - b); // 升序
+            arr.sort((a, b) => b - a); // 降序
+
+        // reduce 叠加
+            const arr = [1, 3, 5, 7];
+            // eg1 求和
+            // prev 上一轮回调函数的返回值
+            // current 数组当前项
+            // 0 初始值（用来装结果的）
+            arr.reduce((prev, current) => prev + current, 0);
+
+            // eg2 数组转对象
+            const arr = [
+                ['name', 'zs'],
+                ['age', 18],
+                ['sex', 'nan'],
+            ];
+            // 期待对象
+            const expect = {
+                name: 'zs',
+                age: 18,
+                sex: 'nan',
+            };
+            arr.reduce((prev, current) => {
+                // 第一轮
+                // current： ['name', 'zs']
+                // es6
+                const [key, value] = current; 
+                // ['name', 'zs']
+                prev[key] = value;
+                //{ name = 'zs' }
+                return prev;
+            }, {})
+
+
+        // 伪数组转真数组
+                // 俩种伪数组(1. 函数里面装形参的arguments   2. document.querySelectorAll('div'));
+                // 转真数组 1.解构 [...伪数组 ]  2 (Array.from(xxx)) 推荐 可以把其他东西变成数组。
+
+        // 判断是否是数组
+            Array.isArray(xxx); (推荐)
+            xxx instanceof Array;
+
+        // 数组解构
+            // 1. 函数参数解构
+            function fn(...args) {}
+            fn(...arr)
+            // 2. 数组解构
+                // [...arr1, ...arr2]
+            // 3 解构赋值
+                const arr [a, b, c] = [1, 2, 3];
+    </script>
+</body>
+</html> 

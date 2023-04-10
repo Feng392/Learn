@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <数组练习>根据value值找到对应的label
+        const input = [
+            {
+                label: '生煎',
+                value: 'shengjian',
+            },
+            {
+                label: '灌汤包',
+                value: 'baozi',
+            },
+            {
+                label: '水饺',
+                value: 'jiaozi',
+            },
+            {
+                label: '汉堡',
+                value: 'burger',
+            },
+        ];
+
+        function getLabel(input, value) {
+            for (const item of input) {
+                if (item.value === value) {
+                    return item.label;
+                }
+            }
+            return null;
+            // return input.find(item => item.value === value).label;
+        }
+
+        console.log(getLabel(input, 'shengjian')); // '生煎'
+        console.log(getLabel(input, 'baozi')); // '灌汤包'
+        console.log(getLabel(input, 'xixi')); // null
+    </script>
+</body>
+
+</html>

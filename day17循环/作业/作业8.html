@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入数字个数，输出字符串</title>
+</head>
+
+<body>
+    <script>
+        // 如
+        // 输入5   输出'01234'
+        // 输入12  输出'012340123401'
+        // 输入19  输出'0123401234012340123'
+        // 输入2   输出'01'
+
+        
+        // var n = prompt('输入');
+        // var str = '';
+        // for (var i = 1;i <= n; i++) {
+        //     switch (i % 5) {
+        //         case 1:
+        //             str += '0';
+        //             break;
+        //         case 2:
+        //             str += '1';
+        //             break;
+        //         case 3:
+        //             str += '2';
+        //             break;
+        //         case 4:
+        //             str += '3';
+        //             break;
+        //         case 0:
+        //             str += '4';
+        //             break;
+        //     }
+        // }
+        // console.log(str);
+
+
+        // 规律是 每个位数对 %5 ，0-0  1-1  2-2  3-3  4-4  5-0；
+        var n = prompt('输入');
+        var str = '';
+
+        for (i = 0; i < n; i++) {
+            str += i % 5;
+        }
+        console.log(str);
+    </script>
+</body>
+
+</html>

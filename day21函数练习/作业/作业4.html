@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数，输入一个数组，返回children长度最大的那一项的name
+        // function getName(arr) {
+        //     var long = [];
+        //     var str = '';
+        //     for (var obj of arr) {
+        //         if (obj.children.length > long.length) {
+        //             long = obj.children;
+        //             str = obj.name;
+        //         }
+        //     }
+        //     return str;
+        // }
+
+        // 老师方法
+        function getName(arr) {
+            var longestItem = { children: [] };
+            for (var item of arr) {
+                if (item.children, length > longestItem.children.length) {
+                    longestItem = item;
+                }
+            }
+            return longestItem.name;
+        }
+
+        var arr = [
+            {
+                name: 'zs',
+                children: [
+                    { name: 'zs1' },
+                    { name: 'zs2' },
+                    { name: 'zs3' },
+                ],
+            },
+            {
+                name: 'ls',
+                children: [
+                    { name: 'ls1' },
+                ],
+            },
+            {
+                name: 'ww',
+                children: [],
+            },
+        ];
+        console.log(getName(arr)); // 'zs'
+    </script>
+</body>
+
+</html>

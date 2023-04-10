@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 统计文件种类的个数
+        // 映射对象
+        const fileTypeMapping = {
+            md: 'markdown',
+            doc: 'word',
+            docx: 'word',
+            html: 'web',
+            xls: 'excel',
+        };
+        // 输入的数组
+        const input = [
+            'js-this.md',
+            'vue.docx',
+            'js-class.md',
+            'react.xixi.doc',
+            'mp.xls',
+            'fe06.xls',
+            'fe06.heihei.xls',
+            'index.html',
+        ];
+        // 输出的数组
+        const output = {
+            word: 2,
+            markdown: 2,
+            excel: 3,
+            web: 1,
+        };
+
+        function getFileCount(input, fileTypeMapping) {
+            // to do
+            const res = {};
+            for (const item of input) {
+                const suffix = item.split('.').at(-1); // at(-1) 数组最后一项
+                const fileType = fileTypeMapping[suffix];  // 'markdown'
+                // 如果对象中不存在'markdown' ,就初始化一下
+                if (!res[fileType]) {
+                    res[fileType] = 0;
+                }
+                // 不管存在与否，都++
+                res[fileType]++;
+            }
+            return res;
+        }
+        console.log(getFileCount(input, fileTypeMapping));
+
+
+        // reduce写法
+        function getFileCount(input, fileTypeMapping) {
+            // to do
+            return input
+                .map(item => fileTypeMapping[item.split('.').at(-1)]) // 'markdown'
+                .reduce((res, fileType) => {
+                    if (!res[fileType]) {
+                        res[fileType] = 0;
+                    }
+                    res[fileType]++;
+                    return res;
+                }, {})
+        }
+        console.log(getFileCount(input, fileTypeMapping));
+    </script>
+</body>
+
+</html>

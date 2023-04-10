@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数声明
+        // function 函数名(形参，形参) {
+        //     任意代码
+        // }
+        //调用函数
+        // 函数名(); 函数命名应该用动词命名
+
+        // 每个函数都有return，没有写的，默认return undefined;
+
+        // 函数种类
+        // 执行型  目的 执行
+        // 取值型  目的 取值(return)
+
+
+
+        // 不定量参数
+
+        // function fn() {
+        //     // es5
+        //     // var 参数 of 参数数组（伪数组）
+        //     for (var arg of arguments) {
+        //         console.log(arg);
+        //     }
+        // }
+
+        // // es6
+        // function fn(...args) {
+        //     // args
+        //     // var 参数 of 参数数组（真数组）
+        //     for (var arg of args) {
+        //         console.log(arg);
+        //     }
+        // }
+        // 求数组元素
+        // es5
+        function fn() {
+            for (var arg of arguments) {
+                console.log(arg);
+            }
+        }
+
+        // es6
+        function fn(...args) {
+            for (var arg of args) {
+                console.log(arg);
+            }
+        }
+    </script>
+</body>
+
+</html>

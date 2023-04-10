@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+</head>
+
+<body>
+    <script>
+        var a = 1;
+        var b = 'hello world!';
+        var c = true;
+        var d;
+        var e = null;
+
+        console.log(b - c); //NaN - 1; NaN
+
+        console.log(a + c); // 运算符转化为数字类型 2
+
+        console.log(!!(a - c));  //运算符转化为数字类型0 false
+
+        console.log(!!(d + '')); // 'undefined' true
+
+        console.log(String(a) - String(c)); // '1' - 'true'; 1-NaN  NaN
+
+        console.log(String(a) - String(a)); // 0
+
+        console.log(!!d - !!e); // false false  0-0 0
+
+        console.log(Number(b) + a); // NaN + 1  NaN
+
+    </script>
+</body>
+
+</html>

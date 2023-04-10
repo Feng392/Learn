@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <封装函数>转换数组
+        // 输入
+        const input = {
+            shengjian: '生煎',  // 字段： 值
+            baozi: '灌汤包',
+            jiaozi: '水饺',
+            burger: '汉堡',
+        };
+
+        // 期待输出
+        const output = [
+            {
+                label: '生煎',
+                value: 'shengjian',
+            },
+            {
+                label: '灌汤包',
+                value: 'baozi',
+            },
+            {
+                label: '水饺',
+                value: 'jiaozi',
+            },
+            {
+                label: '汉堡',
+                value: 'burger',
+            },
+        ];
+        // function transform(obj) {
+        //     const arr = [];
+        //     const arr1 = [];
+        //     const output = [];
+        //     // item: {shengjian: '生煎'} ,  // 字段： 值
+        //     // 期待 {label: '生煎',
+        //     //      value: 'shengjian', }
+        //     for (const key in obj) {
+        //         arr.push(key);
+        //         //arr[ shengjian, baozi,...]
+        //         arr1.push(obj[key]);
+        //         // arr1 ['生煎', '灌汤包'...]
+        //     }
+        //     for (let i = 0; i < arr.length; i++) {
+        //         output.push({
+        //             label: arr[i],
+        //             value: arr1[i]
+        //         })
+        //     }
+        //     return output
+        // }
+        // 老师方法1
+        function transform(obj) {
+            const res = [];
+            for (const key in obj) {
+                res.push({
+                    label: obj[key],
+                    value: key,
+                })
+            }
+            return res;
+        }
+        console.log(transform(input));
+        
+        // 方法二
+        function transform(obj) {
+            // Object.keys(obj): ['shengjian', 'baozi',...]
+            return Object.keys(obj).map(key => ({
+                label: obj[key],
+                value: key,
+            }))
+        }
+        console.log(transform(input));
+
+        function transform(obj) {
+            // Object.keys(obj) >>> ['shengjian', 'baozi', 'jiaozi',..]
+            return Object.keys(obj).map(item => ({
+                label: obj[item],
+                value: item,
+            }))
+        }
+        console.log(transform(input));
+    </script>
+</body>
+
+</html>

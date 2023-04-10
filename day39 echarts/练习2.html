@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0b1035;
+        }
+
+        #chart {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chart"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script>
+        // 工单办结率统计
+        const orderTotal = [
+            {
+                type: '人民网',
+                // 受理工单数
+                receive: 100,
+                // 处理工单数
+                deal: 80,
+                // 办结工单数
+                finish: 70,
+            },
+            {
+                type: '中国网',
+                receive: 200,
+                deal: 180,
+                finish: 160,
+            },
+            {
+                type: '新华网',
+                receive: 600,
+                deal: 543,
+                finish: 432,
+            },
+            {
+                type: '微信',
+                receive: 300,
+                deal: 280,
+                finish: 260,
+            },
+            {
+                type: '邮件',
+                receive: 400,
+                deal: 380,
+                finish: 360,
+            },
+        ];
+        const seriesData = orderTotal.map(item => [item.receive, item.deal, item.finish]);
+        // 基于准备好的dom，初始化echarts实例
+        const myChart = echarts.init(document.querySelector('#chart'));
+
+        // 指定图表的配置项和数据
+        const option = {
+            grid: {
+                left: 60,
+                bottom: 60,
+                right: 40,
+            },
+            color: [
+                '#01b3b2', '#3177ff', '#e15962'
+            ],
+
+            xAxis: {
+                type: 'category',
+                data: orderTotal.map(item => item.type),
+                axisTick: {
+                    show: false,
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#08399c',
+                    }
+                },
+                axisLabel: {
+                    color: 'white',
+                    fontSize: 12,
+                },
+            },
+
+            yAxis: {
+                type: 'value',
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#08399c',
+                    }
+                },
+                axisLabel: {
+                    color: 'white',
+                },
+                splitLine: {
+                    lineStyle: {
+                        type: [4, 4],
+                        color: ['#2f3c69'],
+                    },
+                },
+            },
+            series: [
+                {
+                    type: 'bar',
+                    data: orderTotal.map(item => item.receive),
+                    barGap: 0,
+                    barWidth: 30,
+                },
+                {
+                    type: 'bar',
+                    data: orderTotal.map(item => item.deal),
+                    barGap: 0,
+                    barWidth: 30,
+                },
+                {
+                    type: 'bar',
+                    data: orderTotal.map(item => item.finish),
+                    barGap: 0,
+                    barWidth: 30,
+                },
+
+            ],
+        };
+
+        // 使用刚指定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

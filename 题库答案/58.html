@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 找出数组中单词最多的句子
+        const input = [
+            'Alice and bob love program',
+            'I think so too',
+            'This is great thanks very much',
+        ];
+
+        const output = 'this is great thanks very much';
+
+        function getWordCount(sentence) {
+            return sentence.trim().split(' ').filter(item => item).length;
+        }
+        function findMostWordsSentence(input) {
+            input.sort((a, b) => getWordCount(b) - getWordCount(a));
+            return `${input[0]}是单子最多的句子`
+        }
+        console.log(findMostWordsSentence(input));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/day44VUE/hello" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/day44VUE/on-off" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/day44VUE/v-echarts" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/项目/163-music" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/项目/datav-one" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/项目/element-plus-vite-starter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/项目/human-resources-system" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/项目/work/datav-one" vcs="Git" />
+  </component>
+</project>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 依次打印属性名：属性值
+        var info = {
+            name: 'zhangsan',
+            age: 18,
+            tel: 123456789,
+        };
+        for (var key in info) {
+            console.log(`${key}:${info[key]}`);
+        }
+
+        // 生成字符串'name:zhangsan,age:18,tel:123456789'
+
+        var str = '';
+        for (var key in info) {
+            // if (!str) {
+            //     str += `${key}:${info[key]}`;
+            // } else {
+            //     str += `,${key}:${info[key]}`;
+            // }
+            // 三元运算表达
+            str += `${str ? ',' : ''}${key}:${info[key]}`;
+        }
+        console.log(str);
+        // 使用info对象生成如下数组；
+        // [
+        //     ['name', 'zhangsan'],
+        //     ['age', '18'],
+        //     ['tel', '123456789']
+        // ]
+
+        var arr = [];
+        for (var key in info) {
+            arr.push([key, info[key]]);
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

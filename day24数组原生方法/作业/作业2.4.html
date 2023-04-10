@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const data = [
+            {
+                weekIndexType: 'all',
+                classNames: [ // 班级名称列表
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: 'N4503', // 教室id
+                indexes: [2, 3], // 第3, 4节课
+                weekdays: [0], // 星期1
+                teacherName: '张三', // 教师
+                courseName: '概率论与数理统计A', // 课程名称
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: '室外',
+                indexes: [4, 5],
+                weekdays: [1],
+                teacherName: '李四',
+                courseName: '大学体育',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级商务经济学(中英)1班',
+                    '2021级商务经济学(中英)2班',
+                ],
+                classroomId: 'N4419',
+                indexes: [2, 3],
+                weekdays: [2],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级经济与金融(中英)1班',
+                    '2021级经济与金融(中英)2班',
+                ],
+                classroomId: 'N4503',
+                indexes: [0, 1],
+                weekdays: [0],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+            {
+                weekIndexType: 'all',
+                classNames: [
+                    '2021级经济与金融(中英)1班',
+                    '2021级经济与金融(中英)2班',
+                ],
+                classroomId: 'N4320',
+                indexes: [6, 7],
+                weekdays: [1],
+                teacherName: '张三',
+                courseName: '概率论与数理统计A',
+            },
+        ];
+        // 查询是否存在上课时间超过2节的课程
+        // const res = [];
+        // for (const dataItem of data) {
+        //     const indexes = dataItem.indexes;
+        //     res.push(indexes);
+        // }
+        // const condition = res.every(resItem => resItem[1] - resItem[0] > 1);
+        // if (condition) {
+        //     console.log(true);
+        // } else console.log(false);
+
+        const condition = data.some(item => item.indexes.length > 2);
+    </script>
+</body>
+</html>

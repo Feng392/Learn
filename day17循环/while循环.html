@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 语法   -- 一定要让变量逃出循环；
+        // while (保持循环的条件) {
+
+        // }
+
+        // 输入一个东西，直到输入的内容为数字为止
+        // var n;
+        // while (isNaN(n)) {
+        //     n = +prompt('n');
+        // }
+
+        // 打印0-10；
+        // var i = 0;
+        // while (i < 11) {
+        //     console.log(i++);
+        // }
+
+
+        //输入一个数字，直到输入偶数为止；
+        // var n = +prompt('');
+        // while (n % 2) {
+        //     n = +prompt('');
+        // }
+        // console.log(n);
+
+
+        // 输入想不想上课，如果输入的内容为不想，则一直弹窗询问
+        // var n = prompt('想不想上课');
+        // while (n == '不想') {
+        //     n = prompt('想不想上课');
+        // }
+        // console.log(n);
+
+        // 输入用户名和密码，如果用户名和密码都正确，输出成功，否则继续询问
+
+        var username;
+        var password;
+        while (username != 1 || password != 1) {
+            username = prompt('用户名');
+            password = prompt('密码');
+        }
+        console.log('成功');
+    </script>
+</body>
+
+</html>

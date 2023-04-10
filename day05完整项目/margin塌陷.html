@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin塌陷</title>
+    <style>
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: #888;
+            /* overflow: hidden; */
+            /* border-top: 1px dashed transparent; */
+            /* padding-top: 1px; */
+            /* display: inline-block; */
+            position: fixed;
+        }
+
+        
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: #f40;
+            margin-top: 50px;
+            /* position: absolute; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">儿子</div>
+    </div>
+</body>
+
+</html>

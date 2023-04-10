@@ -1,0 +1,40 @@
+.sub-title {
+    color: #787db2;
+    font-size: 12px;
+}
+main .soil {
+    flex: 1;
+    display: flex;
+}
+.soil .data {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+/* 土壤详情内容 */
+.soil .data .content {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+}
+.soil .data .content .item {
+    width: 25%;
+    margin-left: 10px;
+    background-color: rgba(0, 0, 0, .1);
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr;
+    text-align: center;
+}
+.soil .data .content .item i {
+    margin-top: 60%;
+}
+.soil .chart {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+/* 土壤温度/湿度图表 */
+.soil .chart .content {
+    flex: 1;
+}

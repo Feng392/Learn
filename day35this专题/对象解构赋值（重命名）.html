@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const o2 = {
+        //     b: 3,
+        //     c: 4,
+        // }
+
+        // const c = 99;
+        // const {b, c: c1} = o2;
+
+        // 等同于
+        // const b = o2.b;
+        // const c1 = o2.c;
+        console.log(b, c, c1); // 3, 99, 4
+
+        // 解构赋值（默认值）
+        function fn(params) {
+            const {
+                username,
+                // 当password 是undefined的时候，默认值是 '123456';
+                password = '123456', 
+            } = params;
+            console.log(username, password);
+        }
+
+        fn({
+            username: 'zs',
+            password:'456445',
+        });
+
+        // 多重解构
+        const multi = {
+            a: 1,
+            b: {
+                c: 2,
+                d: 4,
+            },
+        }
+
+        const {
+            a,
+            b: {
+                c,
+                d,
+            },
+        } = multi;
+
+        console.log(c, d);  // 2, 4
+        console.log(multi.b); // {c:2, d:4}
+    </script>
+</body>
+</html>

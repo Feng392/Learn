@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 生成对象中所有的值组成的新数组
+        // 如:
+        var students = {
+            张三: 89,
+            李四: 90,
+            王五: 78,
+        };
+        // 输出: [89, 90, 78]
+
+        var arr = [];
+        for (var key in students) {
+            arr.push(students[key]);
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

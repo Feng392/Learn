@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            background-color: #000;
+        }
+        .txt {
+            font-size: 50px;
+            color: #000;
+            text-shadow: -2px -2px 5px red, 2px 2px 4px aqua;
+        }
+        .txt.active {
+            text-shadow: 2px 2px 5px red, -2px -2px 4px aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="txt">hello world!</div>
+    <script>
+        const txt = document.querySelector('.txt');
+        let isActive = false;
+        setInterval(() => {
+            // 属性值拼接 中间要 + 空格
+            txt.setAttribute('class', 'txt ' + (isActive ? '' : 'active'));
+            isActive = !isActive;
+        }, 500);
+    </script>
+</body>
+</html>

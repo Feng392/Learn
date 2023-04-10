@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 封装一个函数, 输入几个对象, 返回合并后的新对象
+        function merge() {
+            var obj = {};
+            for (i = 0; i < arguments.length; i++) {
+                for (var key in arguments[i]) {
+                    obj[key] = arguments[i][key];
+                }
+            }
+            return obj;
+        }
+        // 方法二
+
+        function merge(...objs) {
+            var res = {};
+            for (var obj of objs ) {
+                for (var key in obj) {
+                    res[key] = obj[key];
+                }
+            }
+            return res;
+        }
+        console.log(merge({ a: 1, b: 2 }, { c: 3, d: 4 })); // {a: 1, b: 2, c: 3, d: 4}
+        console.log(merge({ a: 1, b: 2 }, { c: 3, d: 4 }, { e: 5, a: 6 })); // {a: 6, b: 2, c: 3, d: 4, e: 5}
+    </script>
+</body>
+
+</html>

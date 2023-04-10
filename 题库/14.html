@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <对象(映射)&字符串练习>提取身份信息
+        const provinceList = [
+            {
+                name: '北京市',
+                id: 110000,
+            },
+            {
+                name: '天津市',
+                id: 120000,
+            },
+            {
+                name: '河北省',
+                id: 130000,
+            },
+            {
+                name: '山西省',
+                id: 140000,
+            },
+            {
+                name: '内蒙古自治区',
+                id: 150000,
+            },
+        ];
+
+        const input = '张三:11000019980101001X';
+        const output = {
+            name: '张三',
+            province: '北京市',
+            birthday: '1998.1.1',
+        };
+
+        function getProvince(mapping, input) {
+            // 已知mapping，通过 '110000' 得到 '北京市'
+            for (const item of mapping) {
+                if (item.id == input) {
+                    return item.name;
+                }
+            }
+        }
+         // 生日取整
+         function getBirthday(input) {
+            // 用来存储生日
+            let list = [];
+            list[0] = parseInt(input.substring(0, 4));
+            list[1] = parseInt(input.substring(4, 6));
+            list[2] = parseInt(input.substring(6, 8));
+            return list.join('.');
+        }
+        function getUserInfo(input, mapping) {
+            // 期待 arr：['张三'，'由110000确定哪个市', 11000019980101001X.substring(6, 14) ]
+            const arr = input.split(':');
+            // arr:['张三', '11000019980101001X']
+            arr.push(arr[1].substring(6, 14));
+            const output = {};
+            output.name = arr[0];
+            output.province = getProvince(mapping, arr[1].substring(0, 6));
+            output.birthday = getBirthday(arr[2]);
+            console.log(output);
+            return output;
+        }
+        getUserInfo(input, provinceList);
+    </script>
+</body>
+
+</html>

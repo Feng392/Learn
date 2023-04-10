@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 将数组按total值排序
+        const input = [
+            {
+                name: '川哥大碗面',
+                total: 1234,
+            },
+            {
+                name: '贵哥羊肉粉',
+                total: 1511,
+            },
+            {
+                name: '俊哥黄焖鸡',
+                total: 809,
+            },
+        ];
+
+        function sort(input) {
+            // arr.sort((a, b) => a - b); // 升序
+            // arr.sort((a, b) => b - a); // 降序
+            
+            return input.sort((a, b) => a.total - b.total);;
+        }
+        console.log(sort(input));
+    </script>
+</body>
+
+</html>

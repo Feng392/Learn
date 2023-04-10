@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局（定位版）</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        aside {
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100vh;
+            background-color: #f40;
+        }
+
+        aside:nth-of-type(1) {
+            left: 0;
+        }
+
+        aside:nth-of-type(2) {
+            right: 0;
+        }
+
+        /* 方法一 */
+        /* section {
+            position: absolute;
+            top: 0;
+            left: 150px;
+            right: 150px;
+            height: 100vh;
+            background-color: #999;
+        } */
+
+        /* 方法二 */
+        section {
+            position: absolute;
+            top: 0;
+            left: 150px;
+            width: calc(100% - 300px);
+            height: 100vh;
+            background-color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <aside></aside>
+    <section></section>
+    <aside></aside>
+</body>
+
+</html>

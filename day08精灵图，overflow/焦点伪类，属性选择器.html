@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>焦点伪类，属性选择器</title>
+    <style>
+        /* 焦点伪类 */
+        /* 去掉选中时（焦点）的轮廓线 */
+        input:focus {
+            outline: none;
+        }
+
+        /* 属性选择器 */
+        /* 找到带有type属性的input标签 */
+        input[type] {
+            background-color: #f40;
+        }
+
+        /* 找到带有type属性值为text的input标签 */
+        input[type="text"] {
+            background-color: #f40;
+        }
+
+        /* 属性开始值 */
+        /* 找到带有type属性值为aa开头的input标签 */
+        input[type^="aa"] {
+            background-color: #f40;
+        }
+
+        /* 属性结束 */
+        /* 找到带有type属性值为aa结束的input标签 */
+        input[type$="aa"] {
+            background-color: #f40;
+        }
+
+        /* 属性包含 */
+        /* 找到带有type属性值包含aa的input标签 */
+        /* 包含*= */
+    </style>
+</head>
+
+<body>
+    <input type="text">
+</body>
+
+</html>

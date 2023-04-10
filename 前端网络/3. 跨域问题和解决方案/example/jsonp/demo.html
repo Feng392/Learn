@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- http://localhost:9527/jsonp -->
+    <script>
+      var jsonp = (() => {
+        let id = 1;
+        // 生成callback的函数名
+        function generateName() {
+          return `__jsonp_callback_${id++}`;
+        }
+
+        const jsonp = (url, cb) => {
+          const cbname = generateName();
+          window[cbname] = (resp) => {
+            script.remove();
+            cb(resp);
+          };
+          const script = document.createElement('script');
+          script.src = url + `?callback=${cbname}`;
+          document.head.appendChild(script);
+        };
+        return jsonp;
+      })();
+
+      jsonp('http://localhost:9527/jsonp', (resp) => {
+        console.log('resp', resp);
+      });
+      jsonp('http://localhost:9527/jsonp', (resp) => {
+        console.log('resp', resp);
+      });
+      jsonp('http://localhost:9527/jsonp', (resp) => {
+        console.log('resp', resp);
+      });
+    </script>
+  </body>
+</html>

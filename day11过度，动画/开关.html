@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开关</title>
+    <style>
+        .on-off {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: #999;
+            transition: background-color 0.5s ease;
+            /* transition: box-shadow 0.1s linear; */
+        }
+
+        .on-off::before {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            border-radius: 15px;
+            background-color: #fff;
+            transition: margin-left 0.5s ease, width 0.5s ease;
+        }
+
+        .on-off:hover {
+            background-color: #0ff;
+            box-shadow: 0px 0px 5px #999;
+        }
+
+        .on-off:hover::before {
+            margin-left: 60px;
+        }
+
+        /* .on-off:active::before {
+            width: 50px;
+            margin-left: 40px;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="on-off"></div>
+</body>
+
+</html>

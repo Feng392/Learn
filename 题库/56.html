@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <字符串>提取url中的信息
+        function transform(input) {
+            const obj = {};
+            const arr = []
+            // input.split('/').at(-1).split('?')[0];
+            arr.push(input.split('/').at(-1).split('?')[0]);
+            arr.push(input.split('/').at(-1).split('?')[1].split('&')[0]);
+            arr.push(input.split('/').at(-1).split('?')[1].split('&')[1]);
+            obj.name = arr[1].substring(5);
+            obj.id = arr[0];
+            obj.age = arr[2].substring(4);
+            console.log(obj);
+        }
+
+        console.log(transform('xxxx/xxx/xxx/13?name=zhangsan&age=18')); // { name: 'zhangsan', id: 13, age: 18 }
+        console.log(transform('xxxx/xxx/xxx/xx/24?name=lisi&age=10')); // { name: 'lisi', id: 24, age: 10}
+    </script>
+</body>
+
+</html>

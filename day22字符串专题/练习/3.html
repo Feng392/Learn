@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 3. 封装一个函数, 输入时（3600）分（60）秒, 返回秒数
+        // 如: 07:05:45, 返回 25645
+        function getSeconds(time) {
+            // var sum = 0;
+            // var arr = time.split(':');
+            // sum += arr[0] * 3600 + arr[1] * 60 + arr[2];
+            // return +sum;
+
+            // 老师方法
+            // es5
+            var tmp = time.split(':');
+            var hours = tmp[0];
+            var minutes = tmp[1];
+            var seconds = tmp[2];
+
+            // es6 数组解构赋值；
+            var [hours, minutes, seconds] = time.split(':');
+            return hours *3600 + minutes * 60 + seconds * 1;
+        }
+
+        console.log(getSeconds('07:05:45')); // 25645
+        console.log(getSeconds('00:00:00')); // 0
+        console.log(getSeconds('23:59:59')); // 86399
+    </script>
+</body>
+
+</html>

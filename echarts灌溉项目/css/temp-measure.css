@@ -1,0 +1,50 @@
+/*
+    @summary: 气象指标
+*/
+
+main .info-cards .info-card .data .temp-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+main .info-cards .info-card .data .temp-wrapper .temp {
+    margin-right: 16px;
+    font-size: 22px;
+    color: #8b98e5;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+main .info-cards .info-card .data .temp-wrapper .temp .num {
+    color: #fff;
+}
+
+main .info-cards .info-card .data .temp-wrapper .temp .icon {
+    color: #868ecb;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+/* pm2.5 & 湿度 & 光照强度 & 气压 */
+main .info-cards .info-card .data .detail .row {
+    display: flex;
+}
+
+main .info-cards .info-card .data .detail .row .num {
+    margin-right: 16px;
+    font-size: 18px;
+    color: #8b98e5;
+    display: flex;
+    margin: 4px 32px 4px 4px;
+}
+
+main .info-cards .info-card .data .detail .row .num .icon {
+    font-size: 20px;
+    color: #8b98e5;
+}
+
+main .info-cards .info-card .sub-title {
+    color: #787db2;
+    font-size: 12px;
+}

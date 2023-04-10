@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // if
+        var score = +prompt('请输入');
+        if (score >= 90) {
+            console.log('a');
+        } else if (score < 90 && score >= 80 ) {
+            console.log('b');
+        } else if (score < 80 && score >= 70) {
+            console.log('c');
+        } else if (score < 70 && score >= 60) {
+            console.log('d');
+        } else {
+            console.log('e');
+        }
+
+        // switch
+        var score = +prompt('请输入');
+        switch (true) {
+            case score >= 90:
+                console.log('a');
+                break;
+            case score >= 80:
+                console.log('b');   
+                break;
+            case score >= 70:
+                console.log('c');
+                break;
+            case score >= 60:
+                console.log('c');
+                break;
+            default:
+                console.log('e')
+                break;
+        }
+    </script>
+</body>
+</html>

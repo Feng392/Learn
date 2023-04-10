@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background-color: rgba(0, 0, 0, .3);
+            color: darkturquoise;
+        }
+
+        main .circle {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        main .circle .load {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin-right: 2px;
+            width: 2px;
+            height: 4px;
+            background-color: darkturquoise;
+        }
+
+        @keyframes load {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translateY(8px);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translateY(8px);
+            }
+
+        }
+
+        @keyframes load-one {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translateY(8px);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translateY(8px) scale(1.2);
+                background-color: #fff;
+            }
+
+        }
+
+        main .circle .load:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(0deg) translateY(8px);
+            animation: load-one .2s linear infinite;
+        }
+
+        main .circle .load:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(60deg) translateY(8px);
+            animation: load .3s linear infinite;
+        }
+
+        main .circle .load:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(120deg) translateY(8px);
+            animation: load .4s linear infinite;
+        }
+
+        main .circle .load:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(180deg) translateY(8px);
+            animation: load .5s linear infinite;
+        }
+
+        main .circle .load:nth-child(5) {
+            transform: translate(-50%, -50%) rotate(240deg) translateY(8px);
+            animation: load .6s linear infinite;
+        }
+
+        main .circle .load:nth-child(6) {
+            transform: translate(-50%, -50%) rotate(300deg) translateY(8px);
+            animation: load 1s linear infinite;
+        }
+
+        main .circle .load:nth-child(7) {
+            transform: translate(-50%, -50%) rotate(360deg) translateY(8px);
+            animation: load .7s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="circle">
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+        </div>
+        <span>拼命加载中</span>
+    </main>
+</body>
+
+</html>

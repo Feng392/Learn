@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 已知两个等长数组, 将他们合并为一个新对象
+        // 如:
+        var arr1 = ['张三', '李四', '王五'];
+        var arr2 = [89, 90, 78];
+        // 输出: { 张三: 89, 李四: 90, 王五: 78 }
+        var obj = {};
+        // arr1[i] 作为属性名
+        // arr2[i] 作为属性值
+        for (var i = 0; i < arr1.length; i++) {
+            // 属性名为变量用obj[]
+            obj[arr1[i]] = arr2[i];
+        }
+        console.log(obj);
+    </script>
+</body>
+
+</html>

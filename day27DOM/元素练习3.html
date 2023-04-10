@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .label {
+            color: red;
+        }
+
+        .label span {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <!-- <li class="label">
+             zs:
+             <span>18</span>
+         </li>
+         <li class="label">
+             ls:
+             <span>20</span>
+         </li>
+         <li class="label">
+             ww:
+             <span>19</span>
+         </li> -->
+    </ol>
+    <script>
+        // 2. 根据数据创建元素, 并加入到ol元素中
+        const data = [
+            { name: 'zs', age: 18 },
+            { name: 'ls', age: 20 },
+            { name: 'ww', age: 19 },
+        ];
+        // <li class="label">
+        //     zs:
+        //     <span>18</span>
+        // </li>
+        // <li class="label">
+        //     ls:
+        //     <span>20</span>
+        // </li>
+        // <li class="label">
+        //     ww:
+        //     <span>19</span>
+        // </li>
+
+        const ol = document.querySelector('ol');
+        for (const item of data) {
+            const li = document.createElement('li');
+            const span = document.createElement('span')
+            li.setAttribute('class', 'label');
+            li.innerText = `${item.name} : `;
+            span.innerText = item.age;
+            ol.appendChild(li);
+            li.appendChild(span);
+        }
+    </script>
+</body>
+
+</html>

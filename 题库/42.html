@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 将vDOM渲染为真实DOM
+        // 期待的结果: <div id="a" class="b">hello world!</div>
+        const vDOM = {
+            tagName: 'div',
+            attrs: {
+                id: 'a',
+                class: 'b'
+            },
+            content: 'hello world!',
+        };
+        const key = Object.keys(vDOM.attrs);
+        // key [id, class]
+        const value = Object.values(vDOM.attrs)
+        const body = document.querySelector('body');
+        const div = document.createElement(vDOM.tagName);
+        body.appendChild(div);
+        div.setAttribute(key[0], value[0]);
+        div.setAttribute(key[1], value[1]);
+        div.innerText = vDOM.content;
+    </script>
+</body>
+
+</html>

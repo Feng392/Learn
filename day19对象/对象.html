@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 对象
+        // key  value  键值对
+        // 属性名只能是字符串，属性值可以是任意形式的值
+        // 对象是用来描述映射关系的（一一对应的关系）
+        var info = {
+            // key: value,
+            '属性名': '属性值',
+            name: 'zhangsan',
+            age: 18,
+            number: 123456789
+        }
+        // 取对象里面的值俩种方法
+        console.log(info.name);
+        console.log(info['name']);
+
+        // 知道属性名的情况
+        console.log(info.key);
+        // 当属性名为变量时
+        console.log(info[key]);
+
+        // 遍历对象（不常用）
+        var info = {
+            name: 'zhangsan',
+            age: 18,
+            number: 123456789
+        }
+        for (var key in info) {
+            console.log(info[key]);
+        }
+
+        // 增删改查
+        var obj = {
+            age: 18
+        };
+        // 增
+        obj.name = 'zhangsan';
+        obj['name'] = 'lisi';
+        console.log(obj.name);
+        // 删(不常用)
+        delete obj.age;
+        delete obj['age'];
+        // 改，覆盖
+        obj.age = 20;
+        // 查
+        console.log(obj.age);
+        // 当age 为变量时
+        console.log(obj[key]);
+
+
+        // 访问所有字段 Object.keys(对象名)
+        // 访问所有值 Object.values(对象名)
+
+        var info = {
+            name: '张三',
+            age: 18,
+            tel: 13012341234,
+        };
+        console.log(Object.keys(info)); // ['name', 'age', 'tel']
+        console.log(Object.values(info)); // ['张三', 18, 13012341234]
+    </script>
+</body>
+
+</html>

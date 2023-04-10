@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Set 集合： 无顺序，不能重复
+        // Set 可以数组去重(基础数据类型)
+        const arr = [1, 2, 2, 3, 4, 4]
+        const s = new Set(arr);
+        console.log(s); // 是Set实例
+        // 使用技巧
+        function unique(arr) {
+            return Array.from(new Set(arr));
+        }
+
+        // 增
+        s.add(4);
+        // 删
+        s.delete(1);
+        // 没有改的功能
+
+        // 查长度
+        s.size  // 相当于arr.length;
+
+        // 遍历
+        for (const item of s) {
+            // item: s的集合项
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 打印所有的名字组成的新数组
+        var person = {
+            name: 'zs',
+            children: [
+                {
+                    name: 'ls',
+                },
+                // 出现了规律--下面的部分和person一样
+                {
+                    name: 'ww',
+                    children: [
+                        {
+                            name: 'z6',
+                            children: [
+                                {
+                                    name: 'aa',
+                                    children: [
+                                        {
+                                            name: 'cc',
+                                        },
+                                    ],
+                                },
+                                {
+                                    name: 'bb',
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        }
+
+        function getNameList() {
+            var res = [];
+            function log(person) {
+                res.push(person.name);
+                for (var child of person.children || []) {
+                    log(child);
+                }
+            }
+            log(person);
+            return res;
+        }
+        console.log(getNameList(person));
+    </script>
+</body>
+
+</html>

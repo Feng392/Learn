@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <字符串>提取url中的信息
+        function transform(input) {
+            const [path, query] = input.split('?');
+            const res = {
+                id: +path.split('/').at(-1), //13
+            }
+            for (const keyvalue of query.split('&')) {
+                const [key, value] = keyvalue.split('=');
+                res[key] = isNaN(value) ? value : +value;
+            }
+            return res;
+        }
+
+        // reduce
+        function transform(input) {
+            const [path, query] = input.split('?');
+            return query.split('&').reduce((res, item) => {
+                const [key, value] = item.split('=');
+                res[key] = isNaN(value) ? value : +value;
+                return res;
+            }, {
+                id: +path.split('/').at(-1), //13
+            });
+        }
+        console.log(transform('xxxx/xxx/xxx/13?name=zhangsan&age=18')); // { name: 'zhangsan', id: 13, age: 18 }
+        console.log(transform('xxxx/xxx/xxx/xx/24?name=lisi&age=10')); // { name: 'lisi', id: 24, age: 10}
+    </script>
+</body>
+
+</html>

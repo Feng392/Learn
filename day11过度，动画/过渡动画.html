@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡动画</title>
+    <style>
+        /* transition需要添加在元素本身上，过渡动画需要样式改变触发
+        可以制定要产生动画的属性
+        可以调整动画的节奏*/
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #F40;
+            margin: 100px;
+            /*linear线性变化， ease 先快后慢  */
+            /* 拥有动画的属性名(默认是all)  动画时长，动画节奏  动画延迟*/
+            transition: 1s linear;
+            transition: width 1s ease;
+        }
+
+        .box:hover {
+            /* transform: scale(1.5); */
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

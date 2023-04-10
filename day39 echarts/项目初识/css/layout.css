@@ -1,0 +1,155 @@
+body {
+    margin: 0;
+    background-color: #2a305c;
+    color: #fff;
+    padding: 16px;
+}
+
+/* 头部 */
+header {
+    height: 40px;
+    font-size: 24px;
+}
+
+/* 下方主要内容 */
+section {
+    height: calc(100vh - 72px);
+    display: flex;
+}
+
+/* 左侧核心区域 */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 右侧区域 */
+aside {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    outline: 1px solid red;
+}
+
+/* 消息提醒 */
+.msg-tip {
+    flex: 1;
+    background-color: #222;
+}
+
+/* 消息占比 */
+.msg-rate {
+    height: 312px;
+    background-color: #111;
+}
+
+/* 左侧核心区域 >>> 上方信息卡 */
+main .info-cards {
+    height: 140px;
+    display: flex;
+}
+
+/* 左侧核心区域 >>> 上方信息卡 >>> 单卡 */
+main .info-cards .info-card {
+    flex: 1;
+    background-color: #252b59;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+main .info-cards .info-card:nth-child(1) {
+    margin-right: 24px;
+}
+
+main .info-cards .info-card .data {
+    display: flex;
+}
+
+/* 20°C */
+main .info-cards .info-card .data .temp-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+main .info-cards .info-card .data .temp-wrapper .temp {
+    margin-right: 16px;
+    font-size: 22px;
+    color: #8b98e5;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+main .info-cards .info-card .data .temp-wrapper .temp .num {
+    color: #fff;
+}
+
+main .info-cards .info-card .data .temp-wrapper .temp .icon {
+    color: #868ecb;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+/* pm2.5 & 湿度 & 光照强度 & 气压 */
+main .info-cards .info-card .data .detail .row {
+    display: flex;
+}
+
+main .info-cards .info-card .data .detail .row .num {
+    margin-right: 16px;
+    font-size: 18px;
+    color: #8b98e5;
+    display: flex;
+    margin: 4px 32px 4px 4px;
+}
+
+main .info-cards .info-card .data .detail .row .num .icon {
+    color: #868ecb;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+main .info-cards .info-card .sub-title {
+    color: #787db2;
+    font-size: 12px;
+}
+/* 设备 */
+main .info-cards .info-card .equipment {
+    display: flex;
+}
+/* 设备组 */
+main .info-cards .info-card .equipment .equipments {
+    flex: 1;
+    border-right: solid 2px #2e3465;
+}
+main .info-cards .info-card .equipment .equipments .row {
+    display: flex;
+    margin-bottom: 10px;
+}
+main .info-cards .info-card .equipment .equipments .row .left {
+    margin-right: 26px;
+}
+/* 设备状态 */
+main .info-cards .info-card .equipment .state {
+    flex: 1;
+}
+
+
+/* 设备中的图标 */
+main .info-cards .info-card .equipment .equipments .row .icon {
+    color: #868ecb;
+    font-size: 12px;
+    margin: 4px 0 0 6px;
+}
+/* 左侧核心区域 >>> 空气 */
+main .air {
+    flex: 3;
+    background-color: #444;
+}
+
+/* 左侧核心区域 >>> 土壤 */
+main .soil {
+    flex: 3;
+    background-color: #555;
+}

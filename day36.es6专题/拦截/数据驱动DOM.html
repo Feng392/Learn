@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <!-- 虚拟DOM渲染至此 -->
+        <!-- <div class="wrapper">
+            <div class="count">{{ data.count }}</div>
+            <button @click="() => data.count++">+1</button>
+        </div> -->
+    </div>
+
+    <script>
+
+        const data = {
+            count: 999,
+        };
+
+        const vDOM = {
+            // 标签名
+            tagName: 'div',
+            // 属性
+            attrs: {
+                class: 'wrapper',
+            },
+            // 子节点
+            children: [
+                {
+                    tagName: 'div',
+                    attrs: {
+                        class: 'count',
+                    },
+                    getContent() {
+                        // 因为要拿最新的值 所以要用函数
+                        return data.count;
+                    },
+                },
+                {
+                    tagName: 'button',
+                    events: {
+                        click() {
+                            data.count++;
+                        },
+                    },
+                    getContent() {
+                        return '+1';
+                    },
+                },
+            ],
+        };
+
+        // 渲染虚拟DOM
+        function render(vDOM, parentNode) {
+            const el = document.createElement(vDOM.tagName);
+            parentNode.appendChild(el);
+            for (const key in vDOM.attrs) {
+                el.setAttribute(key, vDOM.attrs[key]);
+            }
+            for (const key in vDOM.events || {}) {
+                el.addEventListener(key, vDOM.events[key]);
+            }
+            for (const child of vDOM.children || []) {
+                render(child, el);
+            }
+            if (vDOM.getContent) {
+                el.innerText = vDOM.getContent();
+            }
+        }
+
+        render(vDOM, document.querySelector('#root'));
+
+        // 初始化data
+        function initData(data) {
+            const tmp = { ...data }; // 复制data
+            for (const key in data) {
+                Object.defineProperty(data, key, {
+                    set(newValue) {
+                        // 拦截赋值动作
+                        // 期待重新渲染
+                        // 清空父节点
+                        document.querySelector('#root').innerHTML = '';
+                        render(vDOM, document.querySelector('#root'));
+                        tmp[key] = newValue;
+                    },
+                    get() {
+                        // 拦截取值动作
+                        return tmp[key];
+                    },
+                });
+            }
+            // return data;
+        }
+
+        initData(data);
+
+    </script>
+
+</body>
+</html>

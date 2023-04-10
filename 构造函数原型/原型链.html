@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Grand.prototype.__proto__ = Object,prototype
+        // Object.prototype 是所有对象的最终原型
+        Grand.prototype.lastName = 'Deng';
+        function Grand() {
+            
+        }
+        const grand = new Grand();
+
+        Father.prototype = grand;
+        function Father() {
+            this.name = 'xuming';
+        }
+        const father = new Father();
+
+        Son.prototype = father;
+        function Son() {
+            this.hobbit = 'somke';
+        }
+        const son = new Son();
+
+        console.log(son);
+        console.log(son.name);
+        console.log(son.lastName);
+        console.log(son.toString); // Object.prototype.toString 原型链终端上的toString；
+        console.log(Grand.prototype);
+        console.log(Object.__proto__);
+
+        // 重要: 绝大多数的对象最终都会继承自 Object.prototype;
+        //  因为有特例  Object.create(unll),创建的对象没有原型。
+
+        // 原型链的增删改查
+    </script>
+</body>
+</html>

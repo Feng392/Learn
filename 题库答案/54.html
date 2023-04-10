@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 统计用户数据
+        const input = [
+            {
+                username: 'zhangsan',
+                starCount: 10,
+                content: '嘻嘻嘻',
+            },
+            {
+                username: 'lisi',
+                starCount: 122,
+                content: '嘿嘿',
+            },
+            {
+                username: 'lisi',
+                starCount: 99,
+                content: '呵呵',
+            },
+            {
+                username: 'zhangsan',
+                starCount: 12,
+                content: '哈哈哈',
+            },
+            {
+                username: 'wangwu',
+                starCount: 6,
+                content: '嗯嗯',
+            },
+        ];
+
+        const output = {
+            zhangsan: [
+                {
+                    starCount: 12,
+                    content: '哈哈哈',
+                },
+                {
+                    starCount: 10,
+                    content: '嘻嘻嘻',
+                },
+            ],
+            lisi: [
+                {
+                    starCount: 122,
+                    content: '嘿嘿',
+                },
+                {
+                    starCount: 99,
+                    content: '呵呵',
+                },
+            ],
+            wangwu: [
+                {
+                    starCount: 6,
+                    content: '嗯嗯',
+                },
+            ],
+        };
+
+        function getTotal(input) {
+            return input
+                .sort((a, b) => b.starCount - a.starCount)
+                .reduce((prev, { username, starCount, content }) => {
+                    if (!prev[username]) {
+                        prev[username] = [];
+                    }
+                    prev[username].push({
+                        starCount,
+                        content,
+                    })
+                    return prev;
+                }, {})
+        }
+        console.log(getTotal(input));
+
+        // 普通方法
+        function getTotal(input) {
+            const output = {};
+            input.sort((a, b) => b.starCount - a.starCount)
+            for (const { username, starCount, content } of input) {
+                if (!output[username]) {
+                    output[username] = [];
+                }
+                output[username].push({
+                    starCount,
+                    content,
+                });
+            }
+            return output;
+        }
+        console.log(getTotal(input));
+    </script>
+</body>
+
+</html>

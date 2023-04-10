@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="password">
+    <script>
+        const inp = document.querySelector('input');
+        // 6位数字的银行密码；
+        const reg = /^[0-9]{6}$/;
+        
+        inp.addEventListener('blur', function (e) {
+            if (reg.test(e.target.value)) {
+                alert('验证成功');
+            } else {
+                alert('验证失败');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 根据数据, 完成以下题目
+        const data = [
+            {
+                date: '2019-01-01', // 日期
+                temperature: 10, // 温度
+                unit: 'beijing', // 行政区域
+                weather: 'sunny', // 天气
+                pollution: 31, // 污染指数
+                parentUnit: 'Beijing', // 父行政区域
+            },
+            {
+                date: '2019-01-01',
+                temperature: 11,
+                unit: 'shanghai',
+                weather: 'cloudy',
+                pollution: 30,
+                parentUnit: 'Shanghai',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 12,
+                unit: 'shenzhen',
+                weather: 'sunny',
+                pollution: 39,
+                parentUnit: 'Guangdong',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 13,
+                unit: 'changping',
+                weather: 'cloudy',
+                pollution: 31,
+                parentUnit: 'beijing',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 14,
+                unit: 'fengtai',
+                weather: 'sunny',
+                pollution: 12,
+                parentUnit: 'beijing',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 15,
+                unit: 'haidian',
+                weather: 'cloudy',
+                pollution: 32,
+                parentUnit: 'beijing',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 16,
+                unit: 'jingan',
+                weather: 'sunny',
+                pollution: 41,
+                parentUnit: 'shanghai',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 17,
+                unit: 'xuhui',
+                weather: 'cloudy',
+                pollution: 66,
+                parentUnit: 'shanghai',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 18,
+                unit: 'luohu',
+                weather: 'sunny',
+                pollution: 21,
+                parentUnit: 'shenzhen',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 19,
+                unit: 'nanshan',
+                weather: 'cloudy',
+                pollution: 21,
+                parentUnit: 'shenzhen',
+            },
+            {
+                date: '2019-01-01',
+                temperature: 20,
+                unit: 'baoan',
+                weather: 'sunny',
+                pollution: 32,
+                parentUnit: 'shenzhen',
+            },
+        ];
+        // 1.tiger   整理所有的行政区域
+        // 期望结果:
+        const expect1 = [
+            {
+                unit: 'Beijing',
+                children: [
+                    {
+                        unit: 'beijing',
+                        children: [
+                            {
+                                unit: 'changping',
+                                children: [],
+                            },
+                            {
+                                unit: 'fengtai',
+                                children: [],
+                            },
+                            {
+                                unit: 'haidian',
+                                children: [],
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                unit: 'Shanghai',
+                children: [
+                    {
+                        unit: 'shanghai',
+                        children: [
+                            {
+                                unit: 'jingan',
+                                children: [],
+                            },
+                            {
+                                unit: 'xuhui',
+                                children: [],
+                            },
+                        ],
+                    }
+                ],
+            },
+            {
+                unit: 'Guangdong',
+                children: [
+                    {
+                        unit: 'shenzhen',
+                        children: [
+                            {
+                                unit: 'luohu',
+                                children: [],
+                            },
+                            {
+                                unit: 'nanshan',
+                                children: [],
+                            },
+                            {
+                                unit: 'baoan',
+                                children: [],
+                            },
+                        ],
+                    },
+                ]
+            }
+        ];
+
+        function getChildren(data) {
+            for (let index = 0; index < data.length; index++) {
+                const element = data[index];
+                for (let index2 = 0; index2 < data.length; index2++) {
+                    const element2 = data[index2];
+                    if (element2.unit != element2.parentUnit && element.unit == element2.parentUnit) {
+                        let targe = {
+                            unit: element2.unit,
+                            children: []
+                        };
+                        if (!element.children) {
+                            element.children = [targe];
+                        } else {
+                            element.children.push(targe)
+                        }
+                    }
+                }
+            }
+            let list = data.filter(item => item.children);
+            let reslut = list.map(item => {
+                let list = [...item.children];
+                item.children = [{
+                    unit: item.unit,
+                    children: list
+                }]
+                return {
+                    unit: item.unit,
+                    children: item.children
+                }
+            });
+            return reslut;
+        }
+        console.log(getChildren(data));
+
+        // 2. 统计beijing的所有子行政区域的天气信息, 并按空气质量指数从高到低排序
+        // 期望结果:
+        // const expect2 = [
+        //     {
+        //         unit: 'haidian',
+        //         weather: 'cloudy',
+        //         pollution: 32,
+        //     },
+        //     {
+        //         unit: 'changping',
+        //         weather: 'cloudy',
+        //         pollution: 31,
+        //     },
+        //     {
+        //         unit: 'fengtai',
+        //         weather: 'sunny',
+        //         pollution: 12,
+        //     },
+        // ];
+        function expect2(data) {
+            return data.filter(item => item.parentUnit === 'beijing')
+                .map(item => {
+                    return { 
+                        unit: item.unit,
+                        weather: item.weather, 
+                        pollution: item.pollution}
+                })
+                .sort((a, b) => b.pollution - a.pollution);
+        }
+        console.log(expect2(data));
+
+        // 3. 统计shanghai的所有子行政区域, 并按温度从高到低排序
+        // 期望结果:
+        const expect3 = [
+            'xuhui',
+            'jingan',
+        ];
+
+        function three(data) {
+            return data.filter(item => item.parentUnit === 'shanghai')
+                .sort((a, b) => b.temperature - a.temperature)
+                .map(item => item.unit);
+        }
+        console.log(three(data));
+        // 4.tiger
+        // 纠正beijing, shanghai, shenzhen的温度(temperature)及空气质量指数(pollution), 数值应为所有子行政区域对应字段的平均值(修改原数组)
+        function four(data, city) {
+            const arr = data.filter(item => item.parentUnit === city);
+            let avgTemperature = 0;
+            let avgPollution = 0;
+            const res = arr.reduce((prve, current) => {
+                avgTemperature += current.temperature;
+                avgPollution += current.pollution;
+                // avgTemperature = avgTemperature / arr.length;
+                // avgPollution = avgPollution / arr.length;
+                prve = { avgTemperature, avgPollution };
+                return prve;
+            }, {});
+            res.avgTemperature = avgTemperature / arr.length;
+            res.avgPollution = avgPollution / arr.length;
+            for (const obj of data) {
+                if (obj.unit === city) {
+                    obj.temperature = res.avgTemperature;
+                    obj.temperature = res.avgPollution;
+                }
+            }
+            return data;
+        }
+        four(data, 'beijing');
+        four(data, 'shanghai');
+        console.log(four(data, 'shenzhen'));
+        // function four
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+        .circle {
+            width: 500px;
+            height: 500px;
+            border: 5px solid #000;
+            border-radius: 50%;
+        }
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+         /* 刻度 */
+        .scale {
+            width: 1px;
+            height: 20px;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle center" >
+        <!-- 加入内容 -->
+    </div>
+    <script>
+        function getScale() {
+            const el = document.querySelector('div');
+            for (i = 0; i < 60; i++) {
+                const scale = document.createElement('div');
+                // 添加属性
+                scale.setAttribute('class', 'scale center');
+                scale.setAttribute('style', `transform: translate(-50%, -50%) rotate(${i * 6}deg) translateY(-245px);`);
+                // 追加到父元素
+                el.appendChild(scale);
+            }
+        }
+        getScale();
+    </script>
+</body>
+</html>

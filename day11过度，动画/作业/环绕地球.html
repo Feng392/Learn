@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环绕地球</title>
+    <style>
+        body {
+            background: url("https://img.tukuppt.com/png_preview/00/20/09/zoIBPDQX2M.jpg!/fw/780");
+        }
+
+        /* 以旋转轴为动画 */
+        @keyframes axis {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* 模拟土星的可视度 */
+        @keyframes circle {
+            0% {
+                opacity: 1;
+            }
+
+            37.5% {
+                background-color: #333;
+                opacity: 0.3;
+            }
+
+            50% {
+                background-color: #000;
+                opacity: 0;
+            }
+
+            62.5% {
+                background-color: #333;
+                opacity: 0.3;
+            }
+
+            75% {
+                background-color: #666;
+                opacity: 0.6;
+            }
+
+            87.5% {
+                background-color: #999;
+                opacity: 0.9;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .earth {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #0af;
+        }
+
+        .earth::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-image: url("https://img.tukuppt.com/png_preview/00/05/45/uXSzH6hmuz.jpg!/fw/780");
+            background-size: cover;
+            opacity: 0.9;
+        }
+
+
+        /* 
+            还可以定义一个小圆，圆心和大圆保持一致，然后让他自传，然后再发射。发射的角度就是自传以后的角度 
+            transform: translate(-50%, -50%) rotate(角度) translateY(发射的距离); 
+        */
+
+
+        /* 旋转轴 */
+        .axis {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 30px;
+            /* border: 1px solid #000; */
+            animation: axis 6s linear infinite;
+        }
+
+        /* 土星小圆 */
+        .circle {
+            width: 30px;
+            height: 30px;
+            left: 0;
+            border-radius: 50%;
+            animation: circle 6s linear infinite;
+        }
+
+        /* 土星小圆背景图片 */
+        .circle::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            z-index: -1;
+            background-image: url("https://img.tukuppt.com/png_preview/00/46/27/NVQxOvLDcs.jpg!/fw/780");
+            background-size: contain;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="earth"></div>
+        <div class="axis">
+            <div class="circle"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

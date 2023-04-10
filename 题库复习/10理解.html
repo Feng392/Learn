@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // <对象&字符串练习>字符串转对象
+        const input = 'name=zhangsan&age=18&sex=nan&height=180';
+        const output = {
+            name: 'zhangsan',
+            age: '18', // 这里是字符串的18
+            sex: 'nan',
+            height: '180',
+        };
+
+        // function str2obj(input) {
+        //     const arr =  input.split('&');
+        //     const obj = {};
+        //     for (const item of arr) {
+        //         // item: name=zhangsan
+        //         obj[item.split('=')[0]] = item.split('=')[1];
+        //     }
+        //     return obj;
+        // }
+        // console.log(str2obj(input));
+        // 老师方法
+        function str2obj(input) {
+            const res = {};
+            for (const item of input.split('&')) {
+                const [key, value] = item.split('=');
+                res[key] = value;
+            }
+            return res;
+        }
+        console.log(str2obj(input));
+    </script>
+</body>
+
+</html>

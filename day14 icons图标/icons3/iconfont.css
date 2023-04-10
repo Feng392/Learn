@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3767554 */
+  src: url('iconfont.woff2?t=1668310797306') format('woff2'),
+       url('iconfont.woff?t=1668310797306') format('woff'),
+       url('iconfont.ttf?t=1668310797306') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bluetoothoff:before {
+  content: "\e697";
+}
+
+.icon-bluetoothon:before {
+  content: "\e698";
+}
+
+.icon-camera:before {
+  content: "\e699";
+}
+
+.icon-course:before {
+  content: "\e69a";
+}
+
