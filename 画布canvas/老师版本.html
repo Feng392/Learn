@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      body {
+          margin: 0;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #000;
+      }
+  </style>
+</head>
+<body>
+<canvas></canvas>
+
+  <script>
+
+      // 栅格尺寸
+      const SPEED = 500;
+      const GRID_SIZE = 50;
+      const SNAKE_HEAD_COLOR = 'purple';
+      const SNAKE_BODY_COLOR = 'orange';
+      const FOOD_COLOR = 'red';
+      const MAX_HORIZONTAL_GRID_COUNT = Math.floor(innerWidth / GRID_SIZE);
+      const MAX_VERTICAL_GRID_COUNT = Math.floor(innerHeight / GRID_SIZE);
+
+      const canvas = document.querySelector('canvas');
+      const context = canvas.getContext('2d'); // 上下文  可以理解为画笔
+
+      canvas.width = MAX_HORIZONTAL_GRID_COUNT * GRID_SIZE;
+      canvas.height = MAX_VERTICAL_GRID_COUNT * GRID_SIZE;
+
+      // 绘画阶段 1. 给颜色 2. 画图形
+
+      // 全屏背景颜色
+      function drawBg() {
+          context.fillStyle = '#222';
+          context.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      function createItem([x, y], color) {
+          context.fillStyle = color;
+          context.fillRect(x * GRID_SIZE + 1, y * GRID_SIZE + 1, GRID_SIZE - 2, GRID_SIZE - 2);
+      }
+
+      // 贪吃蛇类
+      class Snake {
+
+          constructor(food, config) {
+              this.food = food;
+          }
+
+          // 私有变量命名 _小驼峰
+          _timer = setTimeout(this.next.bind(this), SPEED);
+
+          direction = 'right';
+          head = [6, 0];
+          body = [
+              [5, 0],
+              [4, 0],
+              [3, 0],
+              [2, 0],
+              [1, 0],
+              [0, 0],
+          ];
+
+          // 接food实例
+          eat() {
+              // 1. 判断吃到没
+              if (!(this.head[0] === this.food.position[0] && this.head[1] === this.food.position[1])) {
+                  return;
+              }
+
+              // 1. 加长蛇身
+              this.body.push(this.tail);
+              // 2. 重新生成食物
+              this.food = new Food();
+              this.food.random([snake.head, ...snake.body]);
+
+          }
+
+          next() {
+              clearTimeout(this.timer);
+
+              // 前置: 清画布
+              context.clearRect(0, 0, canvas.width, canvas.height);
+              // 前置: 补背景
+              drawBg();
+              // 1. 改head / body
+              this.move();
+              // 2. 吃食物
+              this.eat();
+              // 3. 检测碰撞
+              if (this.check()) {
+                  alert('Game over!');
+                  return;
+              }
+              if (this.gg()) {
+                  alert('Good Game!');
+                  return;
+              }
+              // 4. 按照现有的head和body渲染
+              this.render();
+              this.food.render();
+
+              this.timer = setTimeout(this.next.bind(this), SPEED);
+          }
+
+          gg() {
+              return this.body.length > MAX_HORIZONTAL_GRID_COUNT * MAX_VERTICAL_GRID_COUNT / 2;
+          }
+
+          check() {
+              const [x, y] = this.head;
+              // 1. 撞墙
+              const hasHitWall =
+                  // 左侧撞墙
+                  x < 0 ||
+                  // 上
+                  y < 0 ||
+                  // 右
+                  x > MAX_HORIZONTAL_GRID_COUNT - 1 ||
+                  // 下
+                  y > MAX_VERTICAL_GRID_COUNT - 1;
+
+              // 2. 撞自己
+              const hasHitSelf = this.body.some(([bx, by]) => bx === x && by === y);
+
+              return hasHitWall || hasHitSelf;
+
+              // 1. 吃食物
+              // 2. 函数式编程
+              // 3. 打包部署
+
+              // react: redux
+              // 小程序(原生 + uniapp) vue3
+              // svelte / solid.js
+
+              // jquery 10+
+          }
+
+          // 改head / body
+          move() {
+              // 1. 删掉尾巴(最后一项)
+              this.tail = this.body.pop();
+              // 2. 把head原来的位置加在body最前面
+              this.body.unshift(this.head.concat());
+              // 3. 移动head
+              switch (this.direction) {
+                  case 'up':
+                      this.head[1]--;
+                      break;
+                  case 'down':
+                      this.head[1]++;
+                      break;
+                  case 'left':
+                      this.head[0]--;
+                      break;
+                  case 'right':
+                      this.head[0]++;
+                      break;
+
+                  default:
+                      break;
+              }
+
+          }
+
+          // 按照现有的head和body渲染画布
+          render() {
+              createItem(this.head, SNAKE_HEAD_COLOR);
+              this.body.forEach((item) => {
+                  createItem(item, SNAKE_BODY_COLOR);
+              });
+          }
+      }
+
+      class Food1 {
+
+          // 另一种单例
+
+          position = [0, 0];
+
+          check(items) {
+              return items.some(([x, y]) => x === this.position[0] && y === this.position[1]);
+          }
+
+          random(items) {
+              const x = Math.floor(Math.random() * MAX_HORIZONTAL_GRID_COUNT);
+              const y = Math.floor(Math.random() * MAX_VERTICAL_GRID_COUNT);
+              this.position = [x, y];
+
+              if (this.check(items)) {
+                  this.random(items);
+              }
+          }
+
+          render() {
+              createItem(this.position, FOOD_COLOR);
+          }
+      }
+
+      // 单例模式
+      const Food = (() => {
+          let instance = null;
+
+          return function() {
+              if (!instance) {
+                  instance = new Food1();
+              }
+              return instance;
+          };
+      })();
+
+      drawBg();
+
+      const food = new Food();
+      // 贪吃蛇实例
+      const snake = new Snake(food);
+
+      food.random([snake.head, ...snake.body]);
+      food.render();
+
+      snake.render();
+
+      document.addEventListener('keyup', e => {
+
+          switch (e.key) {
+              case 'ArrowUp':
+                  if (snake.direction !== 'down') {
+                      snake.direction = 'up';
+                  }
+                  break;
+              case 'ArrowDown':
+                  if (snake.direction !== 'up') {
+                      snake.direction = 'down';
+                  }
+                  break;
+              case 'ArrowLeft':
+                  if (snake.direction !== 'right') {
+                      snake.direction = 'left';
+                  }
+                  break;
+              case 'ArrowRight':
+                  if (snake.direction !== 'left') {
+                      snake.direction = 'right';
+                  }
+                  break;
+
+              default:
+                  break;
+          }
+
+          snake.next();
+      });
+
+
+      // 1. 装饰者模式
+      // 2. 单例模式
+
+      function Abc() {
+          this.a = 1;
+          this.b = 2;
+          return { name: 'zs' }; // return 优先(只能是对象)
+      }
+
+      const instance = new Abc();
+      const instance1 = new Abc();
+
+      console.log(instance);
+
+
+  </script>
+</body>
+</html>
