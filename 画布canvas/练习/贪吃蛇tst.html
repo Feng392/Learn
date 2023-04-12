@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
   <title>贪吃蛇tst</title>
 </head>
 <style>
@@ -16,17 +16,18 @@
     justify-content: center;
     align-items: center;
   }
+
   canvas {
     border: 2px solid red;
   }
 </style>
 <body>
-  <canvas></canvas>
+<canvas></canvas>
 </body>
 <script>
   let score = 0;
   // 定义栅格大小
-  const  CONST_SIZE = 50;
+  const CONST_SIZE = 50;
   // 定义蛇头的颜色
   const SNAKE_HEAD_COLOR = 'green';
   // 定义蛇身的颜色
@@ -50,9 +51,10 @@
   function renderSnakeItem([x, y], color) {
     // 渲染蛇头
     context.fillStyle = color;
-    context.fillRect(x * CONST_SIZE + 1, y * CONST_SIZE + 1 , CONST_SIZE - 2, CONST_SIZE - 2);
+    context.fillRect(x * CONST_SIZE + 1, y * CONST_SIZE + 1, CONST_SIZE - 2, CONST_SIZE - 2);
   }
-//  创建一个蛇的类
+
+  //  创建一个蛇的类
   class Snake {
     constructor() {
       this.head = [4, 1];
@@ -69,12 +71,12 @@
     render() {
       // 清空画布
       context.clearRect(0, 0, WIDTH, HEIGHT);
-     // 渲染蛇头
+      // 渲染蛇头
       renderSnakeItem(this.head, SNAKE_HEAD_COLOR);
       //  渲染蛇的身体
       this.body.forEach(item => {
-            renderSnakeItem(item, SNAKE_BODY_COLOR);
-        });
+        renderSnakeItem(item, SNAKE_BODY_COLOR);
+      });
     }
 
     // 移动蛇的方法
@@ -110,6 +112,7 @@
       }
     }
   }
+
   // 监听键盘事件
   document.addEventListener('keydown', function (e) {
     switch (e.key) {

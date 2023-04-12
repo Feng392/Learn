@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+</style>
+<script src="./three.min.js"></script>
+<body>
+</body>
+<script>
+
+    // console.log(THREE);
+    // 1. 创建场景 读 sin
+    const scene = new THREE.Scene();
+
+    // 2.创建视角（相机）
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    // 3.创建渲染器
+    const renderer = new THREE.WebGLRenderer();  // 渲染器renderer对象里面有个 renderer.domElement 元素，自动生产的canvas
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // 4.创建几何体
+    // 几何形状
+    // 材质
+    // 网格
+
+    // const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // const material = new THREE.MeshBasicMaterial({color: 0xff4400});
+    // const cube = new THREE.Mesh(geometry, material);
+
+      // 形状缓冲几何体
+
+      const x = 0, y = 0;
+
+      const heartShape = new THREE.Shape();
+
+      heartShape.moveTo(x + 5, y + 5);
+      heartShape.bezierCurveTo(x + 5, y + 5, x + 4, y, x, y);
+      heartShape.bezierCurveTo(x - 6, y, x - 6, y + 7, x - 6, y + 7);
+      heartShape.bezierCurveTo(x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19);
+      heartShape.bezierCurveTo(x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7);
+      heartShape.bezierCurveTo(x + 16, y + 7, x + 16, y, x + 10, y);
+      heartShape.bezierCurveTo(x + 7, y, x + 5, y + 5, x + 5, y + 5);
+
+      const geometry = new THREE.ShapeGeometry(heartShape);
+      const material = new THREE.MeshBasicMaterial({color: 'red' });
+      const mesh = new THREE.Mesh(geometry, material);
+
+    // 5.将几何体添加到场景中
+    // scene.add(cube);
+    scene.add(mesh);
+
+    // 6.设置相机的位置
+    camera.position.z = 100;
+    // camera.position.y = 3;
+    // camera.position.x = 6;
+
+    // 创建一个点光源
+    const light = new THREE.PointLight(0xffffff, 1, 100);
+    light.position.set(50, 50, 50);
+    scene.add(light);
+
+    // 7.渲染
+    
+    // 新语法
+    renderer.setAnimationLoop(Animation);
+
+    // 帧函数
+    function Animation() {
+      mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+</script>
+
+</html>

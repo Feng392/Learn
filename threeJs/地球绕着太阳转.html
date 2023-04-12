@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+</style>
+<script src="./three.min.js"></script>
+
+<body>
+</body>
+<script>
+
+  // 1.创建一个场景
+  const scene = new THREE.Scene();
+
+  // 2.创建一个相机
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+  // 设置相机的位置
+  camera.position.z = 5;
+
+  // 3.创建一个渲染器
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+
+  // 4.创建一个几何体
+  // 几何体
+  // 材质
+  // 网格
+
+  const geometry = new THREE.SphereGeometry(1, 32, 32);
+  const material = new THREE.MeshPhongMaterial({ color: 0xffff00 });
+  const sphere = new THREE.Mesh(geometry, material);
+
+  sphere.position.x = 0;
+  sphere.position.y = 0;
+  sphere.position.z = 0;
+
+  const geometry2 = new THREE.SphereGeometry(0.5, 32, 32);
+  const material2 = new THREE.MeshPhongMaterial({ color: 0x0077be, specular: 0x111111, shininess: 50 });
+  const sphere2 = new THREE.Mesh(geometry2, material2);
+
+  // let alpha = 0;
+  // sphere2.position.x = 2;
+  // sphere2.position.y = 0;
+  // sphere2.position.z = 0;
+
+  const number = 2;
+  sphere2.position.x = number;
+  sphere2.position.y = 0;
+  sphere2.position.z = 0;
+
+  // 5.将几何体添加到场景中
+  scene.add(sphere);
+  scene.add(sphere2);
+
+
+  // 6.创建一个点光源
+  const light = new THREE.PointLight(0xffffff, 0.8);
+  light.position.set(3, 4, 5);
+  light.castShadow = true; // default false
+  scene.add(light);
+
+
+
+  // 7.渲染场景
+  function animate() {
+    requestAnimationFrame(animate);
+    // sphere.rotation.x += 0.01;
+
+    // 让sphere2 围绕sphere转  rotation 旋转角度
+    sphere2.rotation.y += 0.01;
+    sphere2.position.x = number * Math.cos(sphere2.rotation.y);
+    sphere2.position.z = number * Math.sin(sphere2.rotation.y);
+
+    // alpha += .5;
+    // const alphaHu = alpha * Math.PI / 180;
+    // sphere2.rotation.y += 0.01;
+    // sphere2.position.z = Math.sin(alphaHu) * radius;
+    // sphere2.position.x = Math.cos(alphaHu) * radius;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+</Script>
