@@ -1,35 +1,56 @@
-import React from 'react';
+import React, { useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { CompanyState, todoListItem } from "@/store";
 
-// 提供 connect装饰者函数 该函数可以把《页面组件》变成《注入了store数据的页面组件》
-import { useDispatch, useSelector } from 'react-redux';
-// 引入我们之前写好的action函数
-import { StoreState } from '@/store';
-import { getCompanyAction } from '@/store/actions/company';
-//  引入我们之前写好的接口函数
-import * as api from '@/api/company';
-function Page2() {
-  const companyList = useSelector<StoreState, any>(
-    (state) => state.company.companyList
+let counter = 0;
+
+export default function CompanyManage() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const count = useSelector<CompanyState, number>((state) => state.num);
+  const list = useSelector<CompanyState, todoListItem[]>(
+    (state) => state.todolist
   );
   const dispatch = useDispatch();
 
-  // mounted
-  React.useEffect(() => {
-    console.log(123);
+  function add() {
+    dispatch({ type: "加", value: 100 });
+  }
 
-    // 调用接口
-    const action = getCompanyAction({ page: '1', pagesize: '10' });
-    // 调用action
-    dispatch(action as any);
-  }, []);
+  function minus() {
+    dispatch({ type: "减", value: 100 });
+  }
+
+  function addInput() {
+    dispatch({
+      type: "新增",
+      inputValue: { id: counter++, value: inputRef.current!.value },
+    });
+  }
+
+  function delInput(id: number) {
+    dispatch({
+      type: "删除",
+      inputValue: { id, value: inputRef.current!.value },
+    });
+    console.log(inputRef.current);
+    console.log(inputRef);
+  }
+
   return (
     <div>
-      公司管理
-      {companyList.map((item: any) => {
-        return <div key={item.id}>{item.name}</div>;
-      })}
+      <div>{count}</div>
+      <button onClick={add}>加</button>
+      <button onClick={minus}>减</button>
+      <input type="text" ref={inputRef} />
+      <button onClick={addInput}>新增</button>
+      <ul>
+        {list.map((item) => (
+          <li key={item.id}>
+            {item.value}
+            <button onClick={() => delInput(item.id)}>删除</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
-
-export default Page2;

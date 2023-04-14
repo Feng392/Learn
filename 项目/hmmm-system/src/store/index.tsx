@@ -1,21 +1,57 @@
-import {
-  legacy_createStore, // create_store / createStore
-  combineReducers,
-  applyMiddleware,
-  CombinedState,
-} from "redux";
-import thunk from "redux-thunk";
-import company, { CompanyState } from "./reducers/company";
+import { legacy_createStore } from "redux";
+import type { Action } from "redux";
 
-const reducers = {
-  company,
+export interface todoListItem {
+  id: number;
+  value: string;
+}
+
+export interface CompanyState {
+  num: number;
+  todolist: todoListItem[];
+}
+
+interface InputValueType {
+  id: number;
+  value: string;
+}
+
+interface CompanyAction extends Action {
+  type: "加" | "减" | "新增" | "删除";
+  value: number;
+  inputValue: InputValueType;
+}
+
+const initState: CompanyState = {
+  num: 0,
+  todolist: [],
 };
 
-export type StoreState = CombinedState<{
-  company: CompanyState;
-}>;
-// 合并reducer
-const rootReducer = combineReducers(reducers);
+// reducer: 用来处理state的 (通过描述，返回新的 state)
+// state: 旧的state
+// action: 描述, 用来描述要做什么
+function reducer(state = initState, action: CompanyAction): CompanyState {
+  // 不同的情况下，返回不同的state
+  switch (action.type) {
+  case "加":
+    return { ...state, num: state.num + action.value };
+  case "减":
+    return { ...state, num: state.num - action.value };
+  case "新增":
+    return {
+      ...state,
+      todolist: [...state.todolist, action.inputValue],
+    };
+  case "删除":
+    return {
+      ...state,
+      todolist: state.todolist.filter(
+        (item) => item.id !== action.inputValue.id
+      ),
+    };
+  default:
+    return state;
+  }
+}
 
-// 用合并好的reducer创建总store并导出
-export default legacy_createStore(rootReducer, applyMiddleware(thunk));
+export default legacy_createStore(reducer);

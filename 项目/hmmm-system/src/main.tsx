@@ -8,17 +8,12 @@ import zhCN from "antd/locale/zh_CN";
 import { ConfigProvider } from "antd";
 
 import { Provider } from "react-redux"; // 这里
-import store from "./store";
-import Company from "@/views/layout/views/company-manage"; // 这里
+import store from "./store"; // 这里
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <ConfigProvider locale={zhCN}>
-    <RouterProvider router={router} />
-    {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-    <Provider store={store}>
-      <Company />
-      {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-    </Provider>
-    // 这里
-  </ConfigProvider>
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <Provider store={store}>
+    <ConfigProvider locale={zhCN}>
+      <RouterProvider router={router} />
+    </ConfigProvider>
+  </Provider>
 );
