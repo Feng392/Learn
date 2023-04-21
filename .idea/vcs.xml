@@ -9,6 +9,5 @@
     <mapping directory="$PROJECT_DIR$/项目/datav-one" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/项目/element-plus-vite-starter" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/项目/human-resources-system" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/项目/work/datav-one" vcs="Git" />
   </component>
 </project>

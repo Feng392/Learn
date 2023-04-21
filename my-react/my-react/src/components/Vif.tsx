@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 export default class Vif extends React.Component {
-  state= {
-    isShow: true
+  state = {
+    isShow: true,
   };
   // getElement() {
-  //   if (this.state.isShow) {
+  //   if (this.store.isShow) {
   //     return <div>hello</div>
   //   } else {
   //     return null
@@ -13,20 +13,19 @@ export default class Vif extends React.Component {
   // }
   toggle() {
     this.setState({
-        isShow: !this.state.isShow
-    })
+      isShow: !this.state.isShow,
+    });
   }
+
   render() {
     return (
-        <div>
-          {/*{ this.getElement() }*/}
-          {this.state.isShow && <div>hello</div> }
-          <button
-              onClick={ this.toggle.bind(this) }
-          >
-            {this.state.isShow ? '隐藏' : '显示'}
-          </button>
-        </div>
-    )
+      <div>
+        {/*{ this.getElement() }*/}
+        {this.state.isShow && <div>hello</div>}
+        <button onClick={this.toggle.bind(this)}>
+          {this.state.isShow ? "隐藏" : "显示"}
+        </button>
+      </div>
+    );
   }
 }

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "hello": "../../components/hello/index",
+    "stepper" : "../../components/stepper/index"
+  }
+}

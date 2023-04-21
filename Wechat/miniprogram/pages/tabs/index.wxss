@@ -1,0 +1,26 @@
+/* pages/tabs/index.wxss */
+.box{
+  margin-top: 20px;
+  outline: red 1px solid;
+}
+.text {
+  margin-bottom: 10px;
+  background-color: #fafbfc;
+  color: #000;
+}
+.tabs {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+}
+.tabs view {
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #aaa;
+}
+.tabs view.highlight {
+  background-color: #1677ff;
+  color: #fff;
+}

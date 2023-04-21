@@ -1,0 +1,12 @@
+<!--components/stepper/index.wxml-->
+<view class="main">
+  <view bindtap="onSubtract" class="btn">
+    -
+  </view>
+  <view class="btn">
+    {{value}}
+  </view>
+  <view bindtap="onAdd" class="btn">
+    +
+  </view>
+</view>

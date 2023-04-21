@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="module">
+
+    import axios from './axios.js';
+
+    // 请求拦截
+    axios.interceptors.request.use((conf) => {
+      return {
+        ...conf,
+        headers: {
+          ...conf.headers,
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwOCIsImlhdCI6MTY4MTg4OTQyMywiZXhwIjoxNjgyMDYyMjIzfQ.KgWEDM3VgtaVvACZIbwlWvZj9K-auruosTo0pB1cDNI'
+        },
+      };
+    });
+
+    axios.interceptors.response.use(
+      // 接res 返回新res
+      res => ({
+        ...res,
+        abc: 123,
+      }),
+      // 接err  返回新Promise.reject(err)
+      err => {
+        // 遇到401跳转
+        switch (err.status) {
+          case 401:
+            location.href = 'http://127.0.0.1:5500/%E7%BB%83%E4%B9%A0/%E5%B0%81%E8%A3%85%E6%8B%A6%E6%88%AA%E5%99%A8/login.html';
+            break;
+
+          default:
+            break;
+        }
+        return err;
+      },
+    );
+
+    const url = 'https://consult-api.itheima.net/patient/home/knowledge?type=recommend&current=1&pageSize=10';
+
+    // 写法1
+    // axios({
+    //   url,
+    //   method: 'get',
+    // })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.error(err);
+    //   });
+
+    // 写法2
+    axios.get(url);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+/* components/hello/index.wxss */
+.box {
+  outline: red 1px solid;
+}

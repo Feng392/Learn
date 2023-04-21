@@ -1,0 +1,1 @@
+<view><view>{{a}}</view><button bindtap="{{b}}">加</button><view bindtap="{{c}}">主页</view><navigator url="/pages/login/index">登录</navigator></view>

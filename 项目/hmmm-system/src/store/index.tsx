@@ -27,8 +27,8 @@ const initState: CompanyState = {
   todolist: [],
 };
 
-// reducer: 用来处理state的 (通过描述，返回新的 state)
-// state: 旧的state
+// reducer: 用来处理state的 (通过描述，返回新的 store)
+// store: 旧的state
 // action: 描述, 用来描述要做什么
 function reducer(state = initState, action: CompanyAction): CompanyState {
   // 不同的情况下，返回不同的state

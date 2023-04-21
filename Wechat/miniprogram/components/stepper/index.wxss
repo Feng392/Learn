@@ -1,0 +1,12 @@
+/* components/stepper/index.wxss */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: red 1px solid;
+}
+.btn {
+  padding: 10px;
+  margin: 0 20px;
+  background-color: #aaa;
+}

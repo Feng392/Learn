@@ -1,0 +1,24 @@
+<!--pages/tabs/index.wxml-->
+<text>CapsuleTabs 胶囊选项卡</text>
+
+<view class="box">
+  <view class="text">
+      基础用法
+  </view>
+  <view class="tabs">
+    <view 
+      wx:for="{{tabList}}"
+      wx:key="index"
+      data-index="{{index}}"
+      bindtap="onClick"
+      class="{{ courrentIndex === index ? 'highlight' : ''}}"
+    >
+      {{item}}
+    </view>
+  </view>
+  <view class="content">
+    XXX
+   {{courrentItem}}
+  </view>
+</view>
+

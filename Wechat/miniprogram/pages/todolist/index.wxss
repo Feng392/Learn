@@ -1,0 +1,4 @@
+/* pages/todolist/index.wxss */
+.input {
+  outline: red 1px solid;
+}

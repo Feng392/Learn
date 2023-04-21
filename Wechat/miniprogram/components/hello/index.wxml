@@ -1,0 +1,7 @@
+<!--components/hello/index.wxml-->
+<view class="box">
+  这是hellow组件
+  <slot name="before"></slot>
+  <slot></slot>
+  <slot name="after"></slot>
+</view>

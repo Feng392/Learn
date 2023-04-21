@@ -1,0 +1,22 @@
+<!--pages/todolist/index.wxml-->
+<text>todolist</text>
+<input 
+    value="{{inputValue}}"
+    bindinput='bindKeyInput'
+    type="text" 
+    class="input" 
+  />
+<button bindtap="add">新增</button>
+
+<view 
+  wx:for="{{list}}" 
+  wx:key="index"
+>
+  {{item}}
+  <button 
+    bindtap="deldete"
+    data-index="{{index}}"
+  >
+    删除
+  </button>
+</view>

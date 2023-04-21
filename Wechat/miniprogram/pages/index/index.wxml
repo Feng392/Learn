@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    {{counter}}
+  </view>
+  <button bindtap='onAddCounter'>加</button>
+  <navigator url="../todolist/index">跳转到todolist</navigator>
+</view>
+<hello name="zhangsan" bindabc="onAbc">
+  <view slot="before">before</view>
+  <view>
+    这是组件默认插槽
+    {{counter}}
+  </view>
+  <view slot='after'>after插槽</view>
+</hello>
+
+<stepper
+  value="{{stepperValue}}"
+  step="1"
+  bindchange="onChange"
+>
+</stepper>

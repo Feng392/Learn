@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/index",
+    "pages/home/index",
+    "pages/article/article",
+    "pages/user/user",
+    "pages/notify/notify",
+    "封装wxios/uinAxios",
+    "unit/axios"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "selectedColor": "#16c2a3",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "/static/shouye09.png",
+        "selectedIconPath": "/static/首页09.png"
+      },
+      {
+        "pagePath": "pages/article/article",
+        "text": "健康百科",
+        "iconPath": "/static/zhishiku12.png",
+        "selectedIconPath": "/static/知识库12.png"
+      },
+      {
+        "pagePath": "pages/notify/notify",
+        "text": "消息中心",
+        "iconPath": "/static/gonggao15.png",
+        "selectedIconPath": "/static/公告15.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "/static/wode15.png",
+        "selectedIconPath": "/static/我的15.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
