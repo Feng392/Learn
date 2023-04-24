@@ -9,8 +9,6 @@ if (!Math) {
   "./pages/article/article.js";
   "./pages/user/user.js";
   "./pages/notify/notify.js";
-  "./封装wxios/uinAxios.js";
-  "./unit/axios.js";
 }
 const _sfc_main = {
   onLaunch: function() {

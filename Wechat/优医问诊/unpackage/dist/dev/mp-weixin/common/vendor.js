@@ -5316,9 +5316,9 @@ function setTemplateRef({ r, f }, refValue, setupState) {
   if (isFunction(r)) {
     r(refValue, {});
   } else {
-    const _isString = isString(r);
+    const _isString2 = isString(r);
     const _isRef = isRef(r);
-    if (_isString || _isRef) {
+    if (_isString2 || _isRef) {
       if (f) {
         if (!_isRef) {
           return;
@@ -5334,7 +5334,7 @@ function setTemplateRef({ r, f }, refValue, setupState) {
           }
           onBeforeUnmount(() => remove(existing, refValue), refValue.$);
         }
-      } else if (_isString) {
+      } else if (_isString2) {
         if (hasOwn(setupState, r)) {
           setupState[r] = refValue;
         }
@@ -7304,12 +7304,271 @@ This will fail in production.`);
   useStore.$id = id;
   return useStore;
 }
+function _isPlaceholder(a) {
+  return a != null && typeof a === "object" && a["@@functional/placeholder"] === true;
+}
+function _curry1(fn) {
+  return function f1(a) {
+    if (arguments.length === 0 || _isPlaceholder(a)) {
+      return f1;
+    } else {
+      return fn.apply(this, arguments);
+    }
+  };
+}
+function _curry2(fn) {
+  return function f2(a, b) {
+    switch (arguments.length) {
+      case 0:
+        return f2;
+      case 1:
+        return _isPlaceholder(a) ? f2 : _curry1(function(_b) {
+          return fn(a, _b);
+        });
+      default:
+        return _isPlaceholder(a) && _isPlaceholder(b) ? f2 : _isPlaceholder(a) ? _curry1(function(_a2) {
+          return fn(_a2, b);
+        }) : _isPlaceholder(b) ? _curry1(function(_b) {
+          return fn(a, _b);
+        }) : fn(a, b);
+    }
+  };
+}
+function _arity(n, fn) {
+  switch (n) {
+    case 0:
+      return function() {
+        return fn.apply(this, arguments);
+      };
+    case 1:
+      return function(a0) {
+        return fn.apply(this, arguments);
+      };
+    case 2:
+      return function(a0, a1) {
+        return fn.apply(this, arguments);
+      };
+    case 3:
+      return function(a0, a1, a2) {
+        return fn.apply(this, arguments);
+      };
+    case 4:
+      return function(a0, a1, a2, a3) {
+        return fn.apply(this, arguments);
+      };
+    case 5:
+      return function(a0, a1, a2, a3, a4) {
+        return fn.apply(this, arguments);
+      };
+    case 6:
+      return function(a0, a1, a2, a3, a4, a5) {
+        return fn.apply(this, arguments);
+      };
+    case 7:
+      return function(a0, a1, a2, a3, a4, a5, a6) {
+        return fn.apply(this, arguments);
+      };
+    case 8:
+      return function(a0, a1, a2, a3, a4, a5, a6, a7) {
+        return fn.apply(this, arguments);
+      };
+    case 9:
+      return function(a0, a1, a2, a3, a4, a5, a6, a7, a8) {
+        return fn.apply(this, arguments);
+      };
+    case 10:
+      return function(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
+        return fn.apply(this, arguments);
+      };
+    default:
+      throw new Error("First argument to _arity must be a non-negative integer no greater than ten");
+  }
+}
+function _curry3(fn) {
+  return function f3(a, b, c) {
+    switch (arguments.length) {
+      case 0:
+        return f3;
+      case 1:
+        return _isPlaceholder(a) ? f3 : _curry2(function(_b, _c) {
+          return fn(a, _b, _c);
+        });
+      case 2:
+        return _isPlaceholder(a) && _isPlaceholder(b) ? f3 : _isPlaceholder(a) ? _curry2(function(_a2, _c) {
+          return fn(_a2, b, _c);
+        }) : _isPlaceholder(b) ? _curry2(function(_b, _c) {
+          return fn(a, _b, _c);
+        }) : _curry1(function(_c) {
+          return fn(a, b, _c);
+        });
+      default:
+        return _isPlaceholder(a) && _isPlaceholder(b) && _isPlaceholder(c) ? f3 : _isPlaceholder(a) && _isPlaceholder(b) ? _curry2(function(_a2, _b) {
+          return fn(_a2, _b, c);
+        }) : _isPlaceholder(a) && _isPlaceholder(c) ? _curry2(function(_a2, _c) {
+          return fn(_a2, b, _c);
+        }) : _isPlaceholder(b) && _isPlaceholder(c) ? _curry2(function(_b, _c) {
+          return fn(a, _b, _c);
+        }) : _isPlaceholder(a) ? _curry1(function(_a2) {
+          return fn(_a2, b, c);
+        }) : _isPlaceholder(b) ? _curry1(function(_b) {
+          return fn(a, _b, c);
+        }) : _isPlaceholder(c) ? _curry1(function(_c) {
+          return fn(a, b, _c);
+        }) : fn(a, b, c);
+    }
+  };
+}
+const _isArray = Array.isArray || function _isArray2(val) {
+  return val != null && val.length >= 0 && Object.prototype.toString.call(val) === "[object Array]";
+};
+function _isString(x) {
+  return Object.prototype.toString.call(x) === "[object String]";
+}
+var _isArrayLike = /* @__PURE__ */ _curry1(function isArrayLike(x) {
+  if (_isArray(x)) {
+    return true;
+  }
+  if (!x) {
+    return false;
+  }
+  if (typeof x !== "object") {
+    return false;
+  }
+  if (_isString(x)) {
+    return false;
+  }
+  if (x.length === 0) {
+    return true;
+  }
+  if (x.length > 0) {
+    return x.hasOwnProperty(0) && x.hasOwnProperty(x.length - 1);
+  }
+  return false;
+});
+const _isArrayLike$1 = _isArrayLike;
+var symIterator = typeof Symbol !== "undefined" ? Symbol.iterator : "@@iterator";
+function _createReduce(arrayReduce, methodReduce, iterableReduce) {
+  return function _reduce(xf, acc, list) {
+    if (_isArrayLike$1(list)) {
+      return arrayReduce(xf, acc, list);
+    }
+    if (list == null) {
+      return acc;
+    }
+    if (typeof list["fantasy-land/reduce"] === "function") {
+      return methodReduce(xf, acc, list, "fantasy-land/reduce");
+    }
+    if (list[symIterator] != null) {
+      return iterableReduce(xf, acc, list[symIterator]());
+    }
+    if (typeof list.next === "function") {
+      return iterableReduce(xf, acc, list);
+    }
+    if (typeof list.reduce === "function") {
+      return methodReduce(xf, acc, list, "reduce");
+    }
+    throw new TypeError("reduce: list must be array or iterable");
+  };
+}
+function _xArrayReduce(xf, acc, list) {
+  var idx = 0;
+  var len = list.length;
+  while (idx < len) {
+    acc = xf["@@transducer/step"](acc, list[idx]);
+    if (acc && acc["@@transducer/reduced"]) {
+      acc = acc["@@transducer/value"];
+      break;
+    }
+    idx += 1;
+  }
+  return xf["@@transducer/result"](acc);
+}
+var bind = /* @__PURE__ */ _curry2(function bind2(fn, thisObj) {
+  return _arity(fn.length, function() {
+    return fn.apply(thisObj, arguments);
+  });
+});
+const bind$1 = bind;
+function _xIterableReduce(xf, acc, iter) {
+  var step = iter.next();
+  while (!step.done) {
+    acc = xf["@@transducer/step"](acc, step.value);
+    if (acc && acc["@@transducer/reduced"]) {
+      acc = acc["@@transducer/value"];
+      break;
+    }
+    step = iter.next();
+  }
+  return xf["@@transducer/result"](acc);
+}
+function _xMethodReduce(xf, acc, obj, methodName) {
+  return xf["@@transducer/result"](obj[methodName](bind$1(xf["@@transducer/step"], xf), acc));
+}
+var _xReduce = /* @__PURE__ */ _createReduce(_xArrayReduce, _xMethodReduce, _xIterableReduce);
+const _xReduce$1 = _xReduce;
+var XWrap = /* @__PURE__ */ function() {
+  function XWrap2(fn) {
+    this.f = fn;
+  }
+  XWrap2.prototype["@@transducer/init"] = function() {
+    throw new Error("init not implemented on XWrap");
+  };
+  XWrap2.prototype["@@transducer/result"] = function(acc) {
+    return acc;
+  };
+  XWrap2.prototype["@@transducer/step"] = function(acc, x) {
+    return this.f(acc, x);
+  };
+  return XWrap2;
+}();
+function _xwrap(fn) {
+  return new XWrap(fn);
+}
+var reduce = /* @__PURE__ */ _curry3(function(xf, acc, list) {
+  return _xReduce$1(typeof xf === "function" ? _xwrap(xf) : xf, acc, list);
+});
+const reduce$1 = reduce;
+function _pipe(f, g) {
+  return function() {
+    return g.call(this, f.apply(this, arguments));
+  };
+}
+function _checkForMethod(methodname, fn) {
+  return function() {
+    var length = arguments.length;
+    if (length === 0) {
+      return fn();
+    }
+    var obj = arguments[length - 1];
+    return _isArray(obj) || typeof obj[methodname] !== "function" ? fn.apply(this, arguments) : obj[methodname].apply(obj, Array.prototype.slice.call(arguments, 0, length - 1));
+  };
+}
+var slice = /* @__PURE__ */ _curry3(
+  /* @__PURE__ */ _checkForMethod("slice", function slice2(fromIndex, toIndex, list) {
+    return Array.prototype.slice.call(list, fromIndex, toIndex);
+  })
+);
+const slice$1 = slice;
+var tail = /* @__PURE__ */ _curry1(
+  /* @__PURE__ */ _checkForMethod(
+    "tail",
+    /* @__PURE__ */ slice$1(1, Infinity)
+  )
+);
+const tail$1 = tail;
+function pipe() {
+  if (arguments.length === 0) {
+    throw new Error("pipe requires at least one argument");
+  }
+  return _arity(arguments[0].length, reduce$1(_pipe, arguments[0], tail$1(arguments)));
+}
 exports._export_sfc = _export_sfc;
 exports.createPinia = createPinia;
 exports.createSSRApp = createSSRApp;
 exports.defineStore = defineStore;
 exports.index = index;
 exports.o = o;
+exports.pipe = pipe;
 exports.ref = ref;
 exports.t = t;
 exports.unref = unref;

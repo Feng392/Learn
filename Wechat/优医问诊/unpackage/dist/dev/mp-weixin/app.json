@@ -5,9 +5,7 @@
     "pages/home/index",
     "pages/article/article",
     "pages/user/user",
-    "pages/notify/notify",
-    "封装wxios/uinAxios",
-    "unit/axios"
+    "pages/notify/notify"
   ],
   "window": {
     "navigationBarTextStyle": "black",

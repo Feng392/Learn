@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  function Snake(name) {
+    this.name = name;
+    // 这个函数每个实例对象都会创建一次,严重影响性能
+    // this.eat = function() {
+    //   console.log('吃');
+    // }
+  }
+
+  // 写在类或者构造函数的原型上的方法，会被所有实例对象共享
+  Snake.prototype.eat = function () {
+    console.log('吃');
+  }
+  Snake.prototype.abc = 123;
+  const s1 = new Snake('one');
+  const s2 = new Snake('two');
+  console.log(s2.abc);
+  // 构造函数或者类有一个prototype属性，这个属性指向一个对象，这个对象就是原型对象
+  // 实例对象有一个__proto__属性，这个属性指向原型对象 === 构造函数或者类的prototype
+  // 原型对象有一个constructor(建造者,构造师)属性，这个属性指向构造函数或者类
+  console.log(s1.__proto__ === Snake.prototype);
+  console.log(Snake.__proto__ === Function.prototype);
+  console.log(s1.constructor); // Snake
+  console.log([].constructor); // Array
+  console.log({}.constructor); // Object
+</script>
+
+</html>

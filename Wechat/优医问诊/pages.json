@@ -43,23 +43,23 @@
 			{
 				"navigationBarTitleText": "消息中心"
 			}
-		},
-		{
-			"path": "封装wxios/uinAxios",
-			"style":
-			{
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "unit/axios",
-			"style":
-			{
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
 		}
+		// {
+		// 	"path": "封装wxios/uinAxios",
+		// 	"style":
+		// 	{
+		// 		"navigationBarTitleText": "",
+		// 		"enablePullDownRefresh": false
+		// 	}
+		// },
+		// {
+		// 	"path": "/",
+		// 	"style":
+		// 	{
+		// 		"navigationBarTitleText": "",
+		// 		"enablePullDownRefresh": false
+		// 	}
+		// }
 	],
 	"tabBar":
 	{

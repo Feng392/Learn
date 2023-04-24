@@ -1,1 +1,1 @@
-<view class="login"><view class="header"><view>返回</view><view class="register">注册</view></view><button bindtap="{{a}}">登录</button></view>
+<view class="login"><view class="header"><view>返回</view><view class="register">注册</view></view><button bindtap="{{a}}">登录</button><button open-type="getUserInfo" bindgetuserinfo="{{b}}">授权</button><button type="default" bindtap="{{c}}">微信-登录</button><button type="default" bindtap="{{d}}">创建-订单</button></view>

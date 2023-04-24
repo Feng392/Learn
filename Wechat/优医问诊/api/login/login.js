@@ -1,9 +1,9 @@
-import axios from "@/unit/axios.js"
+import req from "@/utils/req.js"
 export function onLogin(data)
 {
-	return axios(
+	return req(
 	{
-		url: 'https://consult-api.itheima.net/login/password',
+		url: '/login/password',
 		method: 'post',
 		data,
 	})

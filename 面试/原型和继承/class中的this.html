@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+  class Animal {
+    constructor(name) {
+      this.name = name;
+    }
+    // 静态方法
+    static getNameLenght() {
+      console.log(this);
+    }
+    static getNameLenght1 = () => {
+      console.log(this);
+    }
+    move() {
+      console.log('正在移动');
+    }
+    eat() {
+      console.log('正在吃');
+    }
+  }
+
+  const a = new Animal('小a');
+
+  Animal.getNameLenght1.call(a); // 箭头函数不能换绑
+
+  Animal.getNameLenght.call(a);  // 普通函数换绑成功，this指向a 
+
+</script>
+
+</html>

@@ -4,6 +4,9 @@
 	</div>
 </template>
 
-<script setup></script>
+<script setup>
+	import * as api from '@/api/user/user.js'
+	api.getUser();
+</script>
 
 <style lang="less" scoped></style>
