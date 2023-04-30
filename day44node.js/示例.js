@@ -2,8 +2,8 @@
   // 输入前端的参数
   // 输出后端的结果
   // express框架  还有一种框架是 koa框架
-  const express = require('express');
-
+  const express = require('express'); // 引入express框架
+  
   const server = express();
   // 服务器监听
   server.get('/', (req, res) => {

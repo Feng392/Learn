@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #0a0a0a;
+    }
+
+    .container {
+        background-color: #aaa;
+    }
+
+    .header {
+        fill: #f40;
+    }
+</style>
+<body>
+<svg class="container">
+</svg>
+</body>
+<script>
+    // 栅格大小
+    const GRID_SIZE = 50;
+    // 栅格数量
+    const WIDTH_COUNT = Math.floor(innerWidth / GRID_SIZE);
+    const HEIGHT_COUNT = Math.floor(innerHeight / GRID_SIZE);
+    document.querySelector('.container').setAttribute('width', WIDTH_COUNT * GRID_SIZE);
+    document.querySelector('.container').setAttribute('height', HEIGHT_COUNT * GRID_SIZE);
+
+    //     创建蛇类
+    class Snake {
+        head = {x: 3, y: 1};
+        body = [
+            {x: 2, y: 1},
+            {x: 1, y: 1},
+            {x: 0, y: 1},
+        ];
+        direction = 'right';
+
+        render() {
+            const headEL = document.querySelector('.head') || document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            headEL.setAttribute('x', this.head.x * GRID_SIZE);
+            headEL.setAttribute('y', this.head.y * GRID_SIZE);
+            headEL.setAttribute('width', GRID_SIZE);
+            headEL.setAttribute('height', GRID_SIZE);
+            headEL.setAttribute('class', 'header');
+            document.querySelector('.container').appendChild(headEL);
+        }
+
+        move() {
+            switch (this.direction) {
+                case "right":
+                    this.head.x++;
+                    break;
+                default:
+                    break;
+            }
+            // 清除上一次的渲染
+            document.querySelector('.container').innerHTML = '';
+            // 重新渲染
+            this.render();
+        }
+    }
+
+    const snake = new Snake();
+    setInterval(() => {
+        snake.move();
+    }, 1000)
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      body {
+          margin: 0;
+      }
+
+      #container {
+          width: 100%;
+          height: 100vh;
+      }
+  </style>
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+<script>
+    window._AMapSecurityConfig = {
+        securityJsCode: "495775757307f7a8194a0c4635b6624f",
+    }
+</script>
+<script src="https://webapi.amap.com/loader.js"></script>
+<script>
+    const path = [
+        [116.37, 39.91],//起点
+        //第一段弧线
+        [116.380298, 39.907771, 116.38, 39.90],//控制点，途经点
+        //第二段弧线
+        [116.385298, 39.907771, 116.40, 39.90],//控制点，途经点//弧线段有两种描述方式1
+    ];
+    (async () => {
+        const AMap = await AMapLoader.load({
+            key: "7a8ae9abcff77ec300bfeafb2cfa05e3",       // 申请好的Web端开发者Key，首次调用 load 时必填
+            version: "2.0",                 // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+        })
+        const map = new AMap.Map('container', {
+            // 缩放
+            zoom: 12,
+            center: [116.39, 39.9],
+        });
+        //     添加标记点
+        const marker = new AMap.Marker({
+            position: [116.39, 39.9] //位置
+        })
+        map.add(marker); //添加到地图
+        // 添加纯文本标记
+        const text = new AMap.Text({
+            text: '天安门',
+            position: [116.39, 39.9] //位置
+        });
+        map.add(text);
+
+        //     贝塞尔曲线
+        const bezierCurve = new AMap.BezierCurve({
+            path: path,
+            strokeWeight: 2, // 线条宽度
+            strokeColor: '#fff', // 线条颜色
+            isOutline: true,	// 是否描边
+            outlineColor: 'red', // 描边颜色
+        });
+        map.add(bezierCurve);
+    })();
+
+</script>
+</html>
